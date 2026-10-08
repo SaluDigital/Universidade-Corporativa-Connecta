@@ -47,7 +47,7 @@ export function CertificatesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Certificados Emitidos</h2>
-          <p className="text-slate-500 text-sm mt-1">{filtered.length} certificados encontrados</p>
+          <p className="text-[#737373] text-sm mt-1">{filtered.length} certificados encontrados</p>
         </div>
         <Button variant="secondary" icon={<Download size={15} />} onClick={() => toast('Exportando...')}>
           Exportar CSV
@@ -55,7 +55,7 @@ export function CertificatesPage() {
       </div>
 
       <div className="relative max-w-sm">
-        <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+        <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#737373]" />
         <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por colaborador, curso ou código..." className="input-base pl-10" />
       </div>
 
@@ -82,21 +82,21 @@ export function CertificatesPage() {
                 <Avatar name={cert.user?.name ?? 'U'} size="sm" />
                 <div>
                   <p className="text-sm font-medium text-white">{cert.user?.name}</p>
-                  <p className="text-xs text-slate-500">{cert.user?.email}</p>
+                  <p className="text-xs text-[#737373]">{cert.user?.email}</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 text-xs text-slate-500">
+              <div className="grid grid-cols-2 gap-2 text-xs text-[#737373]">
                 <div className="flex items-center gap-1.5"><Calendar size={11} />{formatDate(cert.issued_at)}</div>
                 <div className="flex items-center gap-1.5"><BookOpen size={11} />{cert.course?.workload_hours}h</div>
-                <div className="flex items-center gap-1.5 col-span-2"><Hash size={11} /><span className="font-mono text-slate-600 truncate">{cert.certificate_code}</span></div>
+                <div className="flex items-center gap-1.5 col-span-2"><Hash size={11} /><span className="font-mono text-[#666666] truncate">{cert.certificate_code}</span></div>
               </div>
 
               <div className="flex gap-2 pt-1">
                 <button onClick={() => toast('Baixando certificado...')} className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs font-medium text-amber-400 hover:bg-amber-500/20 transition-all">
                   <Download size={12} /> Baixar PDF
                 </button>
-                <button onClick={() => toast.success('Certificado reenviado!')} className="flex items-center justify-center p-2 rounded-xl glass border border-white/10 text-slate-500 hover:text-white hover:border-[#FF9C3A]/20 transition-all" title="Reemitir">
+                <button onClick={() => toast.success('Certificado reenviado!')} className="flex items-center justify-center p-2 rounded-xl glass border border-white/10 text-[#737373] hover:text-white hover:border-[#FF9C3A]/20 transition-all" title="Reemitir">
                   <RefreshCw size={13} />
                 </button>
               </div>
@@ -107,8 +107,8 @@ export function CertificatesPage() {
 
       {filtered.length === 0 && (
         <div className="glass-card rounded-2xl p-16 text-center">
-          <Award size={40} className="text-slate-700 mx-auto mb-3" />
-          <p className="text-slate-500">Nenhum certificado encontrado.</p>
+          <Award size={40} className="text-[#525252] mx-auto mb-3" />
+          <p className="text-[#737373]">Nenhum certificado encontrado.</p>
         </div>
       )}
     </div>

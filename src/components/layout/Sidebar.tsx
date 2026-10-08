@@ -125,7 +125,7 @@ export function Sidebar() {
                 'flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group relative',
                 (isActive || linkActive)
                   ? 'bg-[#FF9C3A]/15 text-[#FF9C3A] border border-[#FF9C3A]/20'
-                  : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
+                  : 'text-[#737373] hover:text-[#D4D4D4] hover:bg-white/5'
               )}
             >
               {({ isActive: linkActive }) => (
@@ -138,7 +138,7 @@ export function Sidebar() {
                     />
                   )}
 
-                  <span className={cn('flex-shrink-0', (isActive || linkActive) ? 'text-[#FF9C3A]' : 'text-slate-500 group-hover:text-slate-400')}>
+                  <span className={cn('flex-shrink-0', (isActive || linkActive) ? 'text-[#FF9C3A]' : 'text-[#737373] group-hover:text-[#A6A6A6]')}>
                     {item.icon}
                   </span>
 
@@ -190,7 +190,7 @@ export function Sidebar() {
           {!collapsed && (
             <button
               onClick={logout}
-              className="p-1.5 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-all"
+              className="p-1.5 rounded-lg text-[#737373] hover:text-red-400 hover:bg-red-500/10 transition-all"
               title="Sair"
             >
               <LogOut size={14} />
@@ -202,7 +202,7 @@ export function Sidebar() {
       {/* Collapse button */}
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-3 top-20 w-6 h-6 glass border border-white/10 rounded-full flex items-center justify-center text-slate-500 hover:text-white transition-all z-10 shadow-lg"
+        className="absolute -right-3 top-20 w-6 h-6 glass border border-white/10 rounded-full flex items-center justify-center text-[#737373] hover:text-white transition-all z-10 shadow-lg"
       >
         {collapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
       </button>

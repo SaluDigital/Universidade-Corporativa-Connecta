@@ -159,7 +159,7 @@ export function AdminDashboard() {
               <span className="text-[#FF9C3A] text-sm font-medium">Painel Administrativo</span>
             </div>
             <h2 className="text-2xl font-bold text-white mb-1">Universidade Corporativa Coneccta</h2>
-            <p className="text-slate-400 text-sm">Acompanhe desenvolvimento, cursos, trilhas e certificados em tempo real.</p>
+            <p className="text-[#A6A6A6] text-sm">Acompanhe desenvolvimento, cursos, trilhas e certificados em tempo real.</p>
           </div>
           <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF9C3A]/15 border border-[#FF9C3A]/25 text-white text-sm font-medium">
             <Activity size={14} />
@@ -202,9 +202,9 @@ export function AdminDashboard() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="font-semibold text-white">Progresso Mensal</h3>
-              <p className="text-slate-500 text-sm">Conclusões e certificados emitidos</p>
+              <p className="text-[#737373] text-sm">Conclusões e certificados emitidos</p>
             </div>
-            <div className="flex items-center gap-4 text-xs text-slate-500">
+            <div className="flex items-center gap-4 text-xs text-[#737373]">
               <span className="flex items-center gap-1.5"><span className="w-3 h-1.5 rounded-full inline-block" style={{ background: '#FF9C3A' }} />Conclusões</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-1.5 rounded-full inline-block" style={{ background: '#FEFEFE' }} />Certificados</span>
             </div>
@@ -221,10 +221,10 @@ export function AdminDashboard() {
                   <stop offset="95%" stopColor="#FEFEFE" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="month" tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="month" tick={{ fill: '#737373', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#737373', fontSize: 12 }} axisLine={false} tickLine={false} />
               <Tooltip
-                contentStyle={{ background: '#141414', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', color: '#e2e8f0', fontSize: '12px' }}
+                contentStyle={{ background: '#141414', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', color: '#FEFEFE', fontSize: '12px' }}
                 cursor={{ stroke: 'rgba(107,53,176,0.2)', strokeWidth: 1 }}
               />
               <Area type="monotone" dataKey="completions" stroke="#FF9C3A" fill="url(#gComp)" strokeWidth={2} dot={false} name="Conclusões" />
@@ -236,7 +236,7 @@ export function AdminDashboard() {
         {/* Pie chart */}
         <motion.div variants={item} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Conclusão por Área</h3>
-          <p className="text-slate-500 text-sm mb-4">Taxa geral de conclusão</p>
+          <p className="text-[#737373] text-sm mb-4">Taxa geral de conclusão</p>
           {deptData.length > 0 ? (
             <>
               <div className="flex justify-center mb-4">
@@ -256,14 +256,14 @@ export function AdminDashboard() {
                 {deptData.slice(0, 4).map((d, i) => (
                   <div key={d.name} className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: COLORS[i] }} />
-                    <span className="text-xs text-slate-400 flex-1 truncate">{d.name}</span>
+                    <span className="text-xs text-[#A6A6A6] flex-1 truncate">{d.name}</span>
                     <span className="text-xs font-semibold text-white">{d.rate}%</span>
                   </div>
                 ))}
               </div>
             </>
           ) : (
-            <div className="flex flex-col items-center justify-center h-40 text-slate-600 text-sm">
+            <div className="flex flex-col items-center justify-center h-40 text-[#666666] text-sm">
               Sem dados ainda
             </div>
           )}
@@ -276,7 +276,7 @@ export function AdminDashboard() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="font-semibold text-white">Taxa de Conclusão por Área</h3>
-              <p className="text-slate-500 text-sm">Desempenho atual dos departamentos</p>
+              <p className="text-[#737373] text-sm">Desempenho atual dos departamentos</p>
             </div>
           </div>
           {deptData.length > 0 ? (
@@ -289,17 +289,17 @@ export function AdminDashboard() {
                   transition={{ delay: i * 0.1 }}
                   className="flex items-center gap-4"
                 >
-                  <span className="text-sm text-slate-400 w-28 flex-shrink-0">{dept.name}</span>
+                  <span className="text-sm text-[#A6A6A6] w-28 flex-shrink-0">{dept.name}</span>
                   <ProgressBar value={dept.rate} size="md" className="flex-1" />
                   <div className="flex items-center gap-2 w-28 justify-end">
                     <span className="text-sm font-semibold text-white">{dept.rate}%</span>
-                    <span className="text-xs text-slate-600">{dept.completed}/{dept.total}</span>
+                    <span className="text-xs text-[#666666]">{dept.completed}/{dept.total}</span>
                   </div>
                 </motion.div>
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center h-32 text-slate-600 text-sm">
+            <div className="flex flex-col items-center justify-center h-32 text-[#666666] text-sm">
               Nenhum departamento com dados ainda
             </div>
           )}
@@ -321,7 +321,7 @@ export function AdminDashboard() {
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-white truncate">{track.user_name}</p>
                   <p className="text-xs text-red-400 truncate">{track.track_title}</p>
-                  <p className="text-xs text-slate-600">{track.progress_percent}% concluído</p>
+                  <p className="text-xs text-[#666666]">{track.progress_percent}% concluído</p>
                 </div>
               </div>
             ))}
@@ -340,26 +340,26 @@ export function AdminDashboard() {
         <motion.div variants={item} className="glass-card rounded-2xl p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-white">Cursos mais concluídos</h3>
-            <BarChart2 size={16} className="text-slate-500" />
+            <BarChart2 size={16} className="text-[#737373]" />
           </div>
           {topCoursesData.length > 0 ? (
             <div className="space-y-3">
               {topCoursesData.map((course, i) => (
                 <div key={course.name} className="flex items-center gap-4">
-                  <span className="text-sm font-bold text-slate-600 w-5">{i + 1}</span>
+                  <span className="text-sm font-bold text-[#666666] w-5">{i + 1}</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm text-white truncate">{course.name}</p>
                     <ProgressBar value={course.rate} size="xs" className="mt-1" />
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-semibold text-white">{course.completions}</p>
-                    <p className="text-xs text-slate-600">concl.</p>
+                    <p className="text-xs text-[#666666]">concl.</p>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center h-32 text-slate-600 text-sm">
+            <div className="flex flex-col items-center justify-center h-32 text-[#666666] text-sm">
               Nenhuma conclusão registrada ainda
             </div>
           )}
@@ -368,7 +368,7 @@ export function AdminDashboard() {
         <motion.div variants={item} className="glass-card rounded-2xl p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-white">Atividade recente</h3>
-            <Activity size={16} className="text-slate-500" />
+            <Activity size={16} className="text-[#737373]" />
           </div>
           {recentActivity.length > 0 ? (
             <div className="space-y-3">
@@ -395,14 +395,14 @@ export function AdminDashboard() {
                         <span className="font-medium">{event.user?.name ?? 'Sistema'}</span>{' '}
                         {meta.label}
                       </p>
-                      <p className="text-xs text-slate-600">{formatDate(event.created_at)}</p>
+                      <p className="text-xs text-[#666666]">{formatDate(event.created_at)}</p>
                     </div>
                   </motion.div>
                 );
               })}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center h-32 text-slate-600 text-sm">
+            <div className="flex flex-col items-center justify-center h-32 text-[#666666] text-sm">
               Nenhuma atividade registrada ainda
             </div>
           )}

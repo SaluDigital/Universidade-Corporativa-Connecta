@@ -31,7 +31,7 @@ export function TeamPage() {
     <div className="max-w-screen-xl space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-white">Minha Equipe</h2>
-        <p className="text-slate-500 text-sm mt-1">{team.length} colaboradores sob sua gestão</p>
+        <p className="text-[#737373] text-sm mt-1">{team.length} colaboradores sob sua gestão</p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -56,10 +56,10 @@ export function TeamPage() {
                   <Avatar name={member.name} src={member.avatar_url} size="md" ring={hasOverdue} />
                   <div>
                     <p className="font-semibold text-white">{member.name}</p>
-                    <p className="text-xs text-slate-500">{getPos(member.position_id)}</p>
+                    <p className="text-xs text-[#737373]">{getPos(member.position_id)}</p>
                   </div>
                 </div>
-                <ChevronRight size={16} className="text-slate-600 group-hover:text-[#FF9C3A] transition-colors mt-1" />
+                <ChevronRight size={16} className="text-[#666666] group-hover:text-[#FF9C3A] transition-colors mt-1" />
               </div>
 
               {hasOverdue && (
@@ -70,14 +70,14 @@ export function TeamPage() {
               )}
 
               <div className="mb-4">
-                <div className="flex justify-between text-xs text-slate-500 mb-1.5">
+                <div className="flex justify-between text-xs text-[#737373] mb-1.5">
                   <span>Progresso geral</span>
                   <span className="text-white font-semibold">{progress}%</span>
                 </div>
                 <ProgressBar value={progress} size="sm" />
               </div>
 
-              <div className="flex items-center gap-4 text-xs text-slate-500">
+              <div className="flex items-center gap-4 text-xs text-[#737373]">
                 <div className="flex items-center gap-1.5">
                   <GitBranch size={12} />
                   {tracks.length} trilhas
@@ -115,10 +115,10 @@ export function TeamPage() {
               <Avatar name={selectedMember.name} src={selectedMember.avatar_url} size="lg" />
               <div>
                 <p className="font-semibold text-white text-lg">{selectedMember.name}</p>
-                <p className="text-slate-400 text-sm">{selectedMember.email}</p>
+                <p className="text-[#A6A6A6] text-sm">{selectedMember.email}</p>
                 <div className="flex items-center gap-2 mt-1">
                   <StatusBadge status={selectedMember.role} />
-                  <span className="text-xs text-slate-600">{getDept(selectedMember.department_id)}</span>
+                  <span className="text-xs text-[#666666]">{getDept(selectedMember.department_id)}</span>
                 </div>
               </div>
               <div className="ml-auto">
@@ -128,7 +128,7 @@ export function TeamPage() {
 
             {/* Tracks */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-400 mb-2">Trilhas</h4>
+              <h4 className="text-sm font-semibold text-[#A6A6A6] mb-2">Trilhas</h4>
               <div className="space-y-2">
                 {getMemberTracks(selectedMember.id).map(track => (
                   <div key={track.id} className="flex items-center gap-3 p-3 rounded-xl bg-white/3 border border-white/5">
@@ -147,17 +147,17 @@ export function TeamPage() {
 
             {/* Certificates */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-400 mb-2">Certificados ({getMemberCerts(selectedMember.id).length})</h4>
+              <h4 className="text-sm font-semibold text-[#A6A6A6] mb-2">Certificados ({getMemberCerts(selectedMember.id).length})</h4>
               <div className="space-y-2">
                 {getMemberCerts(selectedMember.id).map(cert => (
                   <div key={cert.id} className="flex items-center gap-3 p-3 rounded-xl bg-amber-500/5 border border-amber-500/10">
                     <Award size={14} className="text-amber-400" />
                     <span className="text-sm text-white flex-1">Curso {cert.course_id}</span>
-                    <span className="text-xs text-slate-500 font-mono">{cert.certificate_code}</span>
+                    <span className="text-xs text-[#737373] font-mono">{cert.certificate_code}</span>
                   </div>
                 ))}
                 {getMemberCerts(selectedMember.id).length === 0 && (
-                  <p className="text-sm text-slate-600 text-center py-4">Nenhum certificado ainda</p>
+                  <p className="text-sm text-[#666666] text-center py-4">Nenhum certificado ainda</p>
                 )}
               </div>
             </div>

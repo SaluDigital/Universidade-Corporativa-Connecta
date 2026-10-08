@@ -172,7 +172,7 @@ export function TracksPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Trilhas de Aprendizado</h2>
-          <p className="text-slate-500 text-sm mt-1">Configure e gerencie trilhas de desenvolvimento</p>
+          <p className="text-[#737373] text-sm mt-1">Configure e gerencie trilhas de desenvolvimento</p>
         </div>
         <Button onClick={openCreate} icon={<Plus size={16} />}>Nova Trilha</Button>
       </div>
@@ -200,25 +200,25 @@ export function TracksPage() {
                         {track.is_blocking && <Badge variant="amber"><AlertTriangle size={10} className="mr-1" />Bloqueante</Badge>}
                         {!track.is_active && <Badge variant="slate">Inativa</Badge>}
                       </div>
-                      <p className="text-slate-400 text-sm">{track.description}</p>
+                      <p className="text-[#A6A6A6] text-sm">{track.description}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => openCoursesModal(track)} title="Gerenciar cursos" className="p-2 rounded-lg text-slate-500 hover:text-[#FF9C3A] hover:bg-white/10 transition-all"><ListPlus size={14} /></button>
-                    <button onClick={() => openEdit(track)} className="p-2 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all"><Edit2 size={14} /></button>
-                    <button onClick={() => setExpandedTrack(isExpanded ? null : track.id)} className={`p-2 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all ${isExpanded ? 'bg-white/10 text-white' : ''}`}>
+                    <button onClick={() => openCoursesModal(track)} title="Gerenciar cursos" className="p-2 rounded-lg text-[#737373] hover:text-[#FF9C3A] hover:bg-white/10 transition-all"><ListPlus size={14} /></button>
+                    <button onClick={() => openEdit(track)} className="p-2 rounded-lg text-[#737373] hover:text-white hover:bg-white/10 transition-all"><Edit2 size={14} /></button>
+                    <button onClick={() => setExpandedTrack(isExpanded ? null : track.id)} className={`p-2 rounded-lg text-[#737373] hover:text-white hover:bg-white/10 transition-all ${isExpanded ? 'bg-white/10 text-white' : ''}`}>
                       <ChevronRight size={14} className={`transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
                     </button>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-6 mt-4">
-                  <div className="flex items-center gap-1.5 text-sm text-slate-400"><Users size={13} className="text-slate-500" /> {enrollCount} matriculados</div>
-                  <div className="flex items-center gap-1.5 text-sm text-slate-400"><BookOpen size={13} className="text-slate-500" /> {courses.length} cursos</div>
-                  {track.deadline_days && <div className="flex items-center gap-1.5 text-sm text-slate-400"><Clock size={13} className="text-slate-500" /> {track.deadline_days} dias</div>}
+                  <div className="flex items-center gap-1.5 text-sm text-[#A6A6A6]"><Users size={13} className="text-[#737373]" /> {enrollCount} matriculados</div>
+                  <div className="flex items-center gap-1.5 text-sm text-[#A6A6A6]"><BookOpen size={13} className="text-[#737373]" /> {courses.length} cursos</div>
+                  {track.deadline_days && <div className="flex items-center gap-1.5 text-sm text-[#A6A6A6]"><Clock size={13} className="text-[#737373]" /> {track.deadline_days} dias</div>}
                   <div className="flex items-center gap-1.5 text-sm ml-auto">
                     <span className={`${color.icon} font-bold text-lg`}>{completionRate}%</span>
-                    <span className="text-slate-500 text-xs">concluído</span>
+                    <span className="text-[#737373] text-xs">concluído</span>
                   </div>
                 </div>
 
@@ -229,17 +229,17 @@ export function TracksPage() {
 
               {isExpanded && (
                 <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="p-5 border-t border-white/5">
-                  <h4 className="text-sm font-semibold text-slate-400 mb-3">Cursos nesta trilha</h4>
+                  <h4 className="text-sm font-semibold text-[#A6A6A6] mb-3">Cursos nesta trilha</h4>
                   {courses.length === 0 ? (
-                    <p className="text-sm text-slate-600">Nenhum curso adicionado ainda.</p>
+                    <p className="text-sm text-[#666666]">Nenhum curso adicionado ainda.</p>
                   ) : (
                     <div className="space-y-2">
                       {courses.map((tc: any, j: number) => (
                         <div key={tc.id} className="flex items-center gap-3 p-3 rounded-xl bg-white/3 border border-white/5">
-                          <span className="text-xs font-bold text-slate-600 w-5">{j + 1}</span>
+                          <span className="text-xs font-bold text-[#666666] w-5">{j + 1}</span>
                           <div className="flex-1">
                             <p className="text-sm font-medium text-white">{tc.course?.title}</p>
-                            <p className="text-xs text-slate-500">{tc.course?.workload_hours}h · {tc.course?.category}</p>
+                            <p className="text-xs text-[#737373]">{tc.course?.workload_hours}h · {tc.course?.category}</p>
                           </div>
                           {tc.course?.has_certificate && <span className="text-xs text-amber-400">🏆 Certifica</span>}
                         </div>
@@ -253,7 +253,7 @@ export function TracksPage() {
         })}
 
         {tracks.length === 0 && (
-          <div className="py-16 text-center text-slate-600">Nenhuma trilha cadastrada ainda.</div>
+          <div className="py-16 text-center text-[#666666]">Nenhuma trilha cadastrada ainda.</div>
         )}
       </div>
 
@@ -262,22 +262,22 @@ export function TracksPage() {
         <div className="space-y-5">
           {/* Cursos já na trilha */}
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Na trilha</p>
+            <p className="text-xs font-semibold text-[#737373] uppercase tracking-wide mb-2">Na trilha</p>
             {((coursesModalTrack as any)?.courses ?? []).length === 0 ? (
-              <p className="text-sm text-slate-600">Nenhum curso adicionado ainda.</p>
+              <p className="text-sm text-[#666666]">Nenhum curso adicionado ainda.</p>
             ) : (
               <div className="space-y-2">
                 {((coursesModalTrack as any)?.courses ?? []).map((tc: any, idx: number) => (
                   <div key={tc.id} className="flex items-center gap-3 p-3 rounded-xl bg-white/3 border border-white/5">
-                    <span className="text-xs font-bold text-slate-600 w-5">{idx + 1}</span>
+                    <span className="text-xs font-bold text-[#666666] w-5">{idx + 1}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white truncate">{tc.course?.title}</p>
-                      <p className="text-xs text-slate-500">{tc.course?.workload_hours}h · {tc.course?.category}</p>
+                      <p className="text-xs text-[#737373]">{tc.course?.workload_hours}h · {tc.course?.category}</p>
                     </div>
                     <button
                       onClick={() => handleRemoveCourse(tc.course?.id)}
                       disabled={removingCourse === tc.course?.id}
-                      className="p-1.5 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                      className="p-1.5 rounded-lg text-[#666666] hover:text-red-400 hover:bg-red-500/10 transition-all"
                     >
                       {removingCourse === tc.course?.id ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />}
                     </button>
@@ -289,7 +289,7 @@ export function TracksPage() {
 
           {/* Todos os cursos disponíveis */}
           <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Adicionar curso</p>
+            <p className="text-xs font-semibold text-[#737373] uppercase tracking-wide mb-2">Adicionar curso</p>
             <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
               {allCourses
                 .filter(c => !((coursesModalTrack as any)?.courses ?? []).find((tc: any) => tc.course?.id === c.id))
@@ -297,7 +297,7 @@ export function TracksPage() {
                   <div key={course.id} className="flex items-center gap-3 p-3 rounded-xl border border-white/5 hover:border-[#FF9C3A]/30 transition-all">
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white truncate">{course.title}</p>
-                      <p className="text-xs text-slate-500">{course.workload_hours}h · {course.category}</p>
+                      <p className="text-xs text-[#737373]">{course.workload_hours}h · {course.category}</p>
                     </div>
                     <button
                       onClick={() => handleAddCourse(course.id)}
@@ -310,7 +310,7 @@ export function TracksPage() {
                   </div>
                 ))}
               {allCourses.filter(c => !((coursesModalTrack as any)?.courses ?? []).find((tc: any) => tc.course?.id === c.id)).length === 0 && (
-                <p className="text-sm text-slate-600">Todos os cursos já estão nesta trilha.</p>
+                <p className="text-sm text-[#666666]">Todos os cursos já estão nesta trilha.</p>
               )}
             </div>
           </div>
@@ -327,11 +327,11 @@ export function TracksPage() {
           <div className="flex items-center gap-6">
             <label className="flex items-center gap-2.5 cursor-pointer">
               <input type="checkbox" checked={form.is_mandatory} onChange={e => setForm({ ...form, is_mandatory: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
-              <span className="text-sm text-slate-300">Trilha obrigatória</span>
+              <span className="text-sm text-[#D4D4D4]">Trilha obrigatória</span>
             </label>
             <label className="flex items-center gap-2.5 cursor-pointer">
               <input type="checkbox" checked={form.is_blocking} onChange={e => setForm({ ...form, is_blocking: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
-              <span className="text-sm text-slate-300">Bloqueante</span>
+              <span className="text-sm text-[#D4D4D4]">Bloqueante</span>
             </label>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+﻿import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -45,7 +45,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', footer }:
               <h3 className="text-lg font-semibold text-white">{title}</h3>
               <button
                 onClick={onClose}
-                className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all"
+                className="w-8 h-8 flex items-center justify-center rounded-lg text-[#737373] hover:text-white hover:bg-white/10 transition-all"
               >
                 <X size={16} />
               </button>

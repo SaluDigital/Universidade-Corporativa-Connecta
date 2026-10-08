@@ -189,12 +189,12 @@ export function CoursesPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-white">Gestão de Cursos</h2>
-          <p className="text-slate-500 text-sm mt-1">{filtered.length} cursos cadastrados</p>
+          <p className="text-[#737373] text-sm mt-1">{filtered.length} cursos cadastrados</p>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center p-1 glass rounded-xl border border-white/5">
             {(['grid', 'list'] as const).map(mode => (
-              <button key={mode} onClick={() => setViewMode(mode)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${viewMode === mode ? 'bg-[#FF9C3A]/20 text-[#FF9C3A]' : 'text-slate-500 hover:text-slate-300'}`}>
+              <button key={mode} onClick={() => setViewMode(mode)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${viewMode === mode ? 'bg-[#FF9C3A]/20 text-[#FF9C3A]' : 'text-[#737373] hover:text-[#D4D4D4]'}`}>
                 {mode === 'grid' ? 'Grid' : 'Lista'}
               </button>
             ))}
@@ -205,7 +205,7 @@ export function CoursesPage() {
 
       {/* Search */}
       <div className="relative max-w-sm">
-        <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+        <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#737373]" />
         <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar cursos..." className="input-base pl-10" />
       </div>
 
@@ -238,8 +238,8 @@ export function CoursesPage() {
                         </span>
                       )}
                       {!course.is_active && (
-                        <span className="w-6 h-6 bg-slate-800/80 border border-slate-600/30 rounded-lg flex items-center justify-center" title="Inativo">
-                          <ToggleLeft size={11} className="text-slate-400" />
+                        <span className="w-6 h-6 bg-[#262626]/80 border border-[#666666]/30 rounded-lg flex items-center justify-center" title="Inativo">
+                          <ToggleLeft size={11} className="text-[#A6A6A6]" />
                         </span>
                       )}
                     </div>
@@ -248,29 +248,29 @@ export function CoursesPage() {
                   {/* Corpo */}
                   <div className="p-4">
                     <h4 className="font-semibold text-white text-sm mb-1 line-clamp-2">{course.title}</h4>
-                    <p className="text-slate-500 text-xs mb-3 line-clamp-2">{course.description}</p>
-                    <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
+                    <p className="text-[#737373] text-xs mb-3 line-clamp-2">{course.description}</p>
+                    <div className="flex items-center gap-3 text-xs text-[#737373] mb-3">
                       <span className="flex items-center gap-1"><Clock size={11} /> {course.workload_hours}h</span>
                       {course.requires_exam && <span className="flex items-center gap-1"><CheckCircle size={11} className="text-[#FEFEFE]" /> Avaliação</span>}
-                      <span className="flex items-center gap-1 ml-auto"><Star size={11} className="text-slate-600" /> v{course.version}</span>
+                      <span className="flex items-center gap-1 ml-auto"><Star size={11} className="text-[#666666]" /> v{course.version}</span>
                     </div>
 
                     {/* Ações sempre visíveis */}
                     <div className="grid grid-cols-5 gap-0.5 border-t border-white/5 pt-3">
-                      <button onClick={() => openEdit(course)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-white/8 transition-all text-[10px]">
+                      <button onClick={() => openEdit(course)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-[#737373] hover:text-white hover:bg-white/8 transition-all text-[10px]">
                         <Edit2 size={13} /> Editar
                       </button>
-                      <button onClick={() => navigate(`/admin/courses/${course.id}/modules`)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-[#FEFEFE] hover:bg-[#FEFEFE]/8 transition-all text-[10px]">
+                      <button onClick={() => navigate(`/admin/courses/${course.id}/modules`)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-[#737373] hover:text-[#FEFEFE] hover:bg-[#FEFEFE]/8 transition-all text-[10px]">
                         <Layers size={13} /> Módulos
                       </button>
-                      <button onClick={() => navigate(`/admin/courses/${course.id}/exam`)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-[#FF9C3A] hover:bg-[#FF9C3A]/8 transition-all text-[10px]">
+                      <button onClick={() => navigate(`/admin/courses/${course.id}/exam`)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-[#737373] hover:text-[#FF9C3A] hover:bg-[#FF9C3A]/8 transition-all text-[10px]">
                         <HelpCircle size={13} /> Prova
                       </button>
-                      <button onClick={() => handleToggleActive(course)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-white/8 transition-all text-[10px]">
+                      <button onClick={() => handleToggleActive(course)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-[#737373] hover:text-white hover:bg-white/8 transition-all text-[10px]">
                         {course.is_active ? <ToggleLeft size={13} /> : <ToggleRight size={13} />}
                         {course.is_active ? 'Desativar' : 'Ativar'}
                       </button>
-                      <button onClick={() => setCourseToDelete(course)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/8 transition-all text-[10px]">
+                      <button onClick={() => setCourseToDelete(course)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-[#737373] hover:text-red-400 hover:bg-red-500/8 transition-all text-[10px]">
                         <Trash2 size={13} /> Excluir
                       </button>
                     </div>
@@ -289,21 +289,21 @@ export function CoursesPage() {
                       <h4 className="font-medium text-white text-sm">{course.title}</h4>
                       <Badge variant={(categoryColors[course.category ?? ''] || 'slate') as any}>{course.category}</Badge>
                     </div>
-                    <p className="text-xs text-slate-500 truncate">{course.description}</p>
+                    <p className="text-xs text-[#737373] truncate">{course.description}</p>
                   </div>
-                  <div className="flex items-center gap-4 text-xs text-slate-500 flex-shrink-0">
+                  <div className="flex items-center gap-4 text-xs text-[#737373] flex-shrink-0">
                     <span className="flex items-center gap-1"><Clock size={11} /> {course.workload_hours}h</span>
                     {course.has_certificate && <Award size={13} className="text-amber-400" />}
                     <StatusBadge status={course.is_active ? 'active' : 'inactive'} />
                   </div>
                   <div className="flex items-center gap-1">
-                    <button onClick={() => openEdit(course)} className="p-2 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all" title="Editar"><Edit2 size={14} /></button>
-                    <button onClick={() => navigate(`/admin/courses/${course.id}/modules`)} className="p-2 rounded-lg text-slate-500 hover:text-[#FEFEFE] hover:bg-white/10 transition-all" title="Módulos"><Layers size={14} /></button>
-                    <button onClick={() => navigate(`/admin/courses/${course.id}/exam`)} className="p-2 rounded-lg text-slate-500 hover:text-[#FF9C3A] hover:bg-white/10 transition-all" title="Prova"><HelpCircle size={14} /></button>
-                    <button onClick={() => handleToggleActive(course)} className="p-2 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all" title={course.is_active ? 'Desativar' : 'Ativar'}>
+                    <button onClick={() => openEdit(course)} className="p-2 rounded-lg text-[#737373] hover:text-white hover:bg-white/10 transition-all" title="Editar"><Edit2 size={14} /></button>
+                    <button onClick={() => navigate(`/admin/courses/${course.id}/modules`)} className="p-2 rounded-lg text-[#737373] hover:text-[#FEFEFE] hover:bg-white/10 transition-all" title="Módulos"><Layers size={14} /></button>
+                    <button onClick={() => navigate(`/admin/courses/${course.id}/exam`)} className="p-2 rounded-lg text-[#737373] hover:text-[#FF9C3A] hover:bg-white/10 transition-all" title="Prova"><HelpCircle size={14} /></button>
+                    <button onClick={() => handleToggleActive(course)} className="p-2 rounded-lg text-[#737373] hover:text-white hover:bg-white/10 transition-all" title={course.is_active ? 'Desativar' : 'Ativar'}>
                       {course.is_active ? <ToggleLeft size={14} /> : <ToggleRight size={14} />}
                     </button>
-                    <button onClick={() => setCourseToDelete(course)} className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-all" title="Excluir"><Trash2 size={14} /></button>
+                    <button onClick={() => setCourseToDelete(course)} className="p-2 rounded-lg text-[#737373] hover:text-red-400 hover:bg-red-500/10 transition-all" title="Excluir"><Trash2 size={14} /></button>
                   </div>
                 </>
               )}
@@ -313,7 +313,7 @@ export function CoursesPage() {
       </motion.div>
 
       {filtered.length === 0 && !loading && (
-        <div className="py-16 text-center text-slate-600">Nenhum curso encontrado.</div>
+        <div className="py-16 text-center text-[#666666]">Nenhum curso encontrado.</div>
       )}
 
       {/* Modal — Criar/Editar curso */}
@@ -334,10 +334,10 @@ export function CoursesPage() {
         <div className="space-y-4">
           {/* Upload de capa */}
           <div>
-            <p className="text-xs font-medium text-slate-400 mb-2">Capa do curso</p>
+            <p className="text-xs font-medium text-[#A6A6A6] mb-2">Capa do curso</p>
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleThumbnailChange} className="hidden" />
             {thumbnailPreview ? (
-              <div className="relative rounded-xl overflow-hidden h-36 bg-slate-900">
+              <div className="relative rounded-xl overflow-hidden h-36 bg-[#171717]">
                 <img src={thumbnailPreview} alt="Capa" className="w-full h-full object-cover" />
                 <button
                   onClick={removeThumbnail}
@@ -351,9 +351,9 @@ export function CoursesPage() {
                 onClick={() => fileInputRef.current?.click()}
                 className="w-full h-28 rounded-xl border-2 border-dashed border-white/10 hover:border-[#FF9C3A]/40 bg-white/2 hover:bg-[#FF9C3A]/5 flex flex-col items-center justify-center gap-2 transition-all"
               >
-                <ImagePlus size={22} className="text-slate-600" />
-                <span className="text-xs text-slate-600">Clique para selecionar uma imagem</span>
-                <span className="text-xs text-slate-700">JPG, PNG ou WebP · máx. 2MB</span>
+                <ImagePlus size={22} className="text-[#666666]" />
+                <span className="text-xs text-[#666666]">Clique para selecionar uma imagem</span>
+                <span className="text-xs text-[#525252]">JPG, PNG ou WebP · máx. 2MB</span>
               </button>
             )}
             {!thumbnailPreview && (
@@ -385,11 +385,11 @@ export function CoursesPage() {
           <div className="flex items-center gap-6">
             <label className="flex items-center gap-2.5 cursor-pointer">
               <input type="checkbox" checked={form.has_certificate} onChange={e => setForm({ ...form, has_certificate: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
-              <span className="text-sm text-slate-300">Emite certificado</span>
+              <span className="text-sm text-[#D4D4D4]">Emite certificado</span>
             </label>
             <label className="flex items-center gap-2.5 cursor-pointer">
               <input type="checkbox" checked={form.requires_exam} onChange={e => setForm({ ...form, requires_exam: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
-              <span className="text-sm text-slate-300">Requer avaliação</span>
+              <span className="text-sm text-[#D4D4D4]">Requer avaliação</span>
             </label>
           </div>
           {form.requires_exam && (
@@ -413,7 +413,7 @@ export function CoursesPage() {
         }
       >
         <div className="space-y-3">
-          <p className="text-slate-300 text-sm">
+          <p className="text-[#D4D4D4] text-sm">
             Tem certeza que deseja excluir o curso <span className="font-semibold text-white">"{courseToDelete?.title}"</span>?
           </p>
           <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-xs text-red-400 space-y-1">

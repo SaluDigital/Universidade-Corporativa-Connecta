@@ -22,7 +22,7 @@ export function Header({ title, subtitle }: HeaderProps) {
       {/* Title */}
       <div className="flex-1">
         <h1 className="text-xl font-bold text-white">{title}</h1>
-        {subtitle && <p className="text-slate-500 text-sm">{subtitle}</p>}
+        {subtitle && <p className="text-[#737373] text-sm">{subtitle}</p>}
       </div>
 
       {/* Search */}
@@ -33,7 +33,7 @@ export function Header({ title, subtitle }: HeaderProps) {
       >
         <button
           onClick={() => setSearchOpen(!searchOpen)}
-          className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors z-10"
+          className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#737373] hover:text-[#D4D4D4] transition-colors z-10"
         >
           <Search size={16} />
         </button>
@@ -44,19 +44,19 @@ export function Header({ title, subtitle }: HeaderProps) {
             placeholder="Buscar..."
             autoFocus
             onBlur={() => setSearchOpen(false)}
-            className="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-slate-600 outline-none focus:border-[#FF9C3A]/40"
+            className="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-[#666666] outline-none focus:border-[#FF9C3A]/40"
           />
         )}
         {!searchOpen && (
           <div className="w-10 h-10 flex items-center justify-center rounded-xl glass hover:bg-white/10 transition-all cursor-pointer">
-            <Search size={16} className="text-slate-500" />
+            <Search size={16} className="text-[#737373]" />
           </div>
         )}
       </motion.div>
 
       {/* Notifications */}
       <button className="relative w-10 h-10 flex items-center justify-center rounded-xl glass hover:bg-white/10 transition-all">
-        <Bell size={16} className="text-slate-400" />
+        <Bell size={16} className="text-[#A6A6A6]" />
         <span className="absolute top-2 right-2 w-2 h-2 bg-[#FF9C3A] rounded-full" />
       </button>
 

@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload?.length) {
     return (
       <div className="glass-card p-3 rounded-xl border border-white/10 text-xs">
-        <p className="text-slate-400 mb-1">{label}</p>
+        <p className="text-[#A6A6A6] mb-1">{label}</p>
         {payload.map((p: any) => (
           <p key={p.name} style={{ color: p.color }} className="font-semibold">{p.name}: {p.value}</p>
         ))}
@@ -160,7 +160,7 @@ export function ReportsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Relatórios e Analytics</h2>
-          <p className="text-slate-500 text-sm mt-1">Inteligência de dados para decisões estratégicas</p>
+          <p className="text-[#737373] text-sm mt-1">Inteligência de dados para decisões estratégicas</p>
         </div>
         <Button variant="secondary" icon={<Download size={15} />} onClick={() => toast('Exportando relatório...')}>
           Exportar PDF
@@ -179,11 +179,11 @@ export function ReportsPage() {
       <div className="grid lg:grid-cols-3 gap-6">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="lg:col-span-2 glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Evolução de Conclusões</h3>
-          <p className="text-slate-500 text-sm mb-4">Cursos concluídos e certificados emitidos por mês</p>
+          <p className="text-[#737373] text-sm mb-4">Cursos concluídos e certificados emitidos por mês</p>
           <ResponsiveContainer width="100%" height={220}>
             <LineChart data={monthlyData}>
-              <XAxis dataKey="month" tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="month" tick={{ fill: '#737373', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#737373', fontSize: 12 }} axisLine={false} tickLine={false} />
               <Tooltip content={<CustomTooltip />} />
               <Line type="monotone" dataKey="certificates" stroke="#FF9C3A" strokeWidth={2.5} dot={{ r: 4, fill: '#FF9C3A', strokeWidth: 0 }} name="Certificados" />
               <Line type="monotone" dataKey="completions" stroke="#FEFEFE" strokeWidth={2} dot={{ r: 3, fill: '#FEFEFE', strokeWidth: 0 }} strokeDasharray="4 2" name="Conclusões" />
@@ -193,17 +193,17 @@ export function ReportsPage() {
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.1 } }} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Radar por Categoria</h3>
-          <p className="text-slate-500 text-sm mb-4">Taxa de conclusão por área</p>
+          <p className="text-[#737373] text-sm mb-4">Taxa de conclusão por área</p>
           {radarData.length > 0 ? (
             <ResponsiveContainer width="100%" height={220}>
               <RadarChart data={radarData}>
                 <PolarGrid stroke="rgba(255,255,255,0.05)" />
-                <PolarAngleAxis dataKey="subject" tick={{ fill: '#475569', fontSize: 11 }} />
+                <PolarAngleAxis dataKey="subject" tick={{ fill: '#737373', fontSize: 11 }} />
                 <Radar dataKey="A" stroke="#FF9C3A" fill="#FF9C3A" fillOpacity={0.2} strokeWidth={2} />
               </RadarChart>
             </ResponsiveContainer>
           ) : (
-            <div className="flex items-center justify-center h-48 text-slate-600 text-sm">Sem dados</div>
+            <div className="flex items-center justify-center h-48 text-[#666666] text-sm">Sem dados</div>
           )}
         </motion.div>
       </div>
@@ -212,12 +212,12 @@ export function ReportsPage() {
       <div className="grid lg:grid-cols-2 gap-6">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.15 } }} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Taxa por Departamento</h3>
-          <p className="text-slate-500 text-sm mb-4">Colaboradores com ao menos 1 curso concluído</p>
+          <p className="text-[#737373] text-sm mb-4">Colaboradores com ao menos 1 curso concluído</p>
           {deptData.length > 0 ? (
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={deptData} barSize={28}>
-                <XAxis dataKey="name" tick={{ fill: '#475569', fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: '#475569', fontSize: 11 }} axisLine={false} tickLine={false} domain={[0, 100]} />
+                <XAxis dataKey="name" tick={{ fill: '#737373', fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: '#737373', fontSize: 11 }} axisLine={false} tickLine={false} domain={[0, 100]} />
                 <Tooltip content={<CustomTooltip />} />
                 <Bar dataKey="rate" name="% Conclusão" radius={[6, 6, 0, 0]}>
                   {deptData.map((_, idx) => (
@@ -227,20 +227,20 @@ export function ReportsPage() {
               </BarChart>
             </ResponsiveContainer>
           ) : (
-            <div className="flex items-center justify-center h-48 text-slate-600 text-sm">Nenhum departamento com dados</div>
+            <div className="flex items-center justify-center h-48 text-[#666666] text-sm">Nenhum departamento com dados</div>
           )}
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Cursos mais concluídos</h3>
-          <p className="text-slate-500 text-sm mb-4">Top 5 por número de conclusões</p>
+          <p className="text-[#737373] text-sm mb-4">Top 5 por número de conclusões</p>
           {topCoursesData.length > 0 ? (
             <div className="space-y-4">
               {topCoursesData.map((course, i) => (
                 <div key={course.name} className="space-y-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-slate-600 w-5">{i + 1}</span>
-                    <span className="text-sm text-slate-400 flex-1 truncate">{course.name}</span>
+                    <span className="text-sm font-bold text-[#666666] w-5">{i + 1}</span>
+                    <span className="text-sm text-[#A6A6A6] flex-1 truncate">{course.name}</span>
                     <span className="text-sm font-semibold text-white w-16 text-right">{course.completions} concl.</span>
                   </div>
                   <ProgressBar value={course.rate} size="xs" className="ml-7" />
@@ -248,7 +248,7 @@ export function ReportsPage() {
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center h-48 text-slate-600 text-sm">Nenhuma conclusão registrada</div>
+            <div className="flex items-center justify-center h-48 text-[#666666] text-sm">Nenhuma conclusão registrada</div>
           )}
         </motion.div>
       </div>
@@ -262,7 +262,7 @@ export function ReportsPage() {
             <span className="ml-auto text-xs text-red-400 bg-red-500/10 border border-red-500/20 px-2 py-0.5 rounded-full">{overdueTracks.length}</span>
           </div>
           {overdueTracks.length === 0 ? (
-            <div className="py-8 text-center text-slate-600 text-sm">Nenhum atraso registrado</div>
+            <div className="py-8 text-center text-[#666666] text-sm">Nenhum atraso registrado</div>
           ) : (
             <div className="space-y-2">
               {overdueTracks.map((track: any) => (
@@ -270,11 +270,11 @@ export function ReportsPage() {
                   <Avatar name={track.user_name ?? 'U'} size="sm" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-white truncate">{track.user_name}</p>
-                    <p className="text-xs text-slate-500 truncate">{track.track_title}</p>
+                    <p className="text-xs text-[#737373] truncate">{track.track_title}</p>
                   </div>
                   <div className="text-right flex-shrink-0">
                     <p className="text-xs font-semibold text-red-400">Atrasado</p>
-                    <p className="text-xs text-slate-600">{track.progress_percent ?? 0}% concl.</p>
+                    <p className="text-xs text-[#666666]">{track.progress_percent ?? 0}% concl.</p>
                   </div>
                 </div>
               ))}
@@ -289,24 +289,24 @@ export function ReportsPage() {
           </div>
           <div className="space-y-4">
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/3 border border-white/5">
-              <span className="text-sm text-slate-400">Total de colaboradores</span>
+              <span className="text-sm text-[#A6A6A6]">Total de colaboradores</span>
               <span className="text-sm font-bold text-white">{users.length}</span>
             </div>
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/3 border border-white/5">
-              <span className="text-sm text-slate-400">Cursos iniciados</span>
+              <span className="text-sm text-[#A6A6A6]">Cursos iniciados</span>
               <span className="text-sm font-bold text-white">{allProgress.length}</span>
             </div>
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/3 border border-white/5">
-              <span className="text-sm text-slate-400">Cursos concluídos</span>
+              <span className="text-sm text-[#A6A6A6]">Cursos concluídos</span>
               <span className="text-sm font-bold text-emerald-400">{completed.length}</span>
             </div>
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/3 border border-white/5">
-              <span className="text-sm text-slate-400">Certificados emitidos</span>
+              <span className="text-sm text-[#A6A6A6]">Certificados emitidos</span>
               <span className="text-sm font-bold text-amber-400">{certificates.length}</span>
             </div>
             <div className="p-3 rounded-xl bg-[#FF9C3A]/10 border border-[#FF9C3A]/20">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-slate-400">Taxa de conclusão</span>
+                <span className="text-sm text-[#A6A6A6]">Taxa de conclusão</span>
                 <span className="text-sm font-bold text-[#FF9C3A]">{completionRate}%</span>
               </div>
               <ProgressBar value={completionRate} size="sm" />

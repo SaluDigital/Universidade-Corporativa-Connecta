@@ -287,7 +287,7 @@ export function CourseDetailPage() {
 
   if (!course) return (
     <div className="flex items-center justify-center h-64">
-      <p className="text-slate-500">Curso não encontrado.</p>
+      <p className="text-[#737373]">Curso não encontrado.</p>
     </div>
   );
 
@@ -319,7 +319,7 @@ export function CourseDetailPage() {
                 {isCompleted && <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium"><CheckCircle size={12} /> Concluído</span>}
               </div>
               <h2 className="text-xl font-bold text-white leading-snug">{course.title}</h2>
-              <div className="flex items-center gap-4 mt-1.5 text-xs text-slate-400">
+              <div className="flex items-center gap-4 mt-1.5 text-xs text-[#A6A6A6]">
                 <span className="flex items-center gap-1"><Clock size={10} />{course.workload_hours}h</span>
                 <span className="flex items-center gap-1"><BookOpen size={10} />{totalLessons} aulas</span>
                 {course.has_certificate && <span className="flex items-center gap-1 text-amber-400"><Award size={10} />Certifica</span>}
@@ -330,7 +330,7 @@ export function CourseDetailPage() {
           <div className="flex items-start gap-3 p-4">
             <button
               onClick={() => navigate('/employee/courses')}
-              className="mt-1 p-2 rounded-xl glass border border-white/5 text-slate-500 hover:text-white transition-all flex-shrink-0"
+              className="mt-1 p-2 rounded-xl glass border border-white/5 text-[#737373] hover:text-white transition-all flex-shrink-0"
             >
               <ChevronLeft size={16} />
             </button>
@@ -340,7 +340,7 @@ export function CourseDetailPage() {
                 {isCompleted && <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium"><CheckCircle size={12} /> Concluído</span>}
               </div>
               <h2 className="text-xl font-bold text-white leading-snug">{course.title}</h2>
-              <div className="flex items-center gap-4 mt-1.5 text-xs text-slate-500">
+              <div className="flex items-center gap-4 mt-1.5 text-xs text-[#737373]">
                 <span className="flex items-center gap-1"><Clock size={10} />{course.workload_hours}h</span>
                 <span className="flex items-center gap-1"><BookOpen size={10} />{totalLessons} aulas</span>
                 {course.has_certificate && <span className="flex items-center gap-1 text-amber-400"><Award size={10} />Certifica</span>}
@@ -359,7 +359,7 @@ export function CourseDetailPage() {
             {/* Barra de progresso */}
             <div className="glass-card rounded-2xl p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-medium text-slate-400">Progresso do curso</span>
+                <span className="text-xs font-medium text-[#A6A6A6]">Progresso do curso</span>
                 <span className="text-xs font-bold text-white">{doneLessons}/{totalLessons} aulas · {progressPct}%</span>
               </div>
               <ProgressBar value={progressPct} size="sm" />
@@ -378,7 +378,7 @@ export function CourseDetailPage() {
                   {/* Título da aula */}
                   <div className="flex items-center justify-between px-4 pt-4 pb-3">
                     <div>
-                      <p className="text-xs text-slate-500 mb-0.5">Assistindo agora</p>
+                      <p className="text-xs text-[#737373] mb-0.5">Assistindo agora</p>
                       <p className="text-sm font-semibold text-white">{selectedLesson.title}</p>
                     </div>
                     {lessonProgressMap[selectedLesson.id]?.status === 'completed' && (
@@ -405,8 +405,8 @@ export function CourseDetailPage() {
                       <div className="absolute bottom-0 right-0 w-64 h-16 z-10" style={{ pointerEvents: 'all', background: 'transparent' }} />
                     </div>
                   ) : (
-                    <div className="aspect-video bg-slate-900 flex items-center justify-center">
-                      <p className="text-slate-600 text-sm">Vídeo não configurado</p>
+                    <div className="aspect-video bg-[#171717] flex items-center justify-center">
+                      <p className="text-[#666666] text-sm">Vídeo não configurado</p>
                     </div>
                   )}
 
@@ -432,8 +432,8 @@ export function CourseDetailPage() {
             {/* Módulos e Aulas */}
             {modules.length === 0 ? (
               <div className="glass-card rounded-2xl p-10 text-center">
-                <BookOpen size={32} className="text-slate-700 mx-auto mb-3" />
-                <p className="text-slate-500">Conteúdo em preparação.</p>
+                <BookOpen size={32} className="text-[#525252] mx-auto mb-3" />
+                <p className="text-[#737373]">Conteúdo em preparação.</p>
               </div>
             ) : (
               <div className="space-y-2">
@@ -454,12 +454,12 @@ export function CourseDetailPage() {
                         </span>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-semibold text-white truncate">{mod.title}</p>
-                          <p className="text-xs text-slate-600 mt-0.5">{modDone}/{modTotal} aulas concluídas</p>
+                          <p className="text-xs text-[#666666] mt-0.5">{modDone}/{modTotal} aulas concluídas</p>
                         </div>
                         {modPct === 100 && <CheckCircle size={14} className="text-emerald-400 flex-shrink-0" />}
                         {expandedModules.has(mod.id)
-                          ? <ChevronDown size={14} className="text-slate-500 flex-shrink-0" />
-                          : <ChevronRight size={14} className="text-slate-500 flex-shrink-0" />
+                          ? <ChevronDown size={14} className="text-[#737373] flex-shrink-0" />
+                          : <ChevronRight size={14} className="text-[#737373] flex-shrink-0" />
                         }
                       </button>
 
@@ -497,17 +497,17 @@ export function CourseDetailPage() {
                                     }`}>
                                       {isLessonDone
                                         ? <CheckCircle size={12} className="text-emerald-400" />
-                                        : <PlayCircle size={12} className={isSelected ? 'text-[#FF9C3A]' : 'text-slate-600'} />
+                                        : <PlayCircle size={12} className={isSelected ? 'text-[#FF9C3A]' : 'text-[#666666]'} />
                                       }
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                      <p className={`text-sm truncate ${isLessonDone ? 'text-slate-400' : isSelected ? 'text-white font-medium' : 'text-slate-300'}`}>
-                                        <span className="text-slate-600 text-xs mr-1.5">{modIdx + 1}.{lessonIdx + 1}</span>
+                                      <p className={`text-sm truncate ${isLessonDone ? 'text-[#A6A6A6]' : isSelected ? 'text-white font-medium' : 'text-[#D4D4D4]'}`}>
+                                        <span className="text-[#666666] text-xs mr-1.5">{modIdx + 1}.{lessonIdx + 1}</span>
                                         {lesson.title}
                                       </p>
                                     </div>
                                     {lesson.duration_minutes && (
-                                      <span className="text-xs text-slate-600 flex-shrink-0 flex items-center gap-1">
+                                      <span className="text-xs text-[#666666] flex-shrink-0 flex items-center gap-1">
                                         <Clock size={9} />{lesson.duration_minutes}min
                                       </span>
                                     )}
@@ -547,7 +547,7 @@ export function CourseDetailPage() {
                   </div>
                 ) : (
                   <>
-                    <div className="text-xs text-slate-500 space-y-1">
+                    <div className="text-xs text-[#737373] space-y-1">
                       <p>• Prova com <span className="text-white">10 perguntas</span> selecionadas aleatoriamente</p>
                       <p>• Nota mínima: <span className="text-white">{minimumGrade}%</span></p>
                       <p>• Sem limite de tentativas</p>
@@ -555,10 +555,10 @@ export function CourseDetailPage() {
 
                     {attempts.length > 0 && (
                       <div className="space-y-1.5">
-                        <p className="text-xs text-slate-600 font-medium uppercase tracking-wide">Tentativas</p>
+                        <p className="text-xs text-[#666666] font-medium uppercase tracking-wide">Tentativas</p>
                         {attempts.slice(0, 3).map((a, i) => (
                           <div key={i} className="flex items-center justify-between px-3 py-2 rounded-xl border border-white/5 text-xs">
-                            <span className="text-slate-500">Tentativa {a.attempt_number}</span>
+                            <span className="text-[#737373]">Tentativa {a.attempt_number}</span>
                             <span className={a.passed ? 'text-emerald-400 font-medium' : 'text-red-400'}>{a.score}%</span>
                           </div>
                         ))}
@@ -570,7 +570,7 @@ export function CourseDetailPage() {
                         <AlertCircle size={13} /> Avaliação em preparação.
                       </div>
                     ) : progressPct < 100 ? (
-                      <div className="flex items-center gap-2 p-3 rounded-xl bg-slate-500/10 border border-slate-500/20 text-xs text-slate-400">
+                      <div className="flex items-center gap-2 p-3 rounded-xl bg-[#737373]/10 border border-[#737373]/20 text-xs text-[#A6A6A6]">
                         <AlertCircle size={13} /> Conclua todas as aulas para liberar a avaliação ({progressPct}% concluído).
                       </div>
                     ) : (
@@ -606,7 +606,7 @@ export function CourseDetailPage() {
                 <HelpCircle size={15} className="text-[#FF9C3A]" />
                 <span className="text-sm font-semibold text-white">Avaliação Final</span>
               </div>
-              <span className="text-xs text-slate-500">{Object.keys(answers).length}/{examQuestions.length} respondidas</span>
+              <span className="text-xs text-[#737373]">{Object.keys(answers).length}/{examQuestions.length} respondidas</span>
             </div>
 
             <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
@@ -633,10 +633,10 @@ export function CourseDetailPage() {
                         className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border text-left text-sm transition-all ${
                           answers[q.id] === ans.id
                             ? 'bg-[#FF9C3A]/20 border-[#FF9C3A]/40 text-white'
-                            : 'border-white/5 text-slate-400 hover:border-[#FF9C3A]/20 hover:text-white'
+                            : 'border-white/5 text-[#A6A6A6] hover:border-[#FF9C3A]/20 hover:text-white'
                         }`}
                       >
-                        <span className={`text-xs font-bold w-5 flex-shrink-0 ${answers[q.id] === ans.id ? 'text-[#FF9C3A]' : 'text-slate-600'}`}>
+                        <span className={`text-xs font-bold w-5 flex-shrink-0 ${answers[q.id] === ans.id ? 'text-[#FF9C3A]' : 'text-[#666666]'}`}>
                           {ALT_LABELS[ai]}.
                         </span>
                         {ans.answer_text}
@@ -673,19 +673,19 @@ export function CourseDetailPage() {
               <h3 className={`text-2xl font-bold mb-1 ${examResult.passed ? 'text-emerald-300' : 'text-red-300'}`}>
                 {examResult.passed ? 'Aprovado!' : 'Não aprovado'}
               </h3>
-              <p className="text-slate-400 text-sm mb-6">
+              <p className="text-[#A6A6A6] text-sm mb-6">
                 {examResult.passed ? 'Parabéns! Você atingiu a nota mínima.' : `Nota mínima: ${minimumGrade}%. Tente novamente!`}
               </p>
 
               <div className="flex items-center justify-center gap-8 mb-6">
                 <div>
                   <p className={`text-4xl font-bold ${examResult.passed ? 'text-emerald-400' : 'text-red-400'}`}>{examResult.score}%</p>
-                  <p className="text-xs text-slate-600 mt-0.5">sua nota</p>
+                  <p className="text-xs text-[#666666] mt-0.5">sua nota</p>
                 </div>
                 <div className="w-px h-10 bg-white/10" />
                 <div>
-                  <p className="text-4xl font-bold text-slate-300">{examResult.correct}/10</p>
-                  <p className="text-xs text-slate-600 mt-0.5">acertos</p>
+                  <p className="text-4xl font-bold text-[#D4D4D4]">{examResult.correct}/10</p>
+                  <p className="text-xs text-[#666666] mt-0.5">acertos</p>
                 </div>
               </div>
 

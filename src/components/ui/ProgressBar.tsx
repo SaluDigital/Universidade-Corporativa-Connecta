@@ -45,7 +45,7 @@ export function ProgressBar({ value, max = 100, size = 'sm', showLabel, color = 
         </motion.div>
       </div>
       {showLabel && (
-        <span className="text-xs font-semibold text-slate-400 w-8 text-right">{Math.round(pct)}%</span>
+        <span className="text-xs font-semibold text-[#A6A6A6] w-8 text-right">{Math.round(pct)}%</span>
       )}
     </div>
   );
@@ -80,7 +80,7 @@ export function CircularProgress({ value, size = 80, strokeWidth = 6, color = '#
       </svg>
       <div className="absolute flex flex-col items-center">
         <span className="text-lg font-bold text-white">{value}%</span>
-        {label && <span className="text-xs text-slate-500">{label}</span>}
+        {label && <span className="text-xs text-[#737373]">{label}</span>}
       </div>
     </div>
   );

@@ -69,7 +69,7 @@ export function AvatarGroup({ users, max = 4, size = 'sm' }: AvatarGroupProps) {
       ))}
       {remaining > 0 && (
         <div className={cn(
-          'rounded-full flex items-center justify-center text-xs font-bold text-slate-400 bg-slate-700 ring-2 ring-[#FF9C3A]/50 ring-offset-2 ring-offset-[#050505] flex-shrink-0',
+          'rounded-full flex items-center justify-center text-xs font-bold text-[#A6A6A6] bg-[#3F3F3F] ring-2 ring-[#FF9C3A]/50 ring-offset-2 ring-offset-[#050505] flex-shrink-0',
           size === 'sm' && 'w-8 h-8',
           size === 'md' && 'w-10 h-10',
         )}>

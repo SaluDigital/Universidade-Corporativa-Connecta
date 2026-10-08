@@ -24,7 +24,7 @@ export function ProgressPage() {
     <div className="max-w-screen-xl space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-white">Progresso da Equipe</h2>
-        <p className="text-slate-500 text-sm mt-1">Acompanhamento detalhado por colaborador</p>
+        <p className="text-[#737373] text-sm mt-1">Acompanhamento detalhado por colaborador</p>
       </div>
 
       {/* Bar chart */}
@@ -32,10 +32,10 @@ export function ProgressPage() {
         <h3 className="font-semibold text-white mb-4">Progresso médio por colaborador</h3>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={teamProgressData} barSize={36}>
-            <XAxis dataKey="name" tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
-            <YAxis tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} domain={[0, 100]} />
+            <XAxis dataKey="name" tick={{ fill: '#737373', fontSize: 12 }} axisLine={false} tickLine={false} />
+            <YAxis tick={{ fill: '#737373', fontSize: 12 }} axisLine={false} tickLine={false} domain={[0, 100]} />
             <Tooltip
-              contentStyle={{ background: '#141414', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', color: '#e2e8f0', fontSize: '12px' }}
+              contentStyle={{ background: '#141414', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', color: '#FEFEFE', fontSize: '12px' }}
               formatter={(v) => [`${v}%`, 'Progresso']}
             />
             <Bar dataKey="progress" radius={[8, 8, 0, 0]}>
@@ -57,7 +57,7 @@ export function ProgressPage() {
             <thead>
               <tr className="border-b border-white/5">
                 {['Colaborador', 'Curso', 'Progresso', 'Nota', 'Status', 'Último acesso'].map(h => (
-                  <th key={h} className="px-5 py-3.5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap">{h}</th>
+                  <th key={h} className="px-5 py-3.5 text-left text-xs font-semibold text-[#737373] uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -79,7 +79,7 @@ export function ProgressPage() {
                         <span className="text-sm text-white">{member?.name?.split(' ')[0]}</span>
                       </div>
                     </td>
-                    <td className="px-5 py-4 text-sm text-slate-400 max-w-xs">
+                    <td className="px-5 py-4 text-sm text-[#A6A6A6] max-w-xs">
                       <span className="truncate block">{course?.title}</span>
                     </td>
                     <td className="px-5 py-4 w-40">
@@ -89,11 +89,11 @@ export function ProgressPage() {
                       {cp.grade != null ? (
                         <span className={cp.grade >= 70 ? 'text-emerald-400' : 'text-red-400'}>{cp.grade}%</span>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-[#666666]">—</span>
                       )}
                     </td>
                     <td className="px-5 py-4"><StatusBadge status={cp.status} /></td>
-                    <td className="px-5 py-4 text-xs text-slate-500">
+                    <td className="px-5 py-4 text-xs text-[#737373]">
                       {cp.last_access_at ? new Date(cp.last_access_at).toLocaleDateString('pt-BR') : '—'}
                     </td>
                   </motion.tr>

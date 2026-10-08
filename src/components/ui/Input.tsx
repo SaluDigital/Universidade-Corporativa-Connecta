@@ -12,11 +12,11 @@ export function Input({ label, error, icon, hint, className, ...props }: InputPr
   return (
     <div className="flex flex-col gap-1.5">
       {label && (
-        <label className="text-sm font-medium text-slate-300">{label}</label>
+        <label className="text-sm font-medium text-[#D4D4D4]">{label}</label>
       )}
       <div className="relative">
         {icon && (
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none">
             {icon}
           </span>
         )}
@@ -31,7 +31,7 @@ export function Input({ label, error, icon, hint, className, ...props }: InputPr
         />
       </div>
       {error && <p className="text-red-400 text-xs">{error}</p>}
-      {hint && !error && <p className="text-slate-500 text-xs">{hint}</p>}
+      {hint && !error && <p className="text-[#737373] text-xs">{hint}</p>}
     </div>
   );
 }
@@ -49,16 +49,16 @@ interface SelectProps {
 export function Select({ label, error, options, value, onChange, placeholder, className }: SelectProps) {
   return (
     <div className="flex flex-col gap-1.5">
-      {label && <label className="text-sm font-medium text-slate-300">{label}</label>}
+      {label && <label className="text-sm font-medium text-[#D4D4D4]">{label}</label>}
       <select
         value={value}
         onChange={e => onChange?.(e.target.value)}
         className={cn('input-base appearance-none cursor-pointer', className)}
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px', paddingRight: '40px' }}
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23737373'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px', paddingRight: '40px' }}
       >
         {placeholder && <option value="">{placeholder}</option>}
         {options.map(opt => (
-          <option key={opt.value} value={opt.value} style={{ background: '#0D0D0D', color: '#e2e8f0' }}>
+          <option key={opt.value} value={opt.value} style={{ background: '#0D0D0D', color: '#FEFEFE' }}>
             {opt.label}
           </option>
         ))}
@@ -81,7 +81,7 @@ interface TextareaProps {
 export function Textarea({ label, error, value, onChange, placeholder, rows = 4, className }: TextareaProps) {
   return (
     <div className="flex flex-col gap-1.5">
-      {label && <label className="text-sm font-medium text-slate-300">{label}</label>}
+      {label && <label className="text-sm font-medium text-[#D4D4D4]">{label}</label>}
       <textarea
         value={value}
         onChange={e => onChange?.(e.target.value)}

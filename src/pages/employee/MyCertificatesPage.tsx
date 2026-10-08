@@ -119,14 +119,14 @@ export function MyCertificatesPage() {
 
       <div>
         <h2 className="text-2xl font-bold text-white">Meus Certificados</h2>
-        <p className="text-slate-500 text-sm mt-1">{certs.length} certificado{certs.length !== 1 ? 's' : ''} obtido{certs.length !== 1 ? 's' : ''}</p>
+        <p className="text-[#737373] text-sm mt-1">{certs.length} certificado{certs.length !== 1 ? 's' : ''} obtido{certs.length !== 1 ? 's' : ''}</p>
       </div>
 
       {certs.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
-          <Award size={48} className="text-slate-700 mx-auto mb-4" />
-          <p className="text-slate-500 font-medium text-lg">Nenhum certificado ainda</p>
-          <p className="text-slate-600 text-sm mt-2">Conclua seus cursos para ganhar certificados.</p>
+          <Award size={48} className="text-[#525252] mx-auto mb-4" />
+          <p className="text-[#737373] font-medium text-lg">Nenhum certificado ainda</p>
+          <p className="text-[#666666] text-sm mt-2">Conclua seus cursos para ganhar certificados.</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 gap-5">
@@ -150,33 +150,33 @@ export function MyCertificatesPage() {
                       </div>
                       <div>
                         <p className="text-xs text-amber-400/70 font-semibold uppercase tracking-wide">Certificado</p>
-                        <p className="text-xs text-slate-500">de Conclusão</p>
+                        <p className="text-xs text-[#737373]">de Conclusão</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1.5 rounded-lg">
                       <Shield size={11} /> Válido
                     </div>
                   </div>
-                  <p className="text-slate-400 text-xs mb-1">Certificamos que</p>
+                  <p className="text-[#A6A6A6] text-xs mb-1">Certificamos que</p>
                   <p className="text-white font-bold text-lg">{user?.name}</p>
-                  <p className="text-slate-400 text-xs mt-1">concluiu com êxito o curso</p>
+                  <p className="text-[#A6A6A6] text-xs mt-1">concluiu com êxito o curso</p>
                   <h3 className="text-white font-semibold text-base mt-1 leading-snug">{cert.course?.title}</h3>
                 </div>
               </div>
 
               <div className="p-4 space-y-3">
-                <div className="grid grid-cols-2 gap-3 text-xs text-slate-500">
+                <div className="grid grid-cols-2 gap-3 text-xs text-[#737373]">
                   <div className="flex items-center gap-1.5">
-                    <Calendar size={11} className="text-slate-600" />
+                    <Calendar size={11} className="text-[#666666]" />
                     {formatDate(cert.issued_at)}
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <Clock size={11} className="text-slate-600" />
+                    <Clock size={11} className="text-[#666666]" />
                     {cert.course?.workload_hours}h de conteúdo
                   </div>
                   <div className="flex items-center gap-1.5 col-span-2">
-                    <Hash size={11} className="text-slate-600" />
-                    <span className="font-mono text-slate-600 truncate text-xs">{cert.certificate_code}</span>
+                    <Hash size={11} className="text-[#666666]" />
+                    <span className="font-mono text-[#666666] truncate text-xs">{cert.certificate_code}</span>
                   </div>
                 </div>
 

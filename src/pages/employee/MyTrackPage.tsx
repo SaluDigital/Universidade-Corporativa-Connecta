@@ -37,14 +37,14 @@ export function MyTrackPage() {
     <div className="max-w-4xl space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-white">Minha Trilha</h2>
-        <p className="text-slate-500 text-sm mt-1">Seu caminho de desenvolvimento na Coneccta</p>
+        <p className="text-[#737373] text-sm mt-1">Seu caminho de desenvolvimento na Coneccta</p>
       </div>
 
       {userTracks.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
-          <GitBranch size={40} className="text-slate-700 mx-auto mb-3" />
-          <p className="text-slate-500 font-medium">Nenhuma trilha atribuída ainda</p>
-          <p className="text-slate-600 text-sm mt-1">Fale com seu gestor para ser matriculado em uma trilha.</p>
+          <GitBranch size={40} className="text-[#525252] mx-auto mb-3" />
+          <p className="text-[#737373] font-medium">Nenhuma trilha atribuída ainda</p>
+          <p className="text-[#666666] text-sm mt-1">Fale com seu gestor para ser matriculado em uma trilha.</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -72,9 +72,9 @@ export function MyTrackPage() {
                           {track?.is_mandatory && <Badge variant="red">Obrigatória</Badge>}
                           {track?.is_blocking && <Badge variant="amber">Bloqueante</Badge>}
                         </div>
-                        <p className="text-slate-400 text-sm">{track?.description}</p>
+                        <p className="text-[#A6A6A6] text-sm">{track?.description}</p>
                         {ut.deadline_at && (
-                          <p className={`text-xs mt-1 flex items-center gap-1.5 ${isOverdue ? 'text-red-400' : 'text-slate-500'}`}>
+                          <p className={`text-xs mt-1 flex items-center gap-1.5 ${isOverdue ? 'text-red-400' : 'text-[#737373]'}`}>
                             <Clock size={11} />
                             Prazo: {new Date(ut.deadline_at).toLocaleDateString('pt-BR')}
                             {isOverdue && ' — Vencido!'}
@@ -96,9 +96,9 @@ export function MyTrackPage() {
                 </div>
 
                 <div className="p-5">
-                  <h4 className="text-sm font-semibold text-slate-400 mb-3">Cursos nesta trilha</h4>
+                  <h4 className="text-sm font-semibold text-[#A6A6A6] mb-3">Cursos nesta trilha</h4>
                   {courses.length === 0 ? (
-                    <p className="text-sm text-slate-600">Nenhum curso nesta trilha ainda.</p>
+                    <p className="text-sm text-[#666666]">Nenhum curso nesta trilha ainda.</p>
                   ) : (
                     <div className="space-y-3">
                       {courses.map((tc: any, j: number) => {
@@ -116,7 +116,7 @@ export function MyTrackPage() {
                             <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0
                               ${courseStatus === 'completed' ? 'bg-emerald-500/20 text-emerald-400' :
                                 courseStatus === 'in_progress' ? 'bg-[#FF9C3A]/20 text-[#FF9C3A]' :
-                                'bg-white/5 text-slate-600'}`}>
+                                'bg-white/5 text-[#666666]'}`}>
                               {courseStatus === 'completed' ? '✓' : j + 1}
                             </span>
                             <div className="flex-1 min-w-0">
@@ -126,10 +126,10 @@ export function MyTrackPage() {
                               </div>
                               {cp && <ProgressBar value={cp.progress_percent} size="xs" />}
                             </div>
-                            <div className="flex items-center gap-3 text-xs text-slate-500 flex-shrink-0">
+                            <div className="flex items-center gap-3 text-xs text-[#737373] flex-shrink-0">
                               <span className="flex items-center gap-1"><Clock size={10} />{course?.workload_hours}h</span>
                               {course?.has_certificate && <Award size={12} className="text-amber-400" />}
-                              <ChevronRight size={13} className="text-slate-600 group-hover:text-[#FF9C3A] transition-colors" />
+                              <ChevronRight size={13} className="text-[#666666] group-hover:text-[#FF9C3A] transition-colors" />
                             </div>
                           </motion.div>
                         );

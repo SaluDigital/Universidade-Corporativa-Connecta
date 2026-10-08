@@ -121,7 +121,7 @@ export function DepartmentsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Departamentos e Cargos</h2>
-          <p className="text-slate-500 text-sm mt-1">{departments.length} departamentos cadastrados</p>
+          <p className="text-[#737373] text-sm mt-1">{departments.length} departamentos cadastrados</p>
         </div>
         <Button onClick={openCreate} icon={<Plus size={16} />}>Novo Departamento</Button>
       </div>
@@ -149,7 +149,7 @@ export function DepartmentsPage() {
               </div>
 
               <div className="p-4">
-                <div className="flex items-center gap-4 mb-4 text-sm text-slate-500">
+                <div className="flex items-center gap-4 mb-4 text-sm text-[#737373]">
                   <span className="flex items-center gap-1.5"><Users size={13} /> {userCount} colaboradores</span>
                   <span className="flex items-center gap-1.5"><Briefcase size={13} /> {deptPositions.length} cargos</span>
                 </div>
@@ -158,8 +158,8 @@ export function DepartmentsPage() {
                   <div className="space-y-1.5">
                     {deptPositions.map(pos => (
                       <div key={pos.id} className="flex items-center justify-between py-1.5 px-3 rounded-lg bg-white/3 border border-white/5 hover:border-white/10 transition-all group">
-                        <span className="text-sm text-slate-400">{pos.name}</span>
-                        <button onClick={() => handleDeletePos(pos.id)} className="opacity-0 group-hover:opacity-100 p-1 rounded text-slate-600 hover:text-red-400 transition-all">
+                        <span className="text-sm text-[#A6A6A6]">{pos.name}</span>
+                        <button onClick={() => handleDeletePos(pos.id)} className="opacity-0 group-hover:opacity-100 p-1 rounded text-[#666666] hover:text-red-400 transition-all">
                           <Trash2 size={11} />
                         </button>
                       </div>
@@ -167,7 +167,7 @@ export function DepartmentsPage() {
                   </div>
                 )}
 
-                <button onClick={() => { setSelectedDeptId(dept.id); setPosForm({ name: '', description: '' }); setIsPosModalOpen(true); }} className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-dashed border-white/10 text-xs text-slate-600 hover:text-slate-400 hover:border-[#FF9C3A]/30 transition-all">
+                <button onClick={() => { setSelectedDeptId(dept.id); setPosForm({ name: '', description: '' }); setIsPosModalOpen(true); }} className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-dashed border-white/10 text-xs text-[#666666] hover:text-[#A6A6A6] hover:border-[#FF9C3A]/30 transition-all">
                   <Plus size={12} /> Novo cargo
                 </button>
               </div>

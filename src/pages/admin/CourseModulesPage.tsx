@@ -212,13 +212,13 @@ export function CourseModulesPage() {
       <div className="flex items-start gap-3">
         <button
           onClick={() => navigate('/admin/courses')}
-          className="mt-1 p-2 rounded-xl glass border border-white/5 text-slate-500 hover:text-white transition-all flex-shrink-0"
+          className="mt-1 p-2 rounded-xl glass border border-white/5 text-[#737373] hover:text-white transition-all flex-shrink-0"
         >
           <ChevronLeft size={16} />
         </button>
         <div className="flex-1">
           <h2 className="text-2xl font-bold text-white">Módulos e Aulas</h2>
-          <p className="text-slate-500 text-sm mt-0.5">{course?.title}</p>
+          <p className="text-[#737373] text-sm mt-0.5">{course?.title}</p>
         </div>
         <Button onClick={openCreateModule} icon={<Plus size={15} />}>Novo Módulo</Button>
       </div>
@@ -231,7 +231,7 @@ export function CourseModulesPage() {
           </div>
           <div>
             <p className="text-xl font-bold text-white">{modules.length}</p>
-            <p className="text-xs text-slate-500">módulos</p>
+            <p className="text-xs text-[#737373]">módulos</p>
           </div>
         </div>
         <div className="glass-card rounded-xl p-4 flex items-center gap-3">
@@ -240,7 +240,7 @@ export function CourseModulesPage() {
           </div>
           <div>
             <p className="text-xl font-bold text-white">{totalLessons}</p>
-            <p className="text-xs text-slate-500">aulas no total</p>
+            <p className="text-xs text-[#737373]">aulas no total</p>
           </div>
         </div>
       </div>
@@ -259,7 +259,7 @@ export function CourseModulesPage() {
             >
               {/* Cabeçalho do módulo */}
               <div className="flex items-center gap-3 p-4">
-                <GripVertical size={15} className="text-slate-700 flex-shrink-0" />
+                <GripVertical size={15} className="text-[#525252] flex-shrink-0" />
                 <button
                   onClick={() => toggleExpanded(mod.id)}
                   className="flex items-center gap-2 flex-1 min-w-0 text-left"
@@ -269,21 +269,21 @@ export function CourseModulesPage() {
                   </span>
                   <div className="flex-1 min-w-0">
                     <p className="font-semibold text-white text-sm truncate">{mod.title}</p>
-                    <p className="text-xs text-slate-600">{mod.lessons.length} aula(s)</p>
+                    <p className="text-xs text-[#666666]">{mod.lessons.length} aula(s)</p>
                   </div>
                   {expandedModules.has(mod.id)
-                    ? <ChevronDown size={14} className="text-slate-500 flex-shrink-0" />
-                    : <ChevronRight size={14} className="text-slate-500 flex-shrink-0" />
+                    ? <ChevronDown size={14} className="text-[#737373] flex-shrink-0" />
+                    : <ChevronRight size={14} className="text-[#737373] flex-shrink-0" />
                   }
                 </button>
                 <div className="flex items-center gap-1 flex-shrink-0">
-                  <button onClick={() => openEditModule(mod)} className="p-1.5 rounded-lg text-slate-600 hover:text-white hover:bg-white/10 transition-all" title="Editar módulo">
+                  <button onClick={() => openEditModule(mod)} className="p-1.5 rounded-lg text-[#666666] hover:text-white hover:bg-white/10 transition-all" title="Editar módulo">
                     <Edit2 size={13} />
                   </button>
                   <button
                     onClick={() => handleDeleteModule(mod.id)}
                     disabled={deletingId === mod.id}
-                    className="p-1.5 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-all disabled:opacity-40"
+                    className="p-1.5 rounded-lg text-[#666666] hover:text-red-400 hover:bg-red-500/10 transition-all disabled:opacity-40"
                     title="Excluir módulo"
                   >
                     {deletingId === mod.id ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />}
@@ -304,29 +304,29 @@ export function CourseModulesPage() {
                     <div className="border-t border-white/5 divide-y divide-white/3">
                       {mod.lessons.map((lesson, lessonIdx) => (
                         <div key={lesson.id} className="flex items-center gap-3 px-4 py-3 hover:bg-white/2 transition-all">
-                          <GripVertical size={13} className="text-slate-800 flex-shrink-0" />
+                          <GripVertical size={13} className="text-[#404040] flex-shrink-0" />
                           <div className="w-5 h-5 rounded-md bg-[#FEFEFE]/15 flex items-center justify-center flex-shrink-0">
                             <PlayCircle size={11} className="text-[#FEFEFE]" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-sm text-white truncate">
-                              <span className="text-slate-600 mr-1">{modIdx + 1}.{lessonIdx + 1}</span>
+                              <span className="text-[#666666] mr-1">{modIdx + 1}.{lessonIdx + 1}</span>
                               {lesson.title}
                             </p>
                             {lesson.duration_minutes && (
-                              <p className="text-xs text-slate-600 flex items-center gap-1 mt-0.5">
+                              <p className="text-xs text-[#666666] flex items-center gap-1 mt-0.5">
                                 <Clock size={9} /> {lesson.duration_minutes} min
                               </p>
                             )}
                           </div>
                           <div className="flex items-center gap-1 flex-shrink-0">
-                            <button onClick={() => openEditLesson(lesson)} className="p-1.5 rounded-lg text-slate-600 hover:text-white hover:bg-white/10 transition-all" title="Editar aula">
+                            <button onClick={() => openEditLesson(lesson)} className="p-1.5 rounded-lg text-[#666666] hover:text-white hover:bg-white/10 transition-all" title="Editar aula">
                               <Edit2 size={12} />
                             </button>
                             <button
                               onClick={() => handleDeleteLesson(lesson.id, mod.id)}
                               disabled={deletingId === lesson.id}
-                              className="p-1.5 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-all disabled:opacity-40"
+                              className="p-1.5 rounded-lg text-[#666666] hover:text-red-400 hover:bg-red-500/10 transition-all disabled:opacity-40"
                               title="Excluir aula"
                             >
                               {deletingId === lesson.id ? <Loader2 size={12} className="animate-spin" /> : <Trash2 size={12} />}
@@ -339,7 +339,7 @@ export function CourseModulesPage() {
                       <div className="px-4 py-3">
                         <button
                           onClick={() => openCreateLesson(mod.id)}
-                          className="flex items-center gap-2 text-xs text-slate-600 hover:text-[#FEFEFE] transition-colors"
+                          className="flex items-center gap-2 text-xs text-[#666666] hover:text-[#FEFEFE] transition-colors"
                         >
                           <Plus size={13} /> Nova aula neste módulo
                         </button>
@@ -354,9 +354,9 @@ export function CourseModulesPage() {
 
         {modules.length === 0 && (
           <div className="glass-card rounded-2xl p-12 text-center">
-            <AlertCircle size={36} className="text-slate-700 mx-auto mb-3" />
-            <p className="text-slate-500 font-medium">Nenhum módulo cadastrado</p>
-            <p className="text-slate-600 text-sm mt-1">Clique em "Novo Módulo" para começar.</p>
+            <AlertCircle size={36} className="text-[#525252] mx-auto mb-3" />
+            <p className="text-[#737373] font-medium">Nenhum módulo cadastrado</p>
+            <p className="text-[#666666] text-sm mt-1">Clique em "Novo Módulo" para começar.</p>
           </div>
         )}
       </div>

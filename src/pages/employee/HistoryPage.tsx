@@ -75,21 +75,21 @@ export function HistoryPage() {
     <div className="max-w-3xl space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-white">Meu Histórico</h2>
-        <p className="text-slate-500 text-sm mt-1">Todo o seu progresso de aprendizado</p>
+        <p className="text-[#737373] text-sm mt-1">Todo o seu progresso de aprendizado</p>
       </div>
 
       <div className="grid grid-cols-3 gap-4">
         <div className="glass-card rounded-xl p-4 text-center border border-emerald-500/15">
           <p className="text-2xl font-bold text-emerald-400">{completedCourses.length}</p>
-          <p className="text-xs text-slate-500 mt-1">Cursos concluídos</p>
+          <p className="text-xs text-[#737373] mt-1">Cursos concluídos</p>
         </div>
         <div className="glass-card rounded-xl p-4 text-center border border-amber-500/15">
           <p className="text-2xl font-bold text-amber-400">{certificates.length}</p>
-          <p className="text-xs text-slate-500 mt-1">Certificados</p>
+          <p className="text-xs text-[#737373] mt-1">Certificados</p>
         </div>
         <div className="glass-card rounded-xl p-4 text-center border border-[#FF9C3A]/15">
           <p className="text-2xl font-bold text-[#FF9C3A]">{completedTracks.length}</p>
-          <p className="text-xs text-slate-500 mt-1">Trilhas completas</p>
+          <p className="text-xs text-[#737373] mt-1">Trilhas completas</p>
         </div>
       </div>
 
@@ -98,8 +98,8 @@ export function HistoryPage() {
         <h3 className="font-semibold text-white mb-5">Linha do tempo</h3>
         {timeline.length === 0 ? (
           <div className="text-center py-10">
-            <History size={36} className="text-slate-700 mx-auto mb-3" />
-            <p className="text-slate-600">Nenhuma atividade ainda</p>
+            <History size={36} className="text-[#525252] mx-auto mb-3" />
+            <p className="text-[#666666]">Nenhuma atividade ainda</p>
           </div>
         ) : (
           <div className="relative space-y-4">
@@ -117,8 +117,8 @@ export function HistoryPage() {
                 </div>
                 <div className="flex-1 min-w-0 pb-4 border-b border-white/5 last:border-0">
                   <p className="text-sm font-medium text-white">{event.title}</p>
-                  <p className="text-xs text-slate-500 mt-0.5">{event.subtitle}</p>
-                  <p className="text-xs text-slate-600 mt-1 flex items-center gap-1">
+                  <p className="text-xs text-[#737373] mt-0.5">{event.subtitle}</p>
+                  <p className="text-xs text-[#666666] mt-1 flex items-center gap-1">
                     <Calendar size={10} />
                     {formatDate(event.date)}
                   </p>
@@ -135,14 +135,14 @@ export function HistoryPage() {
           <h3 className="font-semibold text-white">Detalhe dos cursos</h3>
         </div>
         {courseProgress.length === 0 ? (
-          <div className="p-10 text-center text-slate-600 text-sm">Nenhum curso iniciado ainda.</div>
+          <div className="p-10 text-center text-[#666666] text-sm">Nenhum curso iniciado ainda.</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-white/5">
                   {['Curso', 'Status', 'Progresso', 'Nota', 'Último acesso'].map(h => (
-                    <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap">{h}</th>
+                    <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-[#737373] uppercase tracking-wide whitespace-nowrap">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -160,7 +160,7 @@ export function HistoryPage() {
                       <span className={`text-xs font-semibold px-2 py-1 rounded-lg ${
                         cp.status === 'completed' ? 'bg-emerald-500/15 text-emerald-400' :
                         cp.status === 'in_progress' ? 'bg-[#FEFEFE]/15 text-[#FEFEFE]' :
-                        'bg-slate-500/15 text-slate-400'}`}>
+                        'bg-[#737373]/15 text-[#A6A6A6]'}`}>
                         {cp.status === 'completed' ? 'Concluído' : cp.status === 'in_progress' ? 'Em andamento' : 'Não iniciado'}
                       </span>
                     </td>
@@ -168,9 +168,9 @@ export function HistoryPage() {
                     <td className="px-4 py-3 text-sm font-semibold">
                       {cp.grade != null
                         ? <span className={cp.grade >= 70 ? 'text-emerald-400' : 'text-red-400'}>{cp.grade}%</span>
-                        : <span className="text-slate-600">—</span>}
+                        : <span className="text-[#666666]">—</span>}
                     </td>
-                    <td className="px-4 py-3 text-xs text-slate-500">
+                    <td className="px-4 py-3 text-xs text-[#737373]">
                       {cp.last_access_at ? formatDate(cp.last_access_at) : '—'}
                     </td>
                   </motion.tr>

@@ -100,7 +100,7 @@ export function RulesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Regras de Atribuição</h2>
-          <p className="text-slate-500 text-sm mt-1">Defina quem recebe qual trilha automaticamente</p>
+          <p className="text-[#737373] text-sm mt-1">Defina quem recebe qual trilha automaticamente</p>
         </div>
         <Button onClick={() => setIsModalOpen(true)} icon={<Plus size={16} />}>Nova Regra</Button>
       </div>
@@ -109,7 +109,7 @@ export function RulesPage() {
         <Zap size={18} className="text-[#FF9C3A] mt-0.5 flex-shrink-0" />
         <div>
           <p className="text-sm font-medium text-[#FF9C3A]">Atribuição automática inteligente</p>
-          <p className="text-xs text-slate-500 mt-1">Quando um colaborador é cadastrado ou tem seu cargo/área alterado, o sistema atribui automaticamente as trilhas baseadas nas regras abaixo.</p>
+          <p className="text-xs text-[#737373] mt-1">Quando um colaborador é cadastrado ou tem seu cargo/área alterado, o sistema atribui automaticamente as trilhas baseadas nas regras abaixo.</p>
         </div>
       </div>
 
@@ -130,13 +130,13 @@ export function RulesPage() {
                     {dept && <Badge variant="cyan">{dept}</Badge>}
                     {pos && <Badge variant="emerald">{pos}</Badge>}
                   </div>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-[#737373]">
                     {!dept && !pos ? 'Qualquer cargo ou departamento' : dept ? `Departamento: ${dept}` : `Cargo: ${pos}`}
                   </p>
                 </div>
               </div>
 
-              <ArrowRight size={16} className="text-slate-600 flex-shrink-0" />
+              <ArrowRight size={16} className="text-[#666666] flex-shrink-0" />
 
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div className="w-10 h-10 rounded-xl bg-[#FEFEFE]/15 flex items-center justify-center flex-shrink-0">
@@ -147,7 +147,7 @@ export function RulesPage() {
                   <div className="flex items-center gap-2 mt-0.5">
                     {rule.track?.is_mandatory && <Badge variant="red">Obrigatória</Badge>}
                     {rule.track?.is_blocking && <Badge variant="amber">Bloqueante</Badge>}
-                    {rule.track?.deadline_days && <span className="text-xs text-slate-500">{rule.track.deadline_days} dias</span>}
+                    {rule.track?.deadline_days && <span className="text-xs text-[#737373]">{rule.track.deadline_days} dias</span>}
                   </div>
                 </div>
               </div>
@@ -158,9 +158,9 @@ export function RulesPage() {
                     <CheckCircle size={12} /> Auto
                   </div>
                 ) : (
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">Manual</div>
+                  <div className="flex items-center gap-1.5 text-xs text-[#737373] bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">Manual</div>
                 )}
-                <button onClick={() => handleDelete(rule.id)} className="p-2 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all">
+                <button onClick={() => handleDelete(rule.id)} className="p-2 rounded-lg text-[#666666] hover:text-red-400 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all">
                   <Trash2 size={14} />
                 </button>
               </div>
@@ -169,7 +169,7 @@ export function RulesPage() {
         })}
 
         {rules.length === 0 && (
-          <div className="py-16 text-center text-slate-600">Nenhuma regra cadastrada.</div>
+          <div className="py-16 text-center text-[#666666]">Nenhuma regra cadastrada.</div>
         )}
       </div>
 
@@ -177,13 +177,13 @@ export function RulesPage() {
         footer={<><Button variant="secondary" onClick={() => setIsModalOpen(false)}>Cancelar</Button><Button onClick={handleAdd} disabled={saving}>{saving ? <Loader2 size={14} className="animate-spin mr-1" /> : null}Criar regra</Button></>}
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-500">Configure qual trilha será atribuída com base em departamento e/ou cargo.</p>
+          <p className="text-sm text-[#737373]">Configure qual trilha será atribuída com base em departamento e/ou cargo.</p>
           <Select label="Trilha" options={[{ value: '', label: 'Selecione a trilha...' }, ...tracks.map(t => ({ value: t.id, label: t.title }))]} value={form.track_id} onChange={v => setForm({ ...form, track_id: v })} />
           <Select label="Departamento (opcional)" options={[{ value: '', label: 'Todos os departamentos' }, ...departments.map(d => ({ value: d.id, label: d.name }))]} value={form.department_id} onChange={v => setForm({ ...form, department_id: v })} />
           <Select label="Cargo (opcional)" options={[{ value: '', label: 'Todos os cargos' }, ...positions.map(p => ({ value: p.id, label: p.name }))]} value={form.position_id} onChange={v => setForm({ ...form, position_id: v })} />
           <label className="flex items-center gap-2.5 cursor-pointer">
             <input type="checkbox" checked={form.auto_assign} onChange={e => setForm({ ...form, auto_assign: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
-            <span className="text-sm text-slate-300">Atribuição automática ao cadastrar colaborador</span>
+            <span className="text-sm text-[#D4D4D4]">Atribuição automática ao cadastrar colaborador</span>
           </label>
         </div>
       </Modal>

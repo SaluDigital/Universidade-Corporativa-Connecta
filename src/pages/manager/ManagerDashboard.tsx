@@ -43,7 +43,7 @@ export function ManagerDashboard() {
         <div className="relative z-10">
           <p className="text-[#FF9C3A] text-sm font-medium mb-1">Painel do Gestor</p>
           <h2 className="text-2xl font-bold text-white mb-1">Olá, {user?.name.split(' ')[0]}!</h2>
-          <p className="text-slate-400 text-sm">
+          <p className="text-[#A6A6A6] text-sm">
             Você tem <span className="text-white font-semibold">{team.length} colaboradores</span> na sua equipe.
             {overdueTracks.length > 0 && (
               <span className="text-red-400"> {overdueTracks.length} trilha(s) vencidas requerem atenção.</span>
@@ -66,11 +66,11 @@ export function ManagerDashboard() {
           <div className="flex items-center justify-between mb-5">
             <div>
               <h3 className="font-semibold text-white">Progresso da Equipe</h3>
-              <p className="text-slate-500 text-sm">Trilhas por colaborador</p>
+              <p className="text-[#737373] text-sm">Trilhas por colaborador</p>
             </div>
             <button
               onClick={() => navigate('/manager/team')}
-              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+              className="flex items-center gap-1.5 text-xs text-[#A6A6A6] hover:text-white transition-colors"
             >
               Ver todos <ArrowRight size={12} />
             </button>
@@ -109,7 +109,7 @@ export function ManagerDashboard() {
         {/* Status chart */}
         <motion.div variants={item} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Status das Trilhas</h3>
-          <p className="text-slate-500 text-sm mb-4">Distribuição da equipe</p>
+          <p className="text-[#737373] text-sm mb-4">Distribuição da equipe</p>
           <div className="flex justify-center mb-6">
             <CircularProgress value={avgProgress} size={120} label="progresso" />
           </div>
@@ -117,7 +117,7 @@ export function ManagerDashboard() {
             {statusData.map((s, i) => (
               <div key={s.name} className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: COLORS[i] }} />
-                <span className="text-sm text-slate-400 flex-1">{s.name}</span>
+                <span className="text-sm text-[#A6A6A6] flex-1">{s.name}</span>
                 <span className="text-sm font-semibold text-white">{s.value}</span>
               </div>
             ))}

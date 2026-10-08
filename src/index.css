@@ -274,14 +274,14 @@
 
   .badge-slate {
     background: rgba(100, 116, 139, 0.15);
-    color: #94a3b8;
+    color: #A6A6A6;
     border: 1px solid rgba(100, 116, 139, 0.25);
   }
 
   .input-base {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #e2e8f0;
+    color: #FEFEFE;
     border-radius: 12px;
     padding: 10px 14px;
     font-size: 14px;
@@ -298,7 +298,7 @@
   }
 
   .input-base::placeholder {
-    color: rgba(148, 163, 184, 0.5);
+    color: rgba(115, 115, 115, 0.85);
   }
 
   .table-row-hover:hover {

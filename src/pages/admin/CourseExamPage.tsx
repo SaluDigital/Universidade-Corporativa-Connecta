@@ -202,13 +202,13 @@ export function CourseExamPage() {
       <div className="flex items-start gap-4">
         <button
           onClick={() => navigate('/admin/courses')}
-          className="mt-1 p-2 rounded-xl glass border border-white/5 text-slate-500 hover:text-white transition-all"
+          className="mt-1 p-2 rounded-xl glass border border-white/5 text-[#737373] hover:text-white transition-all"
         >
           <ChevronLeft size={16} />
         </button>
         <div className="flex-1">
           <h2 className="text-2xl font-bold text-white">Banco de Perguntas</h2>
-          <p className="text-slate-500 text-sm mt-0.5">{course?.title}</p>
+          <p className="text-[#737373] text-sm mt-0.5">{course?.title}</p>
         </div>
         <Button onClick={openCreate} icon={<Plus size={15} />} disabled={!canAdd}>
           Nova Pergunta
@@ -239,7 +239,7 @@ export function CourseExamPage() {
           />
         </div>
         {questions.length < 20 && (
-          <p className="text-xs text-slate-600 mt-2">
+          <p className="text-xs text-[#666666] mt-2">
             Adicione pelo menos {MAX_QUESTIONS - questions.length} pergunta(s) para completar o banco da prova.
             A prova usa 10 perguntas aleatórias das {MAX_QUESTIONS} cadastradas.
           </p>
@@ -271,10 +271,10 @@ export function CourseExamPage() {
                         className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs transition-all ${
                           ans.is_correct
                             ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-300'
-                            : 'text-slate-500 border border-white/4'
+                            : 'text-[#737373] border border-white/4'
                         }`}
                       >
-                        <span className={`font-bold w-4 flex-shrink-0 ${ans.is_correct ? 'text-emerald-400' : 'text-slate-600'}`}>
+                        <span className={`font-bold w-4 flex-shrink-0 ${ans.is_correct ? 'text-emerald-400' : 'text-[#666666]'}`}>
                           {ALT_LABELS[ai]}.
                         </span>
                         <span className="flex-1">{ans.answer_text}</span>
@@ -286,7 +286,7 @@ export function CourseExamPage() {
                 <div className="flex items-center gap-1 flex-shrink-0">
                   <button
                     onClick={() => openEdit(q)}
-                    className="p-2 rounded-lg text-slate-600 hover:text-white hover:bg-white/10 transition-all"
+                    className="p-2 rounded-lg text-[#666666] hover:text-white hover:bg-white/10 transition-all"
                     title="Editar"
                   >
                     <Edit2 size={14} />
@@ -294,7 +294,7 @@ export function CourseExamPage() {
                   <button
                     onClick={() => handleDelete(q.id)}
                     disabled={deletingId === q.id}
-                    className="p-2 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-all disabled:opacity-40"
+                    className="p-2 rounded-lg text-[#666666] hover:text-red-400 hover:bg-red-500/10 transition-all disabled:opacity-40"
                     title="Excluir"
                   >
                     {deletingId === q.id ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
@@ -307,9 +307,9 @@ export function CourseExamPage() {
 
         {questions.length === 0 && (
           <div className="glass-card rounded-2xl p-12 text-center">
-            <AlertCircle size={36} className="text-slate-700 mx-auto mb-3" />
-            <p className="text-slate-500 font-medium">Nenhuma pergunta cadastrada</p>
-            <p className="text-slate-600 text-sm mt-1">Clique em "Nova Pergunta" para começar.</p>
+            <AlertCircle size={36} className="text-[#525252] mx-auto mb-3" />
+            <p className="text-[#737373] font-medium">Nenhuma pergunta cadastrada</p>
+            <p className="text-[#666666] text-sm mt-1">Clique em "Nova Pergunta" para começar.</p>
           </div>
         )}
       </div>
@@ -339,7 +339,7 @@ export function CourseExamPage() {
           />
 
           <div>
-            <p className="text-xs font-medium text-slate-400 mb-3 uppercase tracking-wide">
+            <p className="text-xs font-medium text-[#A6A6A6] mb-3 uppercase tracking-wide">
               Alternativas — marque a correta
             </p>
             <div className="space-y-2.5">
@@ -353,7 +353,7 @@ export function CourseExamPage() {
                       onChange={() => setForm(prev => ({ ...prev, correctIndex: i }))}
                       className="accent-[#FF9C3A] w-4 h-4 cursor-pointer"
                     />
-                    <span className={`text-xs font-bold w-5 ${form.correctIndex === i ? 'text-emerald-400' : 'text-slate-500'}`}>
+                    <span className={`text-xs font-bold w-5 ${form.correctIndex === i ? 'text-emerald-400' : 'text-[#737373]'}`}>
                       {ALT_LABELS[i]}.
                     </span>
                   </label>
@@ -367,7 +367,7 @@ export function CourseExamPage() {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-slate-600 mt-2">
+            <p className="text-xs text-[#666666] mt-2">
               Selecione o botão ao lado da alternativa correta.
             </p>
           </div>

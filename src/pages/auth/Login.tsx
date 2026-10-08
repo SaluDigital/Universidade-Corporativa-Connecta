@@ -51,7 +51,7 @@ export function Login() {
 
   return (
     <div className="min-h-screen flex overflow-hidden">
-      <Toaster position="top-center" toastOptions={{ style: { background: '#141414', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.08)' } }} />
+      <Toaster position="top-center" toastOptions={{ style: { background: '#141414', color: '#FEFEFE', border: '1px solid rgba(255,255,255,0.08)' } }} />
       {/* Left panel */}
       <div className="hidden lg:flex w-[55%] relative flex-col items-center justify-center p-16">
         {/* Animated background */}
@@ -72,7 +72,7 @@ export function Login() {
               <span className="text-emerald-400 text-lg">✓</span>
             </div>
             <div>
-              <p className="text-xs text-slate-400">Trilha concluída</p>
+              <p className="text-xs text-[#A6A6A6]">Trilha concluída</p>
               <p className="text-sm font-semibold text-white">Onboarding Geral</p>
             </div>
           </div>
@@ -88,7 +88,7 @@ export function Login() {
               <span className="text-lg">🏆</span>
             </div>
             <div>
-              <p className="text-xs text-slate-400">Certificado emitido</p>
+              <p className="text-xs text-[#A6A6A6]">Certificado emitido</p>
               <p className="text-sm font-semibold text-white">CRM e Funil</p>
             </div>
           </div>
@@ -101,7 +101,7 @@ export function Login() {
         >
           <div className="text-center">
             <p className="text-2xl font-bold gradient-text">94%</p>
-            <p className="text-xs text-slate-500">Taxa de conclusão</p>
+            <p className="text-xs text-[#737373]">Taxa de conclusão</p>
           </div>
         </motion.div>
 
@@ -130,7 +130,7 @@ export function Login() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-slate-400 text-lg leading-relaxed"
+            className="text-[#A6A6A6] text-lg leading-relaxed"
           >
             Conhecimento que desenvolve pessoas e fortalece equipes.
           </motion.p>
@@ -149,7 +149,7 @@ export function Login() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="text-2xl font-bold text-white">{stat.value}</p>
-                <p className="text-xs text-slate-500">{stat.label}</p>
+                <p className="text-xs text-[#737373]">{stat.label}</p>
               </div>
             ))}
           </motion.div>
@@ -188,42 +188,48 @@ export function Login() {
 
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Bem-vindo de volta</h2>
-            <p className="text-slate-500">Continue sua jornada de aprendizagem.</p>
+            <p className="text-[#737373]">Continue sua jornada de aprendizagem.</p>
           </div>
 
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1.5">E-mail corporativo</label>
+              <label className="block text-sm font-medium text-[#D4D4D4] mb-1.5">E-mail corporativo</label>
               <div className="relative">
-                <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                <Mail
+                  size={16}
+                  className={`absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none transition-opacity duration-150 ${email ? 'opacity-0 invisible' : 'opacity-100 visible'}`}
+                />
                 <input
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="seu@coneccta.com.br"
-                  className="input-base pl-12"
+                  className={`input-base ${email ? 'pl-4' : 'pl-12'}`}
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1.5">Senha</label>
+              <label className="block text-sm font-medium text-[#D4D4D4] mb-1.5">Senha</label>
               <div className="relative">
-                <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                <Lock
+                  size={16}
+                  className={`absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none transition-opacity duration-150 ${password ? 'opacity-0 invisible' : 'opacity-100 visible'}`}
+                />
                 <input
                   type={showPass ? 'text' : 'password'}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="input-base pl-12 pr-12"
+                  className={`input-base pr-12 ${password ? 'pl-4' : 'pl-12'}`}
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#737373] hover:text-[#D4D4D4]"
                 >
                   {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -253,7 +259,7 @@ export function Login() {
             </motion.button>
           </form>
 
-          <p className="text-center text-slate-600 text-xs mt-6">
+          <p className="text-center text-[#666666] text-xs mt-6">
             Universidade Corporativa Coneccta © 2026
           </p>
         </motion.div>

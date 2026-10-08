@@ -131,14 +131,14 @@ export function UsersPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-white">Gestão de Usuários</h2>
-          <p className="text-slate-500 text-sm mt-1">{filtered.length} colaboradores encontrados</p>
+          <p className="text-[#737373] text-sm mt-1">{filtered.length} colaboradores encontrados</p>
         </div>
         <Button onClick={openCreate} icon={<Plus size={16} />}>Novo Colaborador</Button>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1 max-w-sm">
-          <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+          <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#737373]" />
           <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por nome ou e-mail..." className="input-base pl-10" />
         </div>
         <Select options={[{ value: '', label: 'Todos os perfis' }, { value: 'admin', label: 'Admin' }, { value: 'manager', label: 'Gestor' }, { value: 'employee', label: 'Colaborador' }]} value={roleFilter} onChange={setRoleFilter} className="w-48" />
@@ -151,7 +151,7 @@ export function UsersPage() {
             <thead>
               <tr className="border-b border-white/5">
                 {['Colaborador', 'Departamento', 'Cargo', 'Perfil', 'Status', 'Admissão', ''].map(h => (
-                  <th key={h} className="px-4 py-3.5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap">{h}</th>
+                  <th key={h} className="px-4 py-3.5 text-left text-xs font-semibold text-[#737373] uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -163,23 +163,23 @@ export function UsersPage() {
                       <Avatar name={user.name} src={user.avatar_url} size="sm" />
                       <div>
                         <p className="text-sm font-medium text-white">{user.name}</p>
-                        <p className="text-xs text-slate-500">{user.email}</p>
+                        <p className="text-xs text-[#737373]">{user.email}</p>
                       </div>
                     </div>
                   </td>
                   <td className="px-4 py-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
-                      <Building2 size={13} className="text-slate-600" />
+                    <div className="flex items-center gap-2 text-sm text-[#A6A6A6]">
+                      <Building2 size={13} className="text-[#666666]" />
                       {getDept(user.department_id)}
                     </div>
                   </td>
-                  <td className="px-4 py-4 text-sm text-slate-400">{getPos(user.position_id)}</td>
+                  <td className="px-4 py-4 text-sm text-[#A6A6A6]">{getPos(user.position_id)}</td>
                   <td className="px-4 py-4"><StatusBadge status={user.role} /></td>
                   <td className="px-4 py-4"><StatusBadge status={user.status} /></td>
-                  <td className="px-4 py-4 text-sm text-slate-500 whitespace-nowrap">{formatDate(user.hire_date)}</td>
+                  <td className="px-4 py-4 text-sm text-[#737373] whitespace-nowrap">{formatDate(user.hire_date)}</td>
                   <td className="px-4 py-4">
                     <div className="relative">
-                      <button onClick={() => setMenuOpen(menuOpen === user.id ? null : user.id)} className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg hover:bg-white/10 text-slate-500 hover:text-white transition-all">
+                      <button onClick={() => setMenuOpen(menuOpen === user.id ? null : user.id)} className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg hover:bg-white/10 text-[#737373] hover:text-white transition-all">
                         <MoreVertical size={14} />
                       </button>
                       {menuOpen === user.id && (
@@ -193,8 +193,8 @@ export function UsersPage() {
                               action: () => handleToggleStatus(user),
                             },
                           ].map(action => (
-                            <button key={action.label} onClick={action.action} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
-                              <span className="text-slate-500">{action.icon}</span>
+                            <button key={action.label} onClick={action.action} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-[#A6A6A6] hover:text-white hover:bg-white/5 transition-colors text-left">
+                              <span className="text-[#737373]">{action.icon}</span>
                               {action.label}
                             </button>
                           ))}
@@ -207,7 +207,7 @@ export function UsersPage() {
             </motion.tbody>
           </table>
           {filtered.length === 0 && (
-            <div className="py-16 text-center text-slate-600">Nenhum usuário encontrado.</div>
+            <div className="py-16 text-center text-[#666666]">Nenhum usuário encontrado.</div>
           )}
         </div>
       </div>

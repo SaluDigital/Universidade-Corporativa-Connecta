@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { Award, Download, Users } from 'lucide-react';
 import { Avatar } from '../../components/ui/Avatar';
 import { useAuthStore } from '../../store/authStore';
@@ -21,9 +21,9 @@ export function ManagerCertificatesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Certificados da Equipe</h2>
-          <p className="text-slate-500 text-sm mt-1">{teamCerts.length} certificados emitidos</p>
+          <p className="text-[#737373] text-sm mt-1">{teamCerts.length} certificados emitidos</p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-slate-400 glass px-4 py-2 rounded-xl border border-white/5">
+        <div className="flex items-center gap-2 text-sm text-[#A6A6A6] glass px-4 py-2 rounded-xl border border-white/5">
           <Users size={14} />
           {team.length} colaboradores
         </div>
@@ -31,9 +31,9 @@ export function ManagerCertificatesPage() {
 
       {teamCerts.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
-          <Award size={40} className="text-slate-700 mx-auto mb-3" />
-          <p className="text-slate-500 font-medium">Nenhum certificado emitido ainda</p>
-          <p className="text-slate-600 text-sm mt-1">Os certificados aparecerão aqui quando seus colaboradores concluírem os cursos.</p>
+          <Award size={40} className="text-[#525252] mx-auto mb-3" />
+          <p className="text-[#737373] font-medium">Nenhum certificado emitido ainda</p>
+          <p className="text-[#666666] text-sm mt-1">Os certificados aparecerÃ£o aqui quando seus colaboradores concluÃ­rem os cursos.</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -48,7 +48,7 @@ export function ManagerCertificatesPage() {
               <div className="bg-gradient-to-br from-amber-600/20 to-orange-900/10 p-5">
                 <div className="flex items-center justify-between">
                   <Award size={28} className="text-amber-400" />
-                  <span className="text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-lg">Válido</span>
+                  <span className="text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-lg">VÃ¡lido</span>
                 </div>
                 <h4 className="font-bold text-white mt-3 line-clamp-2">{cert.course?.title}</h4>
               </div>
@@ -57,7 +57,7 @@ export function ManagerCertificatesPage() {
                   <Avatar name={cert.user?.name ?? 'U'} size="sm" />
                   <div>
                     <p className="text-sm font-medium text-white">{cert.user?.name}</p>
-                    <p className="text-xs text-slate-500">{formatDate(cert.issued_at)}</p>
+                    <p className="text-xs text-[#737373]">{formatDate(cert.issued_at)}</p>
                   </div>
                 </div>
                 <button

@@ -57,7 +57,7 @@ export function LogsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Logs de Auditoria</h2>
-          <p className="text-slate-500 text-sm mt-1">Histórico completo de ações no sistema</p>
+          <p className="text-[#737373] text-sm mt-1">Histórico completo de ações no sistema</p>
         </div>
         <div className="flex items-center gap-2 text-xs text-[#FF9C3A] bg-[#FF9C3A]/10 border border-[#FF9C3A]/20 px-3 py-2 rounded-xl">
           <Shield size={13} />
@@ -67,7 +67,7 @@ export function LogsPage() {
 
       <div className="flex gap-3">
         <div className="relative flex-1 max-w-sm">
-          <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+          <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#737373]" />
           <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar usuário ou ação..." className="input-base pl-10" />
         </div>
         <select value={actionFilter} onChange={e => setActionFilter(e.target.value)} className="input-base w-48 appearance-none">
@@ -84,7 +84,7 @@ export function LogsPage() {
             <thead>
               <tr className="border-b border-white/5">
                 {['Usuário', 'Ação', 'Entidade', 'IP', 'Data/Hora'].map(h => (
-                  <th key={h} className="px-5 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{h}</th>
+                  <th key={h} className="px-5 py-4 text-left text-xs font-semibold text-[#737373] uppercase tracking-wide">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -98,7 +98,7 @@ export function LogsPage() {
                         <Avatar name={log.user?.name ?? 'S'} size="sm" />
                         <div>
                           <p className="text-sm font-medium text-white">{log.user?.name ?? 'Sistema'}</p>
-                          <p className="text-xs text-slate-600 capitalize">{log.user?.role}</p>
+                          <p className="text-xs text-[#666666] capitalize">{log.user?.role}</p>
                         </div>
                       </div>
                     </td>
@@ -108,19 +108,19 @@ export function LogsPage() {
                           {action.icon}{action.label}
                         </span>
                       ) : (
-                        <span className="text-xs text-slate-500 font-mono">{log.action}</span>
+                        <span className="text-xs text-[#737373] font-mono">{log.action}</span>
                       )}
                     </td>
-                    <td className="px-5 py-4 text-xs text-slate-500 max-w-xs"><span className="truncate block">{log.meta ?? `${log.entity_type}:${log.entity_id}`}</span></td>
-                    <td className="px-5 py-4 text-xs text-slate-600 font-mono">{log.ip_address ?? '—'}</td>
-                    <td className="px-5 py-4 text-xs text-slate-500 whitespace-nowrap">{formatDateTime(log.created_at)}</td>
+                    <td className="px-5 py-4 text-xs text-[#737373] max-w-xs"><span className="truncate block">{log.meta ?? `${log.entity_type}:${log.entity_id}`}</span></td>
+                    <td className="px-5 py-4 text-xs text-[#666666] font-mono">{log.ip_address ?? '—'}</td>
+                    <td className="px-5 py-4 text-xs text-[#737373] whitespace-nowrap">{formatDateTime(log.created_at)}</td>
                   </motion.tr>
                 );
               })}
             </tbody>
           </table>
           {filtered.length === 0 && (
-            <div className="py-16 text-center text-slate-600">Nenhum log encontrado.</div>
+            <div className="py-16 text-center text-[#666666]">Nenhum log encontrado.</div>
           )}
         </div>
       </div>

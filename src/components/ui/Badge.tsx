@@ -14,7 +14,7 @@ const variants = {
   emerald: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/25',
   amber: 'bg-amber-500/15 text-amber-300 border-amber-500/25',
   red: 'bg-red-500/15 text-red-300 border-red-500/25',
-  slate: 'bg-slate-500/15 text-slate-400 border-slate-500/25',
+  slate: 'bg-[#737373]/15 text-[#A6A6A6] border-[#737373]/25',
   cyan: 'bg-[#FF9C3A]/12 text-[#FF9C3A] border-[#FF9C3A]/25',
   pink: 'bg-pink-500/15 text-pink-300 border-pink-500/25',
 };
@@ -25,7 +25,7 @@ const dotColors = {
   emerald: 'bg-emerald-400',
   amber: 'bg-amber-400',
   red: 'bg-red-400',
-  slate: 'bg-slate-400',
+  slate: 'bg-[#A6A6A6]',
   cyan: 'bg-[#FF9C3A]',
   pink: 'bg-pink-400',
 };

@@ -201,8 +201,8 @@ export function Login() {
               <label className="block text-sm font-medium text-[#D4D4D4] mb-1.5">E-mail corporativo</label>
               <div className="relative">
                 <Mail
-                  size={16}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none"
+                  size={18}
+                  className="absolute left-4 top-1/2 z-10 -translate-y-1/2 text-[#737373] pointer-events-none"
                 />
                 <input
                   type="email"
@@ -210,6 +210,7 @@ export function Login() {
                   onChange={e => setEmail(e.target.value)}
                   placeholder="seu@coneccta.com.br"
                   className="input-base pl-12"
+                  style={{ paddingLeft: '3rem' }}
                   required
                 />
               </div>
@@ -219,8 +220,8 @@ export function Login() {
               <label className="block text-sm font-medium text-[#D4D4D4] mb-1.5">Senha</label>
               <div className="relative">
                 <Lock
-                  size={16}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none"
+                  size={18}
+                  className="absolute left-4 top-1/2 z-10 -translate-y-1/2 text-[#737373] pointer-events-none"
                 />
                 <input
                   type={showPass ? 'text' : 'password'}
@@ -228,12 +229,13 @@ export function Login() {
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="input-base pl-12 pr-12"
+                  style={{ paddingLeft: '3rem', paddingRight: '3rem' }}
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#737373] hover:text-[#D4D4D4]"
+                  className="absolute right-4 top-1/2 z-10 -translate-y-1/2 text-[#737373] hover:text-[#D4D4D4]"
                 >
                   {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>

@@ -40,24 +40,41 @@ export function ReportsPage() {
 
   useEffect(() => {
     (async () => {
-      const [
-        { data: progress },
-        { data: certs },
-        { data: overdue },
-        { data: usersData },
-      ] = await Promise.all([
-        supabase
-          .from('user_course_progress')
-          .select('id, user_id, course_id, status, progress_percent, completed_at, course:courses(id,title,category)'),
-        getCertificates(),
-        getOverdueTracks(),
-        getUsers(),
-      ]);
-      setAllProgress(progress ?? []);
-      setCertificates(certs ?? []);
-      setOverdueTracks(overdue ?? []);
-      setUsers(usersData ?? []);
-      setLoading(false);
+      setLoading(true);
+      try {
+        const [
+          progressRes,
+          certificatesRes,
+          overdueRes,
+          usersRes,
+        ] = await Promise.all([
+          supabase
+            .from('user_course_progress')
+            .select('id, user_id, course_id, status, progress_percent, completed_at, course:courses(id,title,category)'),
+          getCertificates(),
+          getOverdueTracks(),
+          getUsers(),
+        ]);
+
+        if (progressRes.error) throw progressRes.error;
+        if (certificatesRes.error) throw certificatesRes.error;
+        if (overdueRes.error) throw overdueRes.error;
+        if (usersRes.error) throw usersRes.error;
+
+        setAllProgress(progressRes.data ?? []);
+        setCertificates(certificatesRes.data ?? []);
+        setOverdueTracks(overdueRes.data ?? []);
+        setUsers(usersRes.data ?? []);
+      } catch (error) {
+        console.error('[ReportsPage] Erro ao carregar dados:', error);
+        toast.error('Não foi possível carregar os dados. Tente novamente.');
+        setAllProgress([]);
+        setCertificates([]);
+        setOverdueTracks([]);
+        setUsers([]);
+      } finally {
+        setLoading(false);
+      }
     })();
   }, []);
 

@@ -37,23 +37,40 @@ export function TracksPage() {
 
   const load = async () => {
     setLoading(true);
-    const { data } = await getTracks();
-    const t = (data as Track[]) ?? [];
-    setTracks(t);
+    try {
+      const tracksRes = await getTracks();
+      if (tracksRes.error) throw tracksRes.error;
 
-    // Load enrollment counts
-    const counts: Record<string, number> = {};
-    const rates: Record<string, number> = {};
-    await Promise.all(t.map(async track => {
-      const { data: ut } = await getTrackEnrollments(track.id);
-      const utList = ut ?? [];
-      counts[track.id] = utList.length;
-      const done = utList.filter((x: any) => x.status === 'completed').length;
-      rates[track.id] = utList.length ? Math.round((done / utList.length) * 100) : 0;
-    }));
-    setEnrollments(counts);
-    setCompletionRates(rates);
-    setLoading(false);
+      const t = (tracksRes.data as Track[]) ?? [];
+      setTracks(t);
+
+      // Load enrollment counts
+      const counts: Record<string, number> = {};
+      const rates: Record<string, number> = {};
+      const enrollmentResults = await Promise.all(t.map(async track => {
+        const result = await getTrackEnrollments(track.id);
+        return { track, result };
+      }));
+
+      enrollmentResults.forEach(({ track, result }) => {
+        if (result.error) throw result.error;
+        const utList = result.data ?? [];
+        counts[track.id] = utList.length;
+        const done = utList.filter((x: any) => x.status === 'completed').length;
+        rates[track.id] = utList.length ? Math.round((done / utList.length) * 100) : 0;
+      });
+
+      setEnrollments(counts);
+      setCompletionRates(rates);
+    } catch (error) {
+      console.error('[TracksPage] Erro ao carregar dados:', error);
+      toast.error('Não foi possível carregar os dados. Tente novamente.');
+      setTracks([]);
+      setEnrollments({});
+      setCompletionRates({});
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { load(); }, []);

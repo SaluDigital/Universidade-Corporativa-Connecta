@@ -14,9 +14,18 @@ export function CertificatesPage() {
 
   useEffect(() => {
     (async () => {
-      const { data } = await getCertificates();
-      setCertificates(data ?? []);
-      setLoading(false);
+      setLoading(true);
+      try {
+        const { data, error } = await getCertificates();
+        if (error) throw error;
+        setCertificates(data ?? []);
+      } catch (error) {
+        console.error('[CertificatesPage] Erro ao carregar dados:', error);
+        toast.error('Não foi possível carregar os dados. Tente novamente.');
+        setCertificates([]);
+      } finally {
+        setLoading(false);
+      }
     })();
   }, []);
 

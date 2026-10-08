@@ -179,11 +179,18 @@ export const getAuditLogs = () =>
 export const getUserProgressSummary = () =>
   supabase.from('v_user_progress_summary').select('*');
 
-export const getCompletionByDepartment = async (): Promise<{ data: any[]; error: null }> => {
-  const [{ data: users }, { data: progress }] = await Promise.all([
+export const getCompletionByDepartment = async (): Promise<{ data: any[]; error: unknown }> => {
+  const [usersRes, progressRes] = await Promise.all([
     supabase.from('users').select('id, department_id, department:departments(id,name)'),
     supabase.from('user_course_progress').select('user_id, status'),
   ]);
+
+  if (usersRes.error) return { data: [], error: usersRes.error };
+  if (progressRes.error) return { data: [], error: progressRes.error };
+
+  const users = usersRes.data;
+  const progress = progressRes.data;
+
   const deptMap: Record<string, { name: string; total: Set<string>; completedSet: Set<string> }> = {};
   (users ?? []).forEach((u: any) => {
     if (!u.department_id) return;
@@ -233,8 +240,8 @@ export const getTopCourses = () =>
     .eq('status', 'completed');
 
 // ─── RECENT ACTIVITY (real tables, not audit_logs) ────────
-export const getRecentActivity = async (): Promise<{ data: any[]; error: null }> => {
-  const [{ data: completions }, { data: certs }] = await Promise.all([
+export const getRecentActivity = async (): Promise<{ data: any[]; error: unknown }> => {
+  const [completionsRes, certsRes] = await Promise.all([
     supabase
       .from('user_course_progress')
       .select('id, completed_at, user_id, course_id, user:users(id,name,email), course:courses(id,title)')
@@ -248,6 +255,13 @@ export const getRecentActivity = async (): Promise<{ data: any[]; error: null }>
       .order('issued_at', { ascending: false })
       .limit(10),
   ]);
+
+  if (completionsRes.error) return { data: [], error: completionsRes.error };
+  if (certsRes.error) return { data: [], error: certsRes.error };
+
+  const completions = completionsRes.data;
+  const certs = certsRes.data;
+
   const events = [
     ...(completions ?? []).map((c: any) => ({
       id: `cp-${c.id}`,
@@ -269,8 +283,8 @@ export const getRecentActivity = async (): Promise<{ data: any[]; error: null }>
   return { data: events, error: null };
 };
 
-export const getActivityFeed = async (): Promise<{ data: any[]; error: null }> => {
-  const [{ data: completions }, { data: certs }, { data: newUsers }] = await Promise.all([
+export const getActivityFeed = async (): Promise<{ data: any[]; error: unknown }> => {
+  const [completionsRes, certsRes, newUsersRes] = await Promise.all([
     supabase
       .from('user_course_progress')
       .select('id, completed_at, user_id, course_id, user:users(id,name,email,role), course:courses(id,title)')
@@ -289,6 +303,15 @@ export const getActivityFeed = async (): Promise<{ data: any[]; error: null }> =
       .order('created_at', { ascending: false })
       .limit(50),
   ]);
+
+  if (completionsRes.error) return { data: [], error: completionsRes.error };
+  if (certsRes.error) return { data: [], error: certsRes.error };
+  if (newUsersRes.error) return { data: [], error: newUsersRes.error };
+
+  const completions = completionsRes.data;
+  const certs = certsRes.data;
+  const newUsers = newUsersRes.data;
+
   const events = [
     ...(completions ?? []).map((c: any) => ({
       id: `cp-${c.id}`,

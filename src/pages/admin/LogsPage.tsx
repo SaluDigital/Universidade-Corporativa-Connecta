@@ -4,6 +4,7 @@ import { Search, User, BookOpen, Award, GitBranch, Shield, Loader2 } from 'lucid
 import { Avatar } from '../../components/ui/Avatar';
 import { getActivityFeed } from '../../lib/api';
 import { formatDateTime } from '../../lib/utils';
+import toast from 'react-hot-toast';
 
 const actionConfig: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
   CREATE_USER:      { label: 'Criou usuário',     icon: <User size={13} />,      color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
@@ -22,9 +23,18 @@ export function LogsPage() {
 
   useEffect(() => {
     (async () => {
-      const { data } = await getActivityFeed();
-      setLogs(data ?? []);
-      setLoading(false);
+      setLoading(true);
+      try {
+        const { data, error } = await getActivityFeed();
+        if (error) throw error;
+        setLogs(data ?? []);
+      } catch (error) {
+        console.error('[LogsPage] Erro ao carregar dados:', error);
+        toast.error('Não foi possível carregar os dados. Tente novamente.');
+        setLogs([]);
+      } finally {
+        setLoading(false);
+      }
     })();
   }, []);
 

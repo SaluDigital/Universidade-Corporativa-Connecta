@@ -33,13 +33,27 @@ export function DepartmentsPage() {
 
   const load = async () => {
     setLoading(true);
-    const [{ data: d }, { data: p }, { data: u }] = await Promise.all([
-      getDepartments(), getPositions(), getUsers(),
-    ]);
-    setDepartments((d as Department[]) ?? []);
-    setPositions((p as Position[]) ?? []);
-    setUsers((u as User[]) ?? []);
-    setLoading(false);
+    try {
+      const [departmentsRes, positionsRes, usersRes] = await Promise.all([
+        getDepartments(), getPositions(), getUsers(),
+      ]);
+
+      if (departmentsRes.error) throw departmentsRes.error;
+      if (positionsRes.error) throw positionsRes.error;
+      if (usersRes.error) throw usersRes.error;
+
+      setDepartments((departmentsRes.data as Department[]) ?? []);
+      setPositions((positionsRes.data as Position[]) ?? []);
+      setUsers((usersRes.data as User[]) ?? []);
+    } catch (error) {
+      console.error('[DepartmentsPage] Erro ao carregar dados:', error);
+      toast.error('Não foi possível carregar os dados. Tente novamente.');
+      setDepartments([]);
+      setPositions([]);
+      setUsers([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { load(); }, []);

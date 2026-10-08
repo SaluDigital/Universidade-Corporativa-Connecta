@@ -32,14 +32,30 @@ export function RulesPage() {
 
   const load = async () => {
     setLoading(true);
-    const [{ data: r }, { data: t }, { data: d }, { data: p }] = await Promise.all([
-      getRules(), getTracks(), getDepartments(), getPositions(),
-    ]);
-    setRules((r as Rule[]) ?? []);
-    setTracks((t as Track[]) ?? []);
-    setDepartments((d as Department[]) ?? []);
-    setPositions((p as Position[]) ?? []);
-    setLoading(false);
+    try {
+      const [rulesRes, tracksRes, departmentsRes, positionsRes] = await Promise.all([
+        getRules(), getTracks(), getDepartments(), getPositions(),
+      ]);
+
+      if (rulesRes.error) throw rulesRes.error;
+      if (tracksRes.error) throw tracksRes.error;
+      if (departmentsRes.error) throw departmentsRes.error;
+      if (positionsRes.error) throw positionsRes.error;
+
+      setRules((rulesRes.data as Rule[]) ?? []);
+      setTracks((tracksRes.data as Track[]) ?? []);
+      setDepartments((departmentsRes.data as Department[]) ?? []);
+      setPositions((positionsRes.data as Position[]) ?? []);
+    } catch (error) {
+      console.error('[RulesPage] Erro ao carregar dados:', error);
+      toast.error('Não foi possível carregar os dados. Tente novamente.');
+      setRules([]);
+      setTracks([]);
+      setDepartments([]);
+      setPositions([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { load(); }, []);

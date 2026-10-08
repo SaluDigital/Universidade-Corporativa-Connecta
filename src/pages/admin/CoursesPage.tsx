@@ -59,9 +59,17 @@ export function CoursesPage() {
 
   const load = async () => {
     setLoading(true);
-    const { data } = await getCourses();
-    setCourses((data as Course[]) ?? []);
-    setLoading(false);
+    try {
+      const { data, error } = await getCourses();
+      if (error) throw error;
+      setCourses((data as Course[]) ?? []);
+    } catch (error) {
+      console.error('[CoursesPage] Erro ao carregar dados:', error);
+      toast.error('Não foi possível carregar os dados. Tente novamente.');
+      setCourses([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { load(); }, []);

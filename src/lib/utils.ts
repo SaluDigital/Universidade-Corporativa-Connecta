@@ -1,4 +1,4 @@
-import { clsx, type ClassValue } from 'clsx';
+﻿import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { format, formatDistanceToNow, isPast } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -12,7 +12,7 @@ export function formatDate(date: string | Date): string {
 }
 
 export function formatDateTime(date: string | Date): string {
-  return format(new Date(date), "dd/MM/yyyy 'às' HH:mm", { locale: ptBR });
+  return format(new Date(date), "dd/MM/yyyy 'Ã s' HH:mm", { locale: ptBR });
 }
 
 export function timeAgo(date: string | Date): string {
@@ -34,14 +34,14 @@ export function getInitials(name: string): string {
 
 export function generateCertCode(userId: string, courseId: string): string {
   const timestamp = Date.now().toString(36).toUpperCase();
-  return `SD-${timestamp}-${userId.slice(0, 2).toUpperCase()}${courseId.slice(0, 2).toUpperCase()}`;
+  return `CONNECTA-${timestamp}-${userId.slice(0, 2).toUpperCase()}${courseId.slice(0, 2).toUpperCase()}`;
 }
 
 export function getStatusLabel(status: string): string {
   const labels: Record<string, string> = {
-    not_started: 'Não iniciado',
+    not_started: 'NÃ£o iniciado',
     in_progress: 'Em andamento',
-    completed: 'Concluído',
+    completed: 'ConcluÃ­do',
     overdue: 'Vencido',
     failed: 'Reprovado',
     active: 'Ativo',

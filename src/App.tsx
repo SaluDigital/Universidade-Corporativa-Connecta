@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthStore } from './store/authStore';
 import { Layout } from './components/layout/Layout';
@@ -52,32 +52,32 @@ function RoleRedirect() {
 }
 
 const pageTitles: Record<string, { title: string; subtitle?: string }> = {
-  '/admin': { title: 'Dashboard', subtitle: 'Visão geral do sistema' },
-  '/admin/users': { title: 'Usuários', subtitle: 'Gestão de colaboradores' },
-  '/admin/departments': { title: 'Departamentos', subtitle: 'Áreas e cargos' },
-  '/admin/courses': { title: 'Cursos', subtitle: 'Gestão de conteúdo' },
+  '/admin': { title: 'Dashboard', subtitle: 'Visao geral da Universidade Corporativa Coneccta' },
+  '/admin/users': { title: 'Usuarios', subtitle: 'Gestao de colaboradores e acessos' },
+  '/admin/departments': { title: 'Departamentos', subtitle: 'Estrutura interna e cargos da Coneccta' },
+  '/admin/courses': { title: 'Cursos', subtitle: 'Catalogo de aprendizagem corporativa' },
   '/admin/tracks': { title: 'Trilhas', subtitle: 'Jornadas de aprendizado' },
-  '/admin/rules': { title: 'Regras', subtitle: 'Atribuição automática' },
-  '/admin/reports': { title: 'Relatórios', subtitle: 'Analytics e insights' },
+  '/admin/rules': { title: 'Regras', subtitle: 'Atribuicao automatica de trilhas' },
+  '/admin/reports': { title: 'Relatorios', subtitle: 'Indicadores de desenvolvimento' },
   '/admin/certificates': { title: 'Certificados', subtitle: 'Certificados emitidos' },
   '/admin/logs': { title: 'Logs', subtitle: 'Auditoria do sistema' },
-  '/admin/courses/exam': { title: 'Banco de Perguntas', subtitle: 'Gestão da prova do curso' },
-  '/admin/courses/modules': { title: 'Módulos e Aulas', subtitle: 'Conteúdo do curso' },
+  '/admin/courses/exam': { title: 'Banco de Perguntas', subtitle: 'Gestao da prova do curso' },
+  '/admin/courses/modules': { title: 'Modulos e Aulas', subtitle: 'Conteudo do curso' },
   '/manager': { title: 'Minha Equipe', subtitle: 'Painel do gestor' },
   '/manager/team': { title: 'Colaboradores', subtitle: 'Sua equipe' },
   '/manager/progress': { title: 'Progresso', subtitle: 'Acompanhamento de trilhas' },
   '/manager/certificates': { title: 'Certificados', subtitle: 'Certificados da equipe' },
-  '/manager/alerts': { title: 'Alertas', subtitle: 'Pendências e atrasos' },
+  '/manager/alerts': { title: 'Alertas', subtitle: 'Pendencias e atrasos' },
   '/employee': { title: 'Minha Trilha', subtitle: 'Sua jornada de aprendizado' },
-  '/employee/courses': { title: 'Meus Cursos', subtitle: 'Conteúdo disponível' },
-  '/employee/courses/detail': { title: 'Detalhes do Curso', subtitle: 'Conteúdo e avaliação' },
+  '/employee/courses': { title: 'Meus Cursos', subtitle: 'Conteudo disponivel' },
+  '/employee/courses/detail': { title: 'Detalhes do Curso', subtitle: 'Conteudo e avaliacao' },
   '/employee/lesson': { title: 'Aula', subtitle: 'Em andamento' },
   '/employee/certificates': { title: 'Certificados', subtitle: 'Suas conquistas' },
-  '/employee/history': { title: 'Histórico', subtitle: 'Seu percurso completo' },
+  '/employee/history': { title: 'Historico', subtitle: 'Seu percurso completo' },
 };
 
 function LayoutWithTitle({ path }: { path: string }) {
-  const info = pageTitles[path] ?? { title: 'SaluDigital LMS' };
+  const info = pageTitles[path] ?? { title: 'Universidade Corporativa' };
   return <Layout title={info.title} subtitle={info.subtitle} />;
 }
 

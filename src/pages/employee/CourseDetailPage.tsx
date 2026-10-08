@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -47,7 +47,7 @@ function shuffleArray<T>(arr: T[]): T[] {
 
 const categoryColors: Record<string, string> = {
   Onboarding: 'emerald', Cultura: 'cyan', Comercial: 'purple',
-  Gestão: 'amber', Marketing: 'pink', Técnico: 'blue',
+  Gestao: 'amber', Marketing: 'pink', Tecnico: 'blue',
 };
 
 const ALT_LABELS = ['A', 'B', 'C', 'D'];
@@ -96,7 +96,7 @@ export function CourseDetailPage() {
     const prog = (progressRes.data as any[])?.find(p => p.course_id === courseId) ?? null;
     setUserProgress(prog);
 
-    // Montar módulos com aulas ordenadas
+    // Montar mÃ³dulos com aulas ordenadas
     const mods = ((modulesRes.data ?? []) as ModuleWithLessons[]).map(m => ({
       ...m,
       lessons: [...(m.lessons ?? [])].sort((a, b) => a.sort_order - b.sort_order),
@@ -141,7 +141,7 @@ export function CourseDetailPage() {
     setLoading(false);
   };
 
-  // Calcula % de aulas concluídas
+  // Calcula % de aulas concluÃ­das
   const calcProgress = (newMap?: Record<string, UserLessonProgress>) => {
     const map = newMap ?? lessonProgressMap;
     const allRequired = modules.flatMap(m => m.lessons.filter(l => l.is_required));
@@ -201,21 +201,21 @@ export function CourseDetailPage() {
       setUserProgress((prev: any) => ({ ...prev, progress_percent: pct, status: canComplete ? 'completed' : 'in_progress' }));
 
       if (canComplete) {
-        toast.success('Parabéns! Você concluiu todas as aulas do curso! 🎉');
+        toast.success('ParabÃ©ns! VocÃª concluiu todas as aulas do curso! ðŸŽ‰');
       } else {
-        toast.success('Aula concluída!');
+        toast.success('Aula concluÃ­da!');
       }
     } catch {
-      toast.error('Erro ao marcar aula como concluída');
+      toast.error('Erro ao marcar aula como concluÃ­da');
     } finally {
       setCompletingLesson(null);
     }
   };
 
-  // ── Prova ──
+  // â”€â”€ Prova â”€â”€
   const startExam = () => {
-    if (!quiz?.questions?.length) return toast.error('Prova ainda não disponível');
-    if (progressPct < 100) return toast.error('Conclua 100% das aulas antes de iniciar a avaliação');
+    if (!quiz?.questions?.length) return toast.error('Prova ainda nÃ£o disponÃ­vel');
+    if (progressPct < 100) return toast.error('Conclua 100% das aulas antes de iniciar a avaliaÃ§Ã£o');
     const shuffled = shuffleArray(quiz.questions).slice(0, 10);
     setExamQuestions(shuffled);
     setAnswers({});
@@ -281,13 +281,13 @@ export function CourseDetailPage() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
   if (!course) return (
     <div className="flex items-center justify-center h-64">
-      <p className="text-slate-500">Curso não encontrado.</p>
+      <p className="text-slate-500">Curso nÃ£o encontrado.</p>
     </div>
   );
 
@@ -316,7 +316,7 @@ export function CourseDetailPage() {
             <div className="absolute bottom-0 left-0 right-0 p-4">
               <div className="flex items-center gap-2 flex-wrap mb-1">
                 {course.category && <Badge variant={(categoryColors[course.category] ?? 'slate') as any}>{course.category}</Badge>}
-                {isCompleted && <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium"><CheckCircle size={12} /> Concluído</span>}
+                {isCompleted && <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium"><CheckCircle size={12} /> ConcluÃ­do</span>}
               </div>
               <h2 className="text-xl font-bold text-white leading-snug">{course.title}</h2>
               <div className="flex items-center gap-4 mt-1.5 text-xs text-slate-400">
@@ -337,7 +337,7 @@ export function CourseDetailPage() {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap mb-1">
                 {course.category && <Badge variant={(categoryColors[course.category] ?? 'slate') as any}>{course.category}</Badge>}
-                {isCompleted && <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium"><CheckCircle size={12} /> Concluído</span>}
+                {isCompleted && <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium"><CheckCircle size={12} /> ConcluÃ­do</span>}
               </div>
               <h2 className="text-xl font-bold text-white leading-snug">{course.title}</h2>
               <div className="flex items-center gap-4 mt-1.5 text-xs text-slate-500">
@@ -352,7 +352,7 @@ export function CourseDetailPage() {
 
       <AnimatePresence mode="wait">
 
-        {/* ── FASE: ASSISTINDO ── */}
+        {/* â”€â”€ FASE: ASSISTINDO â”€â”€ */}
         {phase === 'viewing' && (
           <motion.div key="viewing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-4">
 
@@ -360,7 +360,7 @@ export function CourseDetailPage() {
             <div className="glass-card rounded-2xl p-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-medium text-slate-400">Progresso do curso</span>
-                <span className="text-xs font-bold text-white">{doneLessons}/{totalLessons} aulas · {progressPct}%</span>
+                <span className="text-xs font-bold text-white">{doneLessons}/{totalLessons} aulas Â· {progressPct}%</span>
               </div>
               <ProgressBar value={progressPct} size="sm" />
             </div>
@@ -375,7 +375,7 @@ export function CourseDetailPage() {
                   exit={{ opacity: 0, y: -10 }}
                   className="glass-card rounded-2xl overflow-hidden"
                 >
-                  {/* Título da aula */}
+                  {/* TÃ­tulo da aula */}
                   <div className="flex items-center justify-between px-4 pt-4 pb-3">
                     <div>
                       <p className="text-xs text-slate-500 mb-0.5">Assistindo agora</p>
@@ -383,12 +383,12 @@ export function CourseDetailPage() {
                     </div>
                     {lessonProgressMap[selectedLesson.id]?.status === 'completed' && (
                       <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium">
-                        <CheckCircle size={13} /> Concluída
+                        <CheckCircle size={13} /> ConcluÃ­da
                       </span>
                     )}
                   </div>
 
-                  {/* Vídeo YouTube */}
+                  {/* VÃ­deo YouTube */}
                   {selectedLesson.content_url && extractYouTubeId(selectedLesson.content_url) ? (
                     <div className="relative w-full aspect-video bg-black">
                       <iframe
@@ -397,20 +397,20 @@ export function CourseDetailPage() {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         className="absolute inset-0 w-full h-full"
                       />
-                      {/* Bloqueia título + canal clicáveis no topo */}
+                      {/* Bloqueia tÃ­tulo + canal clicÃ¡veis no topo */}
                       <div className="absolute top-0 left-0 right-0 h-16 z-10" style={{ pointerEvents: 'all', background: 'transparent' }} />
-                      {/* Bloqueia ícone de copiar link (canto inferior esquerdo) */}
+                      {/* Bloqueia Ã­cone de copiar link (canto inferior esquerdo) */}
                       <div className="absolute bottom-0 left-0 w-20 h-16 z-10" style={{ pointerEvents: 'all', background: 'transparent' }} />
                       {/* Bloqueia "Assistir no YouTube" + logo (canto inferior direito) */}
                       <div className="absolute bottom-0 right-0 w-64 h-16 z-10" style={{ pointerEvents: 'all', background: 'transparent' }} />
                     </div>
                   ) : (
                     <div className="aspect-video bg-slate-900 flex items-center justify-center">
-                      <p className="text-slate-600 text-sm">Vídeo não configurado</p>
+                      <p className="text-slate-600 text-sm">VÃ­deo nÃ£o configurado</p>
                     </div>
                   )}
 
-                  {/* Botão concluir aula */}
+                  {/* BotÃ£o concluir aula */}
                   {lessonProgressMap[selectedLesson.id]?.status !== 'completed' && (
                     <div className="px-4 pb-4 pt-3">
                       <Button
@@ -421,7 +421,7 @@ export function CourseDetailPage() {
                           : <CheckCircle size={14} />}
                         className="w-full justify-center"
                       >
-                        {completingLesson === selectedLesson.id ? 'Salvando...' : 'Marcar aula como concluída'}
+                        {completingLesson === selectedLesson.id ? 'Salvando...' : 'Marcar aula como concluÃ­da'}
                       </Button>
                     </div>
                   )}
@@ -429,11 +429,11 @@ export function CourseDetailPage() {
               )}
             </AnimatePresence>
 
-            {/* Módulos e Aulas */}
+            {/* MÃ³dulos e Aulas */}
             {modules.length === 0 ? (
               <div className="glass-card rounded-2xl p-10 text-center">
                 <BookOpen size={32} className="text-slate-700 mx-auto mb-3" />
-                <p className="text-slate-500">Conteúdo em preparação.</p>
+                <p className="text-slate-500">ConteÃºdo em preparaÃ§Ã£o.</p>
               </div>
             ) : (
               <div className="space-y-2">
@@ -444,17 +444,17 @@ export function CourseDetailPage() {
 
                   return (
                     <div key={mod.id} className="glass-card rounded-2xl overflow-hidden">
-                      {/* Cabeçalho do módulo */}
+                      {/* CabeÃ§alho do mÃ³dulo */}
                       <button
                         onClick={() => toggleModule(mod.id)}
                         className="w-full flex items-center gap-3 p-4 text-left hover:bg-white/2 transition-all"
                       >
-                        <span className="w-7 h-7 rounded-lg bg-[#6B35B0]/20 flex items-center justify-center text-xs font-bold text-[#C4A8E8] flex-shrink-0">
+                        <span className="w-7 h-7 rounded-lg bg-[#FF9C3A]/20 flex items-center justify-center text-xs font-bold text-[#FFD3A3] flex-shrink-0">
                           {modIdx + 1}
                         </span>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-semibold text-white truncate">{mod.title}</p>
-                          <p className="text-xs text-slate-600 mt-0.5">{modDone}/{modTotal} aulas concluídas</p>
+                          <p className="text-xs text-slate-600 mt-0.5">{modDone}/{modTotal} aulas concluÃ­das</p>
                         </div>
                         {modPct === 100 && <CheckCircle size={14} className="text-emerald-400 flex-shrink-0" />}
                         {expandedModules.has(mod.id)
@@ -484,7 +484,7 @@ export function CourseDetailPage() {
                                     onClick={() => selectLesson(lesson)}
                                     className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all ${
                                       isSelected
-                                        ? 'bg-[#6B35B0]/10 border-l-2 border-[#6B35B0]'
+                                        ? 'bg-[#FF9C3A]/10 border-l-2 border-[#FF9C3A]'
                                         : 'hover:bg-white/2'
                                     }`}
                                   >
@@ -492,12 +492,12 @@ export function CourseDetailPage() {
                                       isLessonDone
                                         ? 'bg-emerald-500/20 border border-emerald-500/30'
                                         : isSelected
-                                        ? 'bg-[#6B35B0]/30 border border-[#6B35B0]/40'
+                                        ? 'bg-[#FF9C3A]/30 border border-[#FF9C3A]/40'
                                         : 'bg-white/5 border border-white/10'
                                     }`}>
                                       {isLessonDone
                                         ? <CheckCircle size={12} className="text-emerald-400" />
-                                        : <PlayCircle size={12} className={isSelected ? 'text-[#C4A8E8]' : 'text-slate-600'} />
+                                        : <PlayCircle size={12} className={isSelected ? 'text-[#FFD3A3]' : 'text-slate-600'} />
                                       }
                                     </div>
                                     <div className="flex-1 min-w-0">
@@ -524,12 +524,12 @@ export function CourseDetailPage() {
               </div>
             )}
 
-            {/* Seção de avaliação */}
+            {/* SeÃ§Ã£o de avaliaÃ§Ã£o */}
             {course.requires_exam && (
               <div className="glass-card rounded-2xl p-5 space-y-4">
                 <div className="flex items-center gap-2">
-                  <HelpCircle size={15} className="text-[#9B6FD4]" />
-                  <h3 className="text-sm font-semibold text-white">Avaliação Final</h3>
+                  <HelpCircle size={15} className="text-[#FFB45F]" />
+                  <h3 className="text-sm font-semibold text-white">AvaliaÃ§Ã£o Final</h3>
                 </div>
 
                 {isCompleted ? (
@@ -537,7 +537,7 @@ export function CourseDetailPage() {
                     <Trophy size={18} className="text-emerald-400" />
                     <div className="flex-1">
                       <p className="text-sm font-medium text-emerald-300">Aprovado!</p>
-                      <p className="text-xs text-emerald-400/70">Nota: {userProgress?.grade}% · Mínimo: {minimumGrade}%</p>
+                      <p className="text-xs text-emerald-400/70">Nota: {userProgress?.grade}% Â· MÃ­nimo: {minimumGrade}%</p>
                     </div>
                     {course.has_certificate && (
                       <Button variant="secondary" onClick={() => navigate('/employee/certificates')} icon={<Award size={13} />}>
@@ -548,9 +548,9 @@ export function CourseDetailPage() {
                 ) : (
                   <>
                     <div className="text-xs text-slate-500 space-y-1">
-                      <p>• Prova com <span className="text-white">10 perguntas</span> selecionadas aleatoriamente</p>
-                      <p>• Nota mínima: <span className="text-white">{minimumGrade}%</span></p>
-                      <p>• Sem limite de tentativas</p>
+                      <p>â€¢ Prova com <span className="text-white">10 perguntas</span> selecionadas aleatoriamente</p>
+                      <p>â€¢ Nota mÃ­nima: <span className="text-white">{minimumGrade}%</span></p>
+                      <p>â€¢ Sem limite de tentativas</p>
                     </div>
 
                     {attempts.length > 0 && (
@@ -567,15 +567,15 @@ export function CourseDetailPage() {
 
                     {!hasQuiz ? (
                       <div className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-400">
-                        <AlertCircle size={13} /> Avaliação em preparação.
+                        <AlertCircle size={13} /> AvaliaÃ§Ã£o em preparaÃ§Ã£o.
                       </div>
                     ) : progressPct < 100 ? (
                       <div className="flex items-center gap-2 p-3 rounded-xl bg-slate-500/10 border border-slate-500/20 text-xs text-slate-400">
-                        <AlertCircle size={13} /> Conclua todas as aulas para liberar a avaliação ({progressPct}% concluído).
+                        <AlertCircle size={13} /> Conclua todas as aulas para liberar a avaliaÃ§Ã£o ({progressPct}% concluÃ­do).
                       </div>
                     ) : (
                       <Button onClick={startExam} icon={<HelpCircle size={14} />} className="w-full justify-center">
-                        Iniciar Avaliação
+                        Iniciar AvaliaÃ§Ã£o
                       </Button>
                     )}
                   </>
@@ -587,7 +587,7 @@ export function CourseDetailPage() {
             {!course.requires_exam && !isCompleted && totalLessons > 0 && progressPct >= 100 && (
               <div className="glass-card rounded-2xl p-4 border border-emerald-500/20 bg-emerald-500/5 text-center">
                 <CheckCircle size={24} className="text-emerald-400 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-white mb-1">Todas as aulas concluídas!</p>
+                <p className="text-sm font-semibold text-white mb-1">Todas as aulas concluÃ­das!</p>
                 {course.has_certificate && (
                   <Button onClick={() => navigate('/employee/certificates')} icon={<Award size={14} />} className="mt-2">
                     Ver certificado
@@ -598,13 +598,13 @@ export function CourseDetailPage() {
           </motion.div>
         )}
 
-        {/* ── FASE: PROVA ── */}
+        {/* â”€â”€ FASE: PROVA â”€â”€ */}
         {phase === 'exam' && (
           <motion.div key="exam" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="space-y-5">
             <div className="glass-card rounded-2xl p-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <HelpCircle size={15} className="text-[#9B6FD4]" />
-                <span className="text-sm font-semibold text-white">Avaliação Final</span>
+                <HelpCircle size={15} className="text-[#FFB45F]" />
+                <span className="text-sm font-semibold text-white">AvaliaÃ§Ã£o Final</span>
               </div>
               <span className="text-xs text-slate-500">{Object.keys(answers).length}/{examQuestions.length} respondidas</span>
             </div>
@@ -612,7 +612,7 @@ export function CourseDetailPage() {
             <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
               <motion.div
                 animate={{ width: `${(Object.keys(answers).length / examQuestions.length) * 100}%` }}
-                className="h-full bg-gradient-to-r from-[#6B35B0] to-[#4BC8C8] rounded-full"
+                className="h-full bg-gradient-to-r from-[#FF9C3A] to-[#FEFEFE] rounded-full"
               />
             </div>
 
@@ -620,7 +620,7 @@ export function CourseDetailPage() {
               {examQuestions.map((q, qi) => (
                 <motion.div key={q.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: qi * 0.04 }} className="glass-card rounded-2xl p-5">
                   <div className="flex items-start gap-3 mb-4">
-                    <span className="w-7 h-7 rounded-lg bg-[#6B35B0]/20 border border-[#6B35B0]/20 flex items-center justify-center text-xs font-bold text-[#C4A8E8] flex-shrink-0">
+                    <span className="w-7 h-7 rounded-lg bg-[#FF9C3A]/20 border border-[#FF9C3A]/20 flex items-center justify-center text-xs font-bold text-[#FFD3A3] flex-shrink-0">
                       {qi + 1}
                     </span>
                     <p className="text-sm font-medium text-white leading-relaxed">{q.question_text}</p>
@@ -632,11 +632,11 @@ export function CourseDetailPage() {
                         onClick={() => setAnswers(prev => ({ ...prev, [q.id]: ans.id }))}
                         className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border text-left text-sm transition-all ${
                           answers[q.id] === ans.id
-                            ? 'bg-[#6B35B0]/20 border-[#6B35B0]/40 text-white'
-                            : 'border-white/5 text-slate-400 hover:border-[#6B35B0]/20 hover:text-white'
+                            ? 'bg-[#FF9C3A]/20 border-[#FF9C3A]/40 text-white'
+                            : 'border-white/5 text-slate-400 hover:border-[#FF9C3A]/20 hover:text-white'
                         }`}
                       >
-                        <span className={`text-xs font-bold w-5 flex-shrink-0 ${answers[q.id] === ans.id ? 'text-[#C4A8E8]' : 'text-slate-600'}`}>
+                        <span className={`text-xs font-bold w-5 flex-shrink-0 ${answers[q.id] === ans.id ? 'text-[#FFD3A3]' : 'text-slate-600'}`}>
                           {ALT_LABELS[ai]}.
                         </span>
                         {ans.answer_text}
@@ -661,7 +661,7 @@ export function CourseDetailPage() {
           </motion.div>
         )}
 
-        {/* ── FASE: RESULTADO ── */}
+        {/* â”€â”€ FASE: RESULTADO â”€â”€ */}
         {phase === 'result' && examResult && (
           <motion.div key="result" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="space-y-4">
             <div className={`glass-card rounded-2xl p-8 text-center border ${examResult.passed ? 'border-emerald-500/20 bg-emerald-500/5' : 'border-red-500/20 bg-red-500/5'}`}>
@@ -671,10 +671,10 @@ export function CourseDetailPage() {
                   : <XCircle size={52} className="text-red-400 mx-auto" />}
               </motion.div>
               <h3 className={`text-2xl font-bold mb-1 ${examResult.passed ? 'text-emerald-300' : 'text-red-300'}`}>
-                {examResult.passed ? 'Aprovado!' : 'Não aprovado'}
+                {examResult.passed ? 'Aprovado!' : 'NÃ£o aprovado'}
               </h3>
               <p className="text-slate-400 text-sm mb-6">
-                {examResult.passed ? 'Parabéns! Você atingiu a nota mínima.' : `Nota mínima: ${minimumGrade}%. Tente novamente!`}
+                {examResult.passed ? 'ParabÃ©ns! VocÃª atingiu a nota mÃ­nima.' : `Nota mÃ­nima: ${minimumGrade}%. Tente novamente!`}
               </p>
 
               <div className="flex items-center justify-center gap-8 mb-6">

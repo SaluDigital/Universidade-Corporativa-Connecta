@@ -1,4 +1,4 @@
-import { cn } from '../../lib/utils';
+﻿import { cn } from '../../lib/utils';
 import type { ReactNode, InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -58,7 +58,7 @@ export function Select({ label, error, options, value, onChange, placeholder, cl
       >
         {placeholder && <option value="">{placeholder}</option>}
         {options.map(opt => (
-          <option key={opt.value} value={opt.value} style={{ background: '#0d0d1f', color: '#e2e8f0' }}>
+          <option key={opt.value} value={opt.value} style={{ background: '#0D0D0D', color: '#e2e8f0' }}>
             {opt.label}
           </option>
         ))}

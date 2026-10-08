@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { Users, TrendingUp, AlertTriangle, Award, ArrowRight, Clock } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { StatCard } from '../../components/ui/Card';
@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } };
 
-const COLORS = ['#10b981', '#4BC8C8', '#f59e0b', '#ef4444'];
+const COLORS = ['#10b981', '#FEFEFE', '#f59e0b', '#ef4444'];
 
 export function ManagerDashboard() {
   const { user } = useAuthStore();
@@ -29,7 +29,7 @@ export function ManagerDashboard() {
     : 0;
 
   const statusData = [
-    { name: 'Concluído', value: completedTracks.length },
+    { name: 'ConcluÃ­do', value: completedTracks.length },
     { name: 'Em andamento', value: teamTracks.filter(t => t.status === 'in_progress').length },
     { name: 'Pendente', value: teamTracks.filter(t => t.status === 'not_started').length },
     { name: 'Vencido', value: overdueTracks.length },
@@ -38,15 +38,15 @@ export function ManagerDashboard() {
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="max-w-screen-xl space-y-6">
       {/* Welcome */}
-      <motion.div variants={item} className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-r from-[#6B35B0]/20 via-[#4BC8C8]/10 to-teal-600/10 border border-[#6B35B0]/20">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#6B35B0]/10 rounded-full blur-3xl" />
+      <motion.div variants={item} className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-r from-[#FF9C3A]/20 via-[#FEFEFE]/10 to-teal-600/10 border border-[#FF9C3A]/20">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF9C3A]/10 rounded-full blur-3xl" />
         <div className="relative z-10">
-          <p className="text-[#9B6FD4] text-sm font-medium mb-1">Painel do Gestor</p>
-          <h2 className="text-2xl font-bold text-white mb-1">Olá, {user?.name.split(' ')[0]}!</h2>
+          <p className="text-[#FFB45F] text-sm font-medium mb-1">Painel do Gestor</p>
+          <h2 className="text-2xl font-bold text-white mb-1">OlÃ¡, {user?.name.split(' ')[0]}!</h2>
           <p className="text-slate-400 text-sm">
-            Você tem <span className="text-white font-semibold">{team.length} colaboradores</span> na sua equipe.
+            VocÃª tem <span className="text-white font-semibold">{team.length} colaboradores</span> na sua equipe.
             {overdueTracks.length > 0 && (
-              <span className="text-red-400"> {overdueTracks.length} trilha(s) vencidas requerem atenção.</span>
+              <span className="text-red-400"> {overdueTracks.length} trilha(s) vencidas requerem atenÃ§Ã£o.</span>
             )}
           </p>
         </div>
@@ -55,8 +55,8 @@ export function ManagerDashboard() {
       {/* Stats */}
       <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard title="Equipe" value={team.length} subtitle="colaboradores" icon={<Users />} color="blue" />
-        <StatCard title="Média de progresso" value={`${avgProgress}%`} subtitle="nas trilhas" icon={<TrendingUp />} color="cyan" />
-        <StatCard title="Trilhas vencidas" value={overdueTracks.length} subtitle="precisam de atenção" icon={<AlertTriangle />} color="red" />
+        <StatCard title="MÃ©dia de progresso" value={`${avgProgress}%`} subtitle="nas trilhas" icon={<TrendingUp />} color="cyan" />
+        <StatCard title="Trilhas vencidas" value={overdueTracks.length} subtitle="precisam de atenÃ§Ã£o" icon={<AlertTriangle />} color="red" />
         <StatCard title="Certificados" value={completedTracks.length} subtitle="emitidos" icon={<Award />} color="emerald" />
       </motion.div>
 
@@ -95,7 +95,7 @@ export function ManagerDashboard() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1.5">
                       <p className="text-sm font-medium text-white">{member.name}</p>
-                      {hasOverdue && <span className="text-xs text-red-400">⚠ Atrasado</span>}
+                      {hasOverdue && <span className="text-xs text-red-400">âš  Atrasado</span>}
                     </div>
                     <ProgressBar value={progress} size="sm" showLabel />
                   </div>
@@ -109,7 +109,7 @@ export function ManagerDashboard() {
         {/* Status chart */}
         <motion.div variants={item} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Status das Trilhas</h3>
-          <p className="text-slate-500 text-sm mb-4">Distribuição da equipe</p>
+          <p className="text-slate-500 text-sm mb-4">DistribuiÃ§Ã£o da equipe</p>
           <div className="flex justify-center mb-6">
             <CircularProgress value={avgProgress} size={120} label="progresso" />
           </div>
@@ -141,9 +141,9 @@ export function ManagerDashboard() {
                   <Avatar name={member?.name ?? 'U'} size="sm" />
                   <div className="flex-1">
                     <p className="text-sm font-medium text-white">{member?.name}</p>
-                    <p className="text-xs text-red-400">{track.progress_percent}% concluído · Vencida</p>
+                    <p className="text-xs text-red-400">{track.progress_percent}% concluÃ­do Â· Vencida</p>
                   </div>
-                  <button className="text-xs text-white bg-[#6B35B0]/20 border border-[#6B35B0]/30 hover:bg-[#6B35B0]/35 px-2 py-1 rounded-lg transition-all">
+                  <button className="text-xs text-white bg-[#FF9C3A]/20 border border-[#FF9C3A]/30 hover:bg-[#FF9C3A]/35 px-2 py-1 rounded-lg transition-all">
                     Cobrar
                   </button>
                 </div>

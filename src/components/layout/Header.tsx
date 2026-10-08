@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { Bell, Search, Zap } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import { Avatar } from '../ui/Avatar';
@@ -17,7 +17,7 @@ export function Header({ title, subtitle }: HeaderProps) {
     <motion.header
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="sticky top-0 z-30 flex items-center gap-4 px-6 py-4 border-b border-white/5 bg-[#070711]/80 backdrop-blur-xl"
+      className="sticky top-0 z-30 flex items-center gap-4 px-6 py-4 border-b border-white/5 bg-[#050505]/80 backdrop-blur-xl"
     >
       {/* Title */}
       <div className="flex-1">
@@ -44,7 +44,7 @@ export function Header({ title, subtitle }: HeaderProps) {
             placeholder="Buscar..."
             autoFocus
             onBlur={() => setSearchOpen(false)}
-            className="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-slate-600 outline-none focus:border-[#6B35B0]/40"
+            className="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-slate-600 outline-none focus:border-[#FF9C3A]/40"
           />
         )}
         {!searchOpen && (
@@ -57,13 +57,13 @@ export function Header({ title, subtitle }: HeaderProps) {
       {/* Notifications */}
       <button className="relative w-10 h-10 flex items-center justify-center rounded-xl glass hover:bg-white/10 transition-all">
         <Bell size={16} className="text-slate-400" />
-        <span className="absolute top-2 right-2 w-2 h-2 bg-[#6B35B0] rounded-full" />
+        <span className="absolute top-2 right-2 w-2 h-2 bg-[#FF9C3A] rounded-full" />
       </button>
 
       {/* AI Badge */}
-      <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#6B35B0]/10 border border-[#6B35B0]/20 text-white text-xs font-semibold">
+      <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FF9C3A]/10 border border-[#FF9C3A]/20 text-white text-xs font-semibold">
         <Zap size={11} />
-        SaluDigital LMS
+        Universidade Corporativa
       </div>
 
       {/* Avatar */}

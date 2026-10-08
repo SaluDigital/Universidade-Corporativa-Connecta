@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 import type { ReactNode } from 'react';
 
@@ -22,9 +22,9 @@ export function Card({ children, className, hover, glow, onClick, gradient, padd
       className={cn(
         'glass-card rounded-2xl',
         paddings[padding],
-        hover && 'cursor-pointer transition-all duration-300 hover:border-[#6B35B0]/25 hover:shadow-2xl hover:shadow-[#6B35B0]/10',
+        hover && 'cursor-pointer transition-all duration-300 hover:border-[#FF9C3A]/25 hover:shadow-2xl hover:shadow-[#FF9C3A]/10',
         glow && 'glow-sm',
-        gradient && 'border-0 bg-gradient-to-br from-[#6B35B0]/10 to-[#4BC8C8]/10',
+        gradient && 'border-0 bg-gradient-to-br from-[#FF9C3A]/10 to-[#FEFEFE]/10',
         className
       )}
     >
@@ -43,9 +43,9 @@ interface StatCardProps {
 }
 
 const colorMap = {
-  purple: { bg: 'bg-violet-500/15', text: 'text-violet-400', glow: 'shadow-violet-500/20', badge: 'text-violet-300 bg-violet-500/10' },
-  blue: { bg: 'bg-blue-500/15', text: 'text-blue-400', glow: 'shadow-blue-500/20', badge: 'text-blue-300 bg-blue-500/10' },
-  cyan: { bg: 'bg-cyan-500/15', text: 'text-cyan-400', glow: 'shadow-cyan-500/20', badge: 'text-cyan-300 bg-cyan-500/10' },
+  purple: { bg: 'bg-[#FF9C3A]/15', text: 'text-[#FFB45F]', glow: 'shadow-[#FF9C3A]/20', badge: 'text-[#FFD3A3] bg-[#FF9C3A]/10' },
+  blue: { bg: 'bg-white/10', text: 'text-white', glow: 'shadow-white/10', badge: 'text-white bg-white/10' },
+  cyan: { bg: 'bg-[#FFB45F]/12', text: 'text-[#FFB45F]', glow: 'shadow-[#FFB45F]/15', badge: 'text-[#FFB45F] bg-[#FFB45F]/10' },
   emerald: { bg: 'bg-emerald-500/15', text: 'text-emerald-400', glow: 'shadow-emerald-500/20', badge: 'text-emerald-300 bg-emerald-500/10' },
   amber: { bg: 'bg-amber-500/15', text: 'text-amber-400', glow: 'shadow-amber-500/20', badge: 'text-amber-300 bg-amber-500/10' },
   red: { bg: 'bg-red-500/15', text: 'text-red-400', glow: 'shadow-red-500/20', badge: 'text-red-300 bg-red-500/10' },

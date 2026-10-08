@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Download, Search, RefreshCw, Shield, Calendar, BookOpen, Hash, Loader2 } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
@@ -21,7 +21,7 @@ export function CertificatesPage() {
         setCertificates(data ?? []);
       } catch (error) {
         console.error('[CertificatesPage] Erro ao carregar dados:', error);
-        toast.error('Não foi possível carregar os dados. Tente novamente.');
+        toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
         setCertificates([]);
       } finally {
         setLoading(false);
@@ -38,7 +38,7 @@ export function CertificatesPage() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
@@ -56,7 +56,7 @@ export function CertificatesPage() {
 
       <div className="relative max-w-sm">
         <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
-        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por colaborador, curso ou código..." className="input-base pl-10" />
+        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por colaborador, curso ou cÃ³digo..." className="input-base pl-10" />
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -71,7 +71,7 @@ export function CertificatesPage() {
                   <Award size={24} className="text-amber-400" />
                 </div>
                 <div className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1.5 rounded-lg">
-                  <Shield size={11} /> Válido
+                  <Shield size={11} /> VÃ¡lido
                 </div>
               </div>
               <h4 className="font-bold text-white mt-4 line-clamp-2">{cert.course?.title}</h4>
@@ -96,7 +96,7 @@ export function CertificatesPage() {
                 <button onClick={() => toast('Baixando certificado...')} className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs font-medium text-amber-400 hover:bg-amber-500/20 transition-all">
                   <Download size={12} /> Baixar PDF
                 </button>
-                <button onClick={() => toast.success('Certificado reenviado!')} className="flex items-center justify-center p-2 rounded-xl glass border border-white/10 text-slate-500 hover:text-white hover:border-[#6B35B0]/20 transition-all" title="Reemitir">
+                <button onClick={() => toast.success('Certificado reenviado!')} className="flex items-center justify-center p-2 rounded-xl glass border border-white/10 text-slate-500 hover:text-white hover:border-[#FF9C3A]/20 transition-all" title="Reemitir">
                   <RefreshCw size={13} />
                 </button>
               </div>

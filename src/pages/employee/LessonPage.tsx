@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 import { getUserCourseProgress } from '../../lib/api';
@@ -28,7 +28,7 @@ export function LessonPage() {
 
   return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 }

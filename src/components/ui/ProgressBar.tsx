@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 interface ProgressBarProps {
@@ -12,11 +12,11 @@ interface ProgressBarProps {
 }
 
 const colorMap = {
-  default: 'from-[#6B35B0] to-[#4BC8C8]',
+  default: 'from-[#FF9C3A] to-[#FEFEFE]',
   emerald: 'from-emerald-500 to-teal-500',
   amber: 'from-amber-500 to-orange-500',
   red: 'from-red-500 to-rose-500',
-  blue: 'from-blue-500 to-cyan-500',
+  blue: 'from-[#FFB45F] to-[#FEFEFE]',
 };
 
 const sizeMap = {
@@ -59,7 +59,7 @@ interface CircularProgressProps {
   label?: string;
 }
 
-export function CircularProgress({ value, size = 80, strokeWidth = 6, color = '#6B35B0', label }: CircularProgressProps) {
+export function CircularProgress({ value, size = 80, strokeWidth = 6, color = '#FF9C3A', label }: CircularProgressProps) {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (value / 100) * circumference;

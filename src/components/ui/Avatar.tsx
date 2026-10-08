@@ -1,4 +1,4 @@
-import { cn, getInitials } from '../../lib/utils';
+﻿import { cn, getInitials } from '../../lib/utils';
 
 interface AvatarProps {
   name: string;
@@ -17,12 +17,12 @@ const sizes = {
 };
 
 const colors = [
-  'from-violet-500 to-purple-600',
-  'from-blue-500 to-cyan-600',
+  'from-[#FF9C3A] to-[#FFB45F]',
+  'from-[#FFB45F] to-[#FEFEFE]',
   'from-emerald-500 to-teal-600',
   'from-amber-500 to-orange-600',
   'from-pink-500 to-rose-600',
-  'from-indigo-500 to-blue-600',
+  'from-[#A6A6A6] to-[#FEFEFE]',
 ];
 
 function getColor(name: string) {
@@ -39,7 +39,7 @@ export function Avatar({ name, src, size = 'md', className, ring }: AvatarProps)
         'rounded-full flex items-center justify-center flex-shrink-0 font-bold text-white',
         sizes[size],
         !src && `bg-gradient-to-br ${color}`,
-        ring && 'ring-2 ring-violet-500/50 ring-offset-2 ring-offset-[#070711]',
+        ring && 'ring-2 ring-[#FF9C3A]/50 ring-offset-2 ring-offset-[#050505]',
         className
       )}
     >
@@ -69,7 +69,7 @@ export function AvatarGroup({ users, max = 4, size = 'sm' }: AvatarGroupProps) {
       ))}
       {remaining > 0 && (
         <div className={cn(
-          'rounded-full flex items-center justify-center text-xs font-bold text-slate-400 bg-slate-700 ring-2 ring-violet-500/50 ring-offset-2 ring-offset-[#070711] flex-shrink-0',
+          'rounded-full flex items-center justify-center text-xs font-bold text-slate-400 bg-slate-700 ring-2 ring-[#FF9C3A]/50 ring-offset-2 ring-offset-[#050505] flex-shrink-0',
           size === 'sm' && 'w-8 h-8',
           size === 'md' && 'w-10 h-10',
         )}>

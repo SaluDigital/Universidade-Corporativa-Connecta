@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Layers, Users, Edit2, Briefcase, Loader2, Trash2 } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
@@ -9,12 +9,12 @@ import type { Department, Position, User } from '../../types';
 import toast from 'react-hot-toast';
 
 const deptColors = [
-  'from-[#6B35B0]/20 to-purple-900/10 border-[#6B35B0]/20',
-  'from-[#4BC8C8]/20 to-teal-900/10 border-[#4BC8C8]/20',
+  'from-[#FF9C3A]/20 to-[#141414]/10 border-[#FF9C3A]/20',
+  'from-[#FEFEFE]/20 to-teal-900/10 border-[#FEFEFE]/20',
   'from-emerald-500/20 to-teal-900/10 border-emerald-500/20',
   'from-amber-500/20 to-orange-900/10 border-amber-500/20',
   'from-pink-500/20 to-rose-900/10 border-pink-500/20',
-  'from-cyan-500/20 to-blue-900/10 border-cyan-500/20',
+  'from-[#FFB45F]/20 to-[#141414]/10 border-[#FFB45F]/20',
 ];
 
 export function DepartmentsPage() {
@@ -47,7 +47,7 @@ export function DepartmentsPage() {
       setUsers((usersRes.data as User[]) ?? []);
     } catch (error) {
       console.error('[DepartmentsPage] Erro ao carregar dados:', error);
-      toast.error('Não foi possível carregar os dados. Tente novamente.');
+      toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
       setDepartments([]);
       setPositions([]);
       setUsers([]);
@@ -112,7 +112,7 @@ export function DepartmentsPage() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
@@ -167,7 +167,7 @@ export function DepartmentsPage() {
                   </div>
                 )}
 
-                <button onClick={() => { setSelectedDeptId(dept.id); setPosForm({ name: '', description: '' }); setIsPosModalOpen(true); }} className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-dashed border-white/10 text-xs text-slate-600 hover:text-slate-400 hover:border-[#6B35B0]/30 transition-all">
+                <button onClick={() => { setSelectedDeptId(dept.id); setPosForm({ name: '', description: '' }); setIsPosModalOpen(true); }} className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-dashed border-white/10 text-xs text-slate-600 hover:text-slate-400 hover:border-[#FF9C3A]/30 transition-all">
                   <Plus size={12} /> Novo cargo
                 </button>
               </div>
@@ -181,7 +181,7 @@ export function DepartmentsPage() {
       >
         <div className="space-y-4">
           <Input label="Nome do departamento" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Ex: Comercial" />
-          <Textarea label="Descrição" value={form.description} onChange={v => setForm({ ...form, description: v })} rows={3} />
+          <Textarea label="DescriÃ§Ã£o" value={form.description} onChange={v => setForm({ ...form, description: v })} rows={3} />
         </div>
       </Modal>
 
@@ -190,7 +190,7 @@ export function DepartmentsPage() {
       >
         <div className="space-y-4">
           <Input label="Nome do cargo" value={posForm.name} onChange={e => setPosForm({ ...posForm, name: e.target.value })} placeholder="Ex: Consultor de Vendas" />
-          <Textarea label="Descrição" value={posForm.description} onChange={v => setPosForm({ ...posForm, description: v })} rows={3} />
+          <Textarea label="DescriÃ§Ã£o" value={posForm.description} onChange={v => setPosForm({ ...posForm, description: v })} rows={3} />
         </div>
       </Modal>
     </div>

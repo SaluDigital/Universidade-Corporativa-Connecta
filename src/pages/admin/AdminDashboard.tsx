@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Users, BookOpen, GitBranch, Award, TrendingUp, AlertTriangle,
@@ -25,7 +25,7 @@ const container = {
 };
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } };
 
-const COLORS = ['#6B35B0', '#4BC8C8', '#10b981', '#f59e0b', '#9B6FD4', '#ec4899'];
+const COLORS = ['#FF9C3A', '#FEFEFE', '#10b981', '#f59e0b', '#FFB45F', '#ec4899'];
 
 const MONTH_NAMES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
 
@@ -53,7 +53,7 @@ function buildTopCourses(rows: { course_id: string; courses: { title: string } |
   const map: Record<string, { name: string; completions: number }> = {};
   rows.forEach(r => {
     if (!r.course_id) return;
-    if (!map[r.course_id]) map[r.course_id] = { name: (r.courses as any)?.title ?? 'Sem título', completions: 0 };
+    if (!map[r.course_id]) map[r.course_id] = { name: (r.courses as any)?.title ?? 'Sem tÃ­tulo', completions: 0 };
     map[r.course_id].completions++;
   });
   const sorted = Object.values(map).sort((a, b) => b.completions - a.completions).slice(0, 5);
@@ -62,9 +62,9 @@ function buildTopCourses(rows: { course_id: string; courses: { title: string } |
 }
 
 const ACTION_LABELS: Record<string, { label: string; icon: string; color: string }> = {
-  ISSUE_CERTIFICATE: { label: 'obteve certificado', icon: '🏆', color: 'amber' },
-  COMPLETE_LESSON:   { label: 'concluiu uma aula', icon: '✓', color: 'emerald' },
-  LOGIN:             { label: 'fez login', icon: '→', color: 'blue' },
+  ISSUE_CERTIFICATE: { label: 'obteve certificado', icon: 'ðŸ†', color: 'amber' },
+  COMPLETE_LESSON:   { label: 'concluiu uma aula', icon: 'âœ“', color: 'emerald' },
+  LOGIN:             { label: 'fez login', icon: 'â†’', color: 'blue' },
   CREATE_USER:       { label: 'foi cadastrado', icon: '+', color: 'purple' },
 };
 
@@ -131,8 +131,8 @@ export function AdminDashboard() {
       setOverdueData(overdue ?? []);
       setRecentActivity(activity ?? []);
 
-      // próximos vencimentos: user_tracks in_progress com deadline
-      // já vem no overdue, mas para upcoming usamos os in_progress com deadline próximo
+      // prÃ³ximos vencimentos: user_tracks in_progress com deadline
+      // jÃ¡ vem no overdue, mas para upcoming usamos os in_progress com deadline prÃ³ximo
       setUpcomingTracks([]);
       setLoading(false);
     })();
@@ -140,7 +140,7 @@ export function AdminDashboard() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
@@ -149,19 +149,19 @@ export function AdminDashboard() {
       {/* Welcome banner */}
       <motion.div
         variants={item}
-        className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-r from-[#6B35B0]/20 via-[#4BC8C8]/10 to-[#4BC8C8]/5 border border-[#6B35B0]/20"
+        className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-r from-[#FF9C3A]/20 via-[#FEFEFE]/10 to-[#FEFEFE]/5 border border-[#FF9C3A]/20"
       >
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#6B35B0]/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF9C3A]/10 rounded-full blur-3xl" />
         <div className="relative z-10 flex items-center justify-between">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Zap size={16} className="text-[#9B6FD4]" />
-              <span className="text-[#9B6FD4] text-sm font-medium">Painel Administrativo</span>
+              <Zap size={16} className="text-[#FFB45F]" />
+              <span className="text-[#FFB45F] text-sm font-medium">Painel Administrativo</span>
             </div>
-            <h2 className="text-2xl font-bold text-white mb-1">Visão Geral do Sistema</h2>
-            <p className="text-slate-400 text-sm">Acompanhe o desempenho da sua universidade corporativa em tempo real.</p>
+            <h2 className="text-2xl font-bold text-white mb-1">Universidade Corporativa Coneccta</h2>
+            <p className="text-slate-400 text-sm">Acompanhe desenvolvimento, cursos, trilhas e certificados em tempo real.</p>
           </div>
-          <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#6B35B0]/15 border border-[#6B35B0]/25 text-white text-sm font-medium">
+          <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF9C3A]/15 border border-[#FF9C3A]/25 text-white text-sm font-medium">
             <Activity size={14} />
             Sistema operacional
           </div>
@@ -179,13 +179,13 @@ export function AdminDashboard() {
         <StatCard
           title="Cursos ativos"
           value={String(stats.courses)}
-          subtitle={`${stats.workloadHours}h de conteúdo`}
+          subtitle={`${stats.workloadHours}h de conteÃºdo`}
           icon={<BookOpen />} color="blue"
         />
         <StatCard
           title="Trilhas"
           value={String(stats.tracks)}
-          subtitle={`${stats.mandatoryTracks} obrigatórias`}
+          subtitle={`${stats.mandatoryTracks} obrigatÃ³rias`}
           icon={<GitBranch />} color="cyan"
         />
         <StatCard
@@ -202,41 +202,41 @@ export function AdminDashboard() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="font-semibold text-white">Progresso Mensal</h3>
-              <p className="text-slate-500 text-sm">Conclusões e certificados emitidos</p>
+              <p className="text-slate-500 text-sm">ConclusÃµes e certificados emitidos</p>
             </div>
             <div className="flex items-center gap-4 text-xs text-slate-500">
-              <span className="flex items-center gap-1.5"><span className="w-3 h-1.5 rounded-full inline-block" style={{ background: '#6B35B0' }} />Conclusões</span>
-              <span className="flex items-center gap-1.5"><span className="w-3 h-1.5 rounded-full inline-block" style={{ background: '#4BC8C8' }} />Certificados</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-1.5 rounded-full inline-block" style={{ background: '#FF9C3A' }} />ConclusÃµes</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-1.5 rounded-full inline-block" style={{ background: '#FEFEFE' }} />Certificados</span>
             </div>
           </div>
           <ResponsiveContainer width="100%" height={220}>
             <AreaChart data={monthlyData}>
               <defs>
                 <linearGradient id="gComp" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#6B35B0" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#6B35B0" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#FF9C3A" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#FF9C3A" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="gCert" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#4BC8C8" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#4BC8C8" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#FEFEFE" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#FEFEFE" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <XAxis dataKey="month" tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
               <Tooltip
-                contentStyle={{ background: '#12122b', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', color: '#e2e8f0', fontSize: '12px' }}
+                contentStyle={{ background: '#141414', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', color: '#e2e8f0', fontSize: '12px' }}
                 cursor={{ stroke: 'rgba(107,53,176,0.2)', strokeWidth: 1 }}
               />
-              <Area type="monotone" dataKey="completions" stroke="#6B35B0" fill="url(#gComp)" strokeWidth={2} dot={false} name="Conclusões" />
-              <Area type="monotone" dataKey="certificates" stroke="#4BC8C8" fill="url(#gCert)" strokeWidth={2} dot={false} name="Certificados" />
+              <Area type="monotone" dataKey="completions" stroke="#FF9C3A" fill="url(#gComp)" strokeWidth={2} dot={false} name="ConclusÃµes" />
+              <Area type="monotone" dataKey="certificates" stroke="#FEFEFE" fill="url(#gCert)" strokeWidth={2} dot={false} name="Certificados" />
             </AreaChart>
           </ResponsiveContainer>
         </motion.div>
 
         {/* Pie chart */}
         <motion.div variants={item} className="glass-card rounded-2xl p-6">
-          <h3 className="font-semibold text-white mb-1">Conclusão por Área</h3>
-          <p className="text-slate-500 text-sm mb-4">Taxa geral de conclusão</p>
+          <h3 className="font-semibold text-white mb-1">ConclusÃ£o por Ãrea</h3>
+          <p className="text-slate-500 text-sm mb-4">Taxa geral de conclusÃ£o</p>
           {deptData.length > 0 ? (
             <>
               <div className="flex justify-center mb-4">
@@ -275,7 +275,7 @@ export function AdminDashboard() {
         <motion.div variants={item} className="lg:col-span-2 glass-card rounded-2xl p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="font-semibold text-white">Taxa de Conclusão por Área</h3>
+              <h3 className="font-semibold text-white">Taxa de ConclusÃ£o por Ãrea</h3>
               <p className="text-slate-500 text-sm">Desempenho atual dos departamentos</p>
             </div>
           </div>
@@ -321,7 +321,7 @@ export function AdminDashboard() {
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-white truncate">{track.user_name}</p>
                   <p className="text-xs text-red-400 truncate">{track.track_title}</p>
-                  <p className="text-xs text-slate-600">{track.progress_percent}% concluído</p>
+                  <p className="text-xs text-slate-600">{track.progress_percent}% concluÃ­do</p>
                 </div>
               </div>
             ))}
@@ -339,7 +339,7 @@ export function AdminDashboard() {
       <div className="grid lg:grid-cols-2 gap-6">
         <motion.div variants={item} className="glass-card rounded-2xl p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-white">Cursos mais concluídos</h3>
+            <h3 className="font-semibold text-white">Cursos mais concluÃ­dos</h3>
             <BarChart2 size={16} className="text-slate-500" />
           </div>
           {topCoursesData.length > 0 ? (
@@ -360,7 +360,7 @@ export function AdminDashboard() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center h-32 text-slate-600 text-sm">
-              Nenhuma conclusão registrada ainda
+              Nenhuma conclusÃ£o registrada ainda
             </div>
           )}
         </motion.div>
@@ -373,7 +373,7 @@ export function AdminDashboard() {
           {recentActivity.length > 0 ? (
             <div className="space-y-3">
               {recentActivity.map((event: any, i: number) => {
-                const meta = ACTION_LABELS[event.action] ?? { label: event.action, icon: '•', color: 'blue' };
+                const meta = ACTION_LABELS[event.action] ?? { label: event.action, icon: 'â€¢', color: 'blue' };
                 return (
                   <motion.div
                     key={event.id}
@@ -384,9 +384,9 @@ export function AdminDashboard() {
                   >
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs flex-shrink-0
                       ${meta.color === 'emerald' ? 'bg-emerald-500/15 text-emerald-400' :
-                        meta.color === 'blue' ? 'bg-blue-500/15 text-blue-400' :
+                        meta.color === 'blue' ? 'bg-white/10 text-white' :
                         meta.color === 'amber' ? 'bg-amber-500/15 text-amber-400' :
-                        'bg-[#6B35B0]/15 text-[#9B6FD4]'}`}
+                        'bg-[#FF9C3A]/15 text-[#FFB45F]'}`}
                     >
                       {meta.icon}
                     </div>

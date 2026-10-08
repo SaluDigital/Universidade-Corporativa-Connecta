@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BarChart3, Download, TrendingUp, Users, Award, AlertTriangle, Clock, Loader2 } from 'lucide-react';
 import {
@@ -14,7 +14,7 @@ import { supabase } from '../../lib/supabase';
 import { formatDate } from '../../lib/utils';
 import toast from 'react-hot-toast';
 
-const COLORS = ['#6B35B0', '#4BC8C8', '#10b981', '#f59e0b', '#9B6FD4'];
+const COLORS = ['#FF9C3A', '#FEFEFE', '#10b981', '#f59e0b', '#FFB45F'];
 const MONTH_NAMES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -67,7 +67,7 @@ export function ReportsPage() {
         setUsers(usersRes.data ?? []);
       } catch (error) {
         console.error('[ReportsPage] Erro ao carregar dados:', error);
-        toast.error('Não foi possível carregar os dados. Tente novamente.');
+        toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
         setAllProgress([]);
         setCertificates([]);
         setOverdueTracks([]);
@@ -80,7 +80,7 @@ export function ReportsPage() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
@@ -148,7 +148,7 @@ export function ReportsPage() {
   const courseCompMap: Record<string, { name: string; completions: number }> = {};
   completed.forEach(p => {
     if (!p.course_id) return;
-    if (!courseCompMap[p.course_id]) courseCompMap[p.course_id] = { name: (p.course as any)?.title ?? 'Sem título', completions: 0 };
+    if (!courseCompMap[p.course_id]) courseCompMap[p.course_id] = { name: (p.course as any)?.title ?? 'Sem tÃ­tulo', completions: 0 };
     courseCompMap[p.course_id].completions++;
   });
   const topCourses = Object.values(courseCompMap).sort((a, b) => b.completions - a.completions).slice(0, 5);
@@ -159,47 +159,47 @@ export function ReportsPage() {
     <div className="max-w-screen-xl space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">Relatórios e Analytics</h2>
-          <p className="text-slate-500 text-sm mt-1">Inteligência de dados para decisões estratégicas</p>
+          <h2 className="text-2xl font-bold text-white">RelatÃ³rios e Analytics</h2>
+          <p className="text-slate-500 text-sm mt-1">InteligÃªncia de dados para decisÃµes estratÃ©gicas</p>
         </div>
-        <Button variant="secondary" icon={<Download size={15} />} onClick={() => toast('Exportando relatório...')}>
+        <Button variant="secondary" icon={<Download size={15} />} onClick={() => toast('Exportando relatÃ³rio...')}>
           Exportar PDF
         </Button>
       </div>
 
       {/* Summary stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard title="Taxa de conclusão geral" value={`${completionRate}%`} subtitle="Cursos com progresso" icon={<TrendingUp />} color="emerald" />
-        <StatCard title="Trilhas vencidas" value={String(overdueTracks.length)} subtitle="Requerem atenção" icon={<AlertTriangle />} color="red" />
+        <StatCard title="Taxa de conclusÃ£o geral" value={`${completionRate}%`} subtitle="Cursos com progresso" icon={<TrendingUp />} color="emerald" />
+        <StatCard title="Trilhas vencidas" value={String(overdueTracks.length)} subtitle="Requerem atenÃ§Ã£o" icon={<AlertTriangle />} color="red" />
         <StatCard title="Em andamento" value={String(inProgress.length)} subtitle="Cursos em progresso" icon={<Clock />} color="amber" />
-        <StatCard title="Certificados no mês" value={String(certsThisMonth.length)} subtitle={`${MONTH_NAMES[now.getMonth()]} ${now.getFullYear()}`} icon={<Award />} color="purple" />
+        <StatCard title="Certificados no mÃªs" value={String(certsThisMonth.length)} subtitle={`${MONTH_NAMES[now.getMonth()]} ${now.getFullYear()}`} icon={<Award />} color="purple" />
       </div>
 
       {/* Charts row 1 */}
       <div className="grid lg:grid-cols-3 gap-6">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="lg:col-span-2 glass-card rounded-2xl p-6">
-          <h3 className="font-semibold text-white mb-1">Evolução de Conclusões</h3>
-          <p className="text-slate-500 text-sm mb-4">Cursos concluídos e certificados emitidos por mês</p>
+          <h3 className="font-semibold text-white mb-1">EvoluÃ§Ã£o de ConclusÃµes</h3>
+          <p className="text-slate-500 text-sm mb-4">Cursos concluÃ­dos e certificados emitidos por mÃªs</p>
           <ResponsiveContainer width="100%" height={220}>
             <LineChart data={monthlyData}>
               <XAxis dataKey="month" tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
               <Tooltip content={<CustomTooltip />} />
-              <Line type="monotone" dataKey="certificates" stroke="#6B35B0" strokeWidth={2.5} dot={{ r: 4, fill: '#6B35B0', strokeWidth: 0 }} name="Certificados" />
-              <Line type="monotone" dataKey="completions" stroke="#4BC8C8" strokeWidth={2} dot={{ r: 3, fill: '#4BC8C8', strokeWidth: 0 }} strokeDasharray="4 2" name="Conclusões" />
+              <Line type="monotone" dataKey="certificates" stroke="#FF9C3A" strokeWidth={2.5} dot={{ r: 4, fill: '#FF9C3A', strokeWidth: 0 }} name="Certificados" />
+              <Line type="monotone" dataKey="completions" stroke="#FEFEFE" strokeWidth={2} dot={{ r: 3, fill: '#FEFEFE', strokeWidth: 0 }} strokeDasharray="4 2" name="ConclusÃµes" />
             </LineChart>
           </ResponsiveContainer>
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.1 } }} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Radar por Categoria</h3>
-          <p className="text-slate-500 text-sm mb-4">Taxa de conclusão por área</p>
+          <p className="text-slate-500 text-sm mb-4">Taxa de conclusÃ£o por Ã¡rea</p>
           {radarData.length > 0 ? (
             <ResponsiveContainer width="100%" height={220}>
               <RadarChart data={radarData}>
                 <PolarGrid stroke="rgba(255,255,255,0.05)" />
                 <PolarAngleAxis dataKey="subject" tick={{ fill: '#475569', fontSize: 11 }} />
-                <Radar dataKey="A" stroke="#6B35B0" fill="#6B35B0" fillOpacity={0.2} strokeWidth={2} />
+                <Radar dataKey="A" stroke="#FF9C3A" fill="#FF9C3A" fillOpacity={0.2} strokeWidth={2} />
               </RadarChart>
             </ResponsiveContainer>
           ) : (
@@ -212,14 +212,14 @@ export function ReportsPage() {
       <div className="grid lg:grid-cols-2 gap-6">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.15 } }} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Taxa por Departamento</h3>
-          <p className="text-slate-500 text-sm mb-4">Colaboradores com ao menos 1 curso concluído</p>
+          <p className="text-slate-500 text-sm mb-4">Colaboradores com ao menos 1 curso concluÃ­do</p>
           {deptData.length > 0 ? (
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={deptData} barSize={28}>
                 <XAxis dataKey="name" tick={{ fill: '#475569', fontSize: 11 }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fill: '#475569', fontSize: 11 }} axisLine={false} tickLine={false} domain={[0, 100]} />
                 <Tooltip content={<CustomTooltip />} />
-                <Bar dataKey="rate" name="% Conclusão" radius={[6, 6, 0, 0]}>
+                <Bar dataKey="rate" name="% ConclusÃ£o" radius={[6, 6, 0, 0]}>
                   {deptData.map((_, idx) => (
                     <Cell key={idx} fill={COLORS[idx % COLORS.length]} opacity={0.85} />
                   ))}
@@ -232,8 +232,8 @@ export function ReportsPage() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="glass-card rounded-2xl p-6">
-          <h3 className="font-semibold text-white mb-1">Cursos mais concluídos</h3>
-          <p className="text-slate-500 text-sm mb-4">Top 5 por número de conclusões</p>
+          <h3 className="font-semibold text-white mb-1">Cursos mais concluÃ­dos</h3>
+          <p className="text-slate-500 text-sm mb-4">Top 5 por nÃºmero de conclusÃµes</p>
           {topCoursesData.length > 0 ? (
             <div className="space-y-4">
               {topCoursesData.map((course, i) => (
@@ -248,7 +248,7 @@ export function ReportsPage() {
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center h-48 text-slate-600 text-sm">Nenhuma conclusão registrada</div>
+            <div className="flex items-center justify-center h-48 text-slate-600 text-sm">Nenhuma conclusÃ£o registrada</div>
           )}
         </motion.div>
       </div>
@@ -284,7 +284,7 @@ export function ReportsPage() {
 
         <div className="glass-card rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-4">
-            <BarChart3 size={16} className="text-[#9B6FD4]" />
+            <BarChart3 size={16} className="text-[#FFB45F]" />
             <h3 className="font-semibold text-white">Resumo Geral</h3>
           </div>
           <div className="space-y-4">
@@ -297,17 +297,17 @@ export function ReportsPage() {
               <span className="text-sm font-bold text-white">{allProgress.length}</span>
             </div>
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/3 border border-white/5">
-              <span className="text-sm text-slate-400">Cursos concluídos</span>
+              <span className="text-sm text-slate-400">Cursos concluÃ­dos</span>
               <span className="text-sm font-bold text-emerald-400">{completed.length}</span>
             </div>
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/3 border border-white/5">
               <span className="text-sm text-slate-400">Certificados emitidos</span>
               <span className="text-sm font-bold text-amber-400">{certificates.length}</span>
             </div>
-            <div className="p-3 rounded-xl bg-[#6B35B0]/10 border border-[#6B35B0]/20">
+            <div className="p-3 rounded-xl bg-[#FF9C3A]/10 border border-[#FF9C3A]/20">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-slate-400">Taxa de conclusão</span>
-                <span className="text-sm font-bold text-[#9B6FD4]">{completionRate}%</span>
+                <span className="text-sm text-slate-400">Taxa de conclusÃ£o</span>
+                <span className="text-sm font-bold text-[#FFB45F]">{completionRate}%</span>
               </div>
               <ProgressBar value={completionRate} size="sm" />
             </div>

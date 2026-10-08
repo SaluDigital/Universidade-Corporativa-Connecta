@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { AlertTriangle, Clock, Send, CheckCircle } from 'lucide-react';
 import { Avatar } from '../../components/ui/Avatar';
 import { ProgressBar } from '../../components/ui/ProgressBar';
@@ -19,21 +19,21 @@ export function AlertsPage() {
 
   const sendNotification = (userId: string, name: string) => {
     setNotified(prev => [...prev, userId]);
-    toast.success(`Notificação enviada para ${name}!`);
+    toast.success(`NotificaÃ§Ã£o enviada para ${name}!`);
   };
 
   return (
     <div className="max-w-screen-xl space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-white">Alertas de Atraso</h2>
-        <p className="text-slate-500 text-sm mt-1">{overdueItems.length} itens requerem sua atenção</p>
+        <p className="text-slate-500 text-sm mt-1">{overdueItems.length} itens requerem sua atenÃ§Ã£o</p>
       </div>
 
       {overdueItems.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
           <CheckCircle size={40} className="text-emerald-400 mx-auto mb-3" />
           <p className="text-emerald-400 font-medium">Tudo em dia!</p>
-          <p className="text-slate-500 text-sm mt-1">Sua equipe está no prazo com todas as trilhas.</p>
+          <p className="text-slate-500 text-sm mt-1">Sua equipe estÃ¡ no prazo com todas as trilhas.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -60,7 +60,7 @@ export function AlertsPage() {
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-white">{item.user?.name}</p>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    {isOverdue ? 'Trilha vencida' : 'Trilha não iniciada'} · {item.progress_percent}% concluído
+                    {isOverdue ? 'Trilha vencida' : 'Trilha nÃ£o iniciada'} Â· {item.progress_percent}% concluÃ­do
                   </p>
                   <ProgressBar value={item.progress_percent} size="xs" className="mt-2 max-w-xs" color={isOverdue ? 'red' : 'amber'} />
                 </div>
@@ -73,7 +73,7 @@ export function AlertsPage() {
                   ) : (
                     <button
                       onClick={() => sendNotification(item.user_id, item.user?.name ?? '')}
-                      className="flex items-center gap-1.5 text-xs text-white bg-[#6B35B0]/20 border border-[#6B35B0]/30 hover:bg-[#6B35B0]/35 px-3 py-2 rounded-xl transition-all"
+                      className="flex items-center gap-1.5 text-xs text-white bg-[#FF9C3A]/20 border border-[#FF9C3A]/30 hover:bg-[#FF9C3A]/35 px-3 py-2 rounded-xl transition-all"
                     >
                       <Send size={12} /> Cobrar
                     </button>

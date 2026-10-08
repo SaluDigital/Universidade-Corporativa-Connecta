@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+﻿import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import { Toaster } from 'react-hot-toast';
@@ -16,9 +16,9 @@ export function Layout({ title = 'Universidade Corporativa', subtitle }: LayoutP
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Background */}
-      <div className="fixed inset-0 bg-[#070711] pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-violet-600/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px]" />
+      <div className="fixed inset-0 bg-[#050505] pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#FF9C3A]/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-white/4 rounded-full blur-[100px]" />
       </div>
 
       <Sidebar />
@@ -43,13 +43,13 @@ export function Layout({ title = 'Universidade Corporativa', subtitle }: LayoutP
         position="top-right"
         toastOptions={{
           style: {
-            background: '#12122b',
+            background: '#141414',
             color: '#e2e8f0',
             border: '1px solid rgba(255,255,255,0.08)',
             borderRadius: '12px',
           },
-          success: { iconTheme: { primary: '#10b981', secondary: '#12122b' } },
-          error: { iconTheme: { primary: '#ef4444', secondary: '#12122b' } },
+          success: { iconTheme: { primary: '#10b981', secondary: '#141414' } },
+          error: { iconTheme: { primary: '#ef4444', secondary: '#141414' } },
         }}
       />
     </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { History, CheckCircle, PlayCircle, Award, Calendar, Loader2 } from 'lucide-react';
 import { ProgressBar } from '../../components/ui/ProgressBar';
@@ -30,7 +30,7 @@ export function HistoryPage() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
@@ -41,16 +41,16 @@ export function HistoryPage() {
     ...completedCourses.map(cp => ({
       date: cp.completed_at ?? cp.last_access_at ?? '',
       title: `Concluiu "${cp.course?.title}"`,
-      subtitle: cp.grade != null ? `Nota: ${cp.grade}%` : 'Sem avaliação',
+      subtitle: cp.grade != null ? `Nota: ${cp.grade}%` : 'Sem avaliaÃ§Ã£o',
       icon: <CheckCircle size={14} />,
       color: 'emerald',
     })),
     ...courseProgress.filter(cp => cp.status === 'in_progress').map(cp => ({
       date: cp.last_access_at ?? cp.started_at ?? '',
       title: (cp.progress_percent ?? 0) >= 100
-        ? `Aguardando aprovação — "${cp.course?.title}"`
-        : `Em andamento — "${cp.course?.title}"`,
-      subtitle: `${cp.progress_percent ?? 0}% das aulas concluídas${cp.grade != null ? ` · Última nota: ${cp.grade}%` : ''}`,
+        ? `Aguardando aprovaÃ§Ã£o â€” "${cp.course?.title}"`
+        : `Em andamento â€” "${cp.course?.title}"`,
+      subtitle: `${cp.progress_percent ?? 0}% das aulas concluÃ­das${cp.grade != null ? ` Â· Ãšltima nota: ${cp.grade}%` : ''}`,
       icon: <PlayCircle size={14} />,
       color: 'blue',
     })),
@@ -67,28 +67,28 @@ export function HistoryPage() {
 
   const colorMap: Record<string, string> = {
     emerald: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20',
-    blue: 'bg-[#4BC8C8]/15 text-[#4BC8C8] border-[#4BC8C8]/20',
+    blue: 'bg-[#FEFEFE]/15 text-[#FEFEFE] border-[#FEFEFE]/20',
     amber: 'bg-amber-500/15 text-amber-400 border-amber-500/20',
   };
 
   return (
     <div className="max-w-3xl space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-white">Meu Histórico</h2>
+        <h2 className="text-2xl font-bold text-white">Meu HistÃ³rico</h2>
         <p className="text-slate-500 text-sm mt-1">Todo o seu progresso de aprendizado</p>
       </div>
 
       <div className="grid grid-cols-3 gap-4">
         <div className="glass-card rounded-xl p-4 text-center border border-emerald-500/15">
           <p className="text-2xl font-bold text-emerald-400">{completedCourses.length}</p>
-          <p className="text-xs text-slate-500 mt-1">Cursos concluídos</p>
+          <p className="text-xs text-slate-500 mt-1">Cursos concluÃ­dos</p>
         </div>
         <div className="glass-card rounded-xl p-4 text-center border border-amber-500/15">
           <p className="text-2xl font-bold text-amber-400">{certificates.length}</p>
           <p className="text-xs text-slate-500 mt-1">Certificados</p>
         </div>
-        <div className="glass-card rounded-xl p-4 text-center border border-[#6B35B0]/15">
-          <p className="text-2xl font-bold text-[#9B6FD4]">{completedTracks.length}</p>
+        <div className="glass-card rounded-xl p-4 text-center border border-[#FF9C3A]/15">
+          <p className="text-2xl font-bold text-[#FFB45F]">{completedTracks.length}</p>
           <p className="text-xs text-slate-500 mt-1">Trilhas completas</p>
         </div>
       </div>
@@ -103,7 +103,7 @@ export function HistoryPage() {
           </div>
         ) : (
           <div className="relative space-y-4">
-            <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-[#6B35B0]/30 to-transparent" />
+            <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-[#FF9C3A]/30 to-transparent" />
             {timeline.map((event, i) => (
               <motion.div
                 key={i}
@@ -141,7 +141,7 @@ export function HistoryPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-white/5">
-                  {['Curso', 'Status', 'Progresso', 'Nota', 'Último acesso'].map(h => (
+                  {['Curso', 'Status', 'Progresso', 'Nota', 'Ãšltimo acesso'].map(h => (
                     <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap">{h}</th>
                   ))}
                 </tr>
@@ -159,19 +159,19 @@ export function HistoryPage() {
                     <td className="px-4 py-3">
                       <span className={`text-xs font-semibold px-2 py-1 rounded-lg ${
                         cp.status === 'completed' ? 'bg-emerald-500/15 text-emerald-400' :
-                        cp.status === 'in_progress' ? 'bg-[#4BC8C8]/15 text-[#4BC8C8]' :
+                        cp.status === 'in_progress' ? 'bg-[#FEFEFE]/15 text-[#FEFEFE]' :
                         'bg-slate-500/15 text-slate-400'}`}>
-                        {cp.status === 'completed' ? 'Concluído' : cp.status === 'in_progress' ? 'Em andamento' : 'Não iniciado'}
+                        {cp.status === 'completed' ? 'ConcluÃ­do' : cp.status === 'in_progress' ? 'Em andamento' : 'NÃ£o iniciado'}
                       </span>
                     </td>
                     <td className="px-4 py-3 w-32"><ProgressBar value={cp.progress_percent ?? 0} size="xs" showLabel /></td>
                     <td className="px-4 py-3 text-sm font-semibold">
                       {cp.grade != null
                         ? <span className={cp.grade >= 70 ? 'text-emerald-400' : 'text-red-400'}>{cp.grade}%</span>
-                        : <span className="text-slate-600">—</span>}
+                        : <span className="text-slate-600">â€”</span>}
                     </td>
                     <td className="px-4 py-3 text-xs text-slate-500">
-                      {cp.last_access_at ? formatDate(cp.last_access_at) : '—'}
+                      {cp.last_access_at ? formatDate(cp.last_access_at) : 'â€”'}
                     </td>
                   </motion.tr>
                 ))}

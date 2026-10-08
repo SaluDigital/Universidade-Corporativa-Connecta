@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus, Search, BookOpen, Clock, Award, CheckCircle, Edit2,
@@ -20,16 +20,16 @@ import toast from 'react-hot-toast';
 
 const categoryColors: Record<string, string> = {
   Onboarding: 'emerald', Cultura: 'cyan', Comercial: 'purple',
-  Gestão: 'amber', Marketing: 'pink', Técnico: 'blue',
+  Gestao: 'amber', Marketing: 'pink', Tecnico: 'blue',
 };
 
 const courseGradients = [
-  'from-[#6B35B0]/30 to-purple-900/20',
-  'from-[#4BC8C8]/30 to-teal-900/20',
+  'from-[#FF9C3A]/30 to-[#141414]/20',
+  'from-[#FEFEFE]/30 to-teal-900/20',
   'from-emerald-600/30 to-teal-900/20',
   'from-amber-600/30 to-orange-900/20',
   'from-pink-600/30 to-rose-900/20',
-  'from-cyan-600/30 to-blue-900/20',
+  'from-[#FFB45F]/30 to-[#141414]/20',
 ];
 
 export function CoursesPage() {
@@ -43,7 +43,7 @@ export function CoursesPage() {
   const [search, setSearch] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  // Modal de criação/edição
+  // Modal de criaÃ§Ã£o/ediÃ§Ã£o
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editCourse, setEditCourse] = useState<Course | null>(null);
   const [form, setForm] = useState({
@@ -53,7 +53,7 @@ export function CoursesPage() {
   const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
   const [thumbnailPreview, setThumbnailPreview] = useState<string>('');
 
-  // Modal de exclusão
+  // Modal de exclusÃ£o
   const [courseToDelete, setCourseToDelete] = useState<Course | null>(null);
   const [deleting, setDeleting] = useState(false);
 
@@ -65,7 +65,7 @@ export function CoursesPage() {
       setCourses((data as Course[]) ?? []);
     } catch (error) {
       console.error('[CoursesPage] Erro ao carregar dados:', error);
-      toast.error('Não foi possível carregar os dados. Tente novamente.');
+      toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
       setCourses([]);
     } finally {
       setLoading(false);
@@ -102,8 +102,8 @@ export function CoursesPage() {
   const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (!file.type.startsWith('image/')) return toast.error('Selecione uma imagem válida');
-    if (file.size > 2 * 1024 * 1024) return toast.error('A imagem deve ter no máximo 2MB');
+    if (!file.type.startsWith('image/')) return toast.error('Selecione uma imagem vÃ¡lida');
+    if (file.size > 2 * 1024 * 1024) return toast.error('A imagem deve ter no mÃ¡ximo 2MB');
     setThumbnailFile(file);
     setThumbnailPreview(URL.createObjectURL(file));
   };
@@ -115,7 +115,7 @@ export function CoursesPage() {
   };
 
   const handleSave = async () => {
-    if (!form.title) return toast.error('Informe o título do curso');
+    if (!form.title) return toast.error('Informe o tÃ­tulo do curso');
     setSaving(true);
     try {
       let thumbnailUrl = editCourse?.thumbnail_url ?? null;
@@ -170,7 +170,7 @@ export function CoursesPage() {
     if (error) {
       toast.error('Erro ao excluir curso');
     } else {
-      toast.success('Curso excluído!');
+      toast.success('Curso excluÃ­do!');
       setCourses(prev => prev.filter(c => c.id !== courseToDelete.id));
       setCourseToDelete(null);
     }
@@ -179,7 +179,7 @@ export function CoursesPage() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
@@ -188,13 +188,13 @@ export function CoursesPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-white">Gestão de Cursos</h2>
+          <h2 className="text-2xl font-bold text-white">GestÃ£o de Cursos</h2>
           <p className="text-slate-500 text-sm mt-1">{filtered.length} cursos cadastrados</p>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center p-1 glass rounded-xl border border-white/5">
             {(['grid', 'list'] as const).map(mode => (
-              <button key={mode} onClick={() => setViewMode(mode)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${viewMode === mode ? 'bg-[#6B35B0]/20 text-[#C4A8E8]' : 'text-slate-500 hover:text-slate-300'}`}>
+              <button key={mode} onClick={() => setViewMode(mode)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${viewMode === mode ? 'bg-[#FF9C3A]/20 text-[#FFD3A3]' : 'text-slate-500 hover:text-slate-300'}`}>
                 {mode === 'grid' ? 'Grid' : 'Lista'}
               </button>
             ))}
@@ -251,19 +251,19 @@ export function CoursesPage() {
                     <p className="text-slate-500 text-xs mb-3 line-clamp-2">{course.description}</p>
                     <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
                       <span className="flex items-center gap-1"><Clock size={11} /> {course.workload_hours}h</span>
-                      {course.requires_exam && <span className="flex items-center gap-1"><CheckCircle size={11} className="text-[#4BC8C8]" /> Avaliação</span>}
+                      {course.requires_exam && <span className="flex items-center gap-1"><CheckCircle size={11} className="text-[#FEFEFE]" /> AvaliaÃ§Ã£o</span>}
                       <span className="flex items-center gap-1 ml-auto"><Star size={11} className="text-slate-600" /> v{course.version}</span>
                     </div>
 
-                    {/* Ações sempre visíveis */}
+                    {/* AÃ§Ãµes sempre visÃ­veis */}
                     <div className="grid grid-cols-5 gap-0.5 border-t border-white/5 pt-3">
                       <button onClick={() => openEdit(course)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-white/8 transition-all text-[10px]">
                         <Edit2 size={13} /> Editar
                       </button>
-                      <button onClick={() => navigate(`/admin/courses/${course.id}/modules`)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-[#4BC8C8] hover:bg-[#4BC8C8]/8 transition-all text-[10px]">
-                        <Layers size={13} /> Módulos
+                      <button onClick={() => navigate(`/admin/courses/${course.id}/modules`)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-[#FEFEFE] hover:bg-[#FEFEFE]/8 transition-all text-[10px]">
+                        <Layers size={13} /> MÃ³dulos
                       </button>
-                      <button onClick={() => navigate(`/admin/courses/${course.id}/exam`)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-[#9B6FD4] hover:bg-[#9B6FD4]/8 transition-all text-[10px]">
+                      <button onClick={() => navigate(`/admin/courses/${course.id}/exam`)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-[#FFB45F] hover:bg-[#FFB45F]/8 transition-all text-[10px]">
                         <HelpCircle size={13} /> Prova
                       </button>
                       <button onClick={() => handleToggleActive(course)} className="flex flex-col items-center gap-1 py-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-white/8 transition-all text-[10px]">
@@ -298,8 +298,8 @@ export function CoursesPage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <button onClick={() => openEdit(course)} className="p-2 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all" title="Editar"><Edit2 size={14} /></button>
-                    <button onClick={() => navigate(`/admin/courses/${course.id}/modules`)} className="p-2 rounded-lg text-slate-500 hover:text-[#4BC8C8] hover:bg-white/10 transition-all" title="Módulos"><Layers size={14} /></button>
-                    <button onClick={() => navigate(`/admin/courses/${course.id}/exam`)} className="p-2 rounded-lg text-slate-500 hover:text-[#9B6FD4] hover:bg-white/10 transition-all" title="Prova"><HelpCircle size={14} /></button>
+                    <button onClick={() => navigate(`/admin/courses/${course.id}/modules`)} className="p-2 rounded-lg text-slate-500 hover:text-[#FEFEFE] hover:bg-white/10 transition-all" title="MÃ³dulos"><Layers size={14} /></button>
+                    <button onClick={() => navigate(`/admin/courses/${course.id}/exam`)} className="p-2 rounded-lg text-slate-500 hover:text-[#FFB45F] hover:bg-white/10 transition-all" title="Prova"><HelpCircle size={14} /></button>
                     <button onClick={() => handleToggleActive(course)} className="p-2 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all" title={course.is_active ? 'Desativar' : 'Ativar'}>
                       {course.is_active ? <ToggleLeft size={14} /> : <ToggleRight size={14} />}
                     </button>
@@ -316,7 +316,7 @@ export function CoursesPage() {
         <div className="py-16 text-center text-slate-600">Nenhum curso encontrado.</div>
       )}
 
-      {/* Modal — Criar/Editar curso */}
+      {/* Modal â€” Criar/Editar curso */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -326,7 +326,7 @@ export function CoursesPage() {
           <>
             <Button variant="secondary" onClick={() => setIsModalOpen(false)}>Cancelar</Button>
             <Button onClick={handleSave} disabled={saving} icon={saving ? <Loader2 size={14} className="animate-spin" /> : undefined}>
-              {editCourse ? 'Salvar alterações' : 'Criar curso'}
+              {editCourse ? 'Salvar alteraÃ§Ãµes' : 'Criar curso'}
             </Button>
           </>
         }
@@ -349,22 +349,22 @@ export function CoursesPage() {
             ) : (
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="w-full h-28 rounded-xl border-2 border-dashed border-white/10 hover:border-[#6B35B0]/40 bg-white/2 hover:bg-[#6B35B0]/5 flex flex-col items-center justify-center gap-2 transition-all"
+                className="w-full h-28 rounded-xl border-2 border-dashed border-white/10 hover:border-[#FF9C3A]/40 bg-white/2 hover:bg-[#FF9C3A]/5 flex flex-col items-center justify-center gap-2 transition-all"
               >
                 <ImagePlus size={22} className="text-slate-600" />
                 <span className="text-xs text-slate-600">Clique para selecionar uma imagem</span>
-                <span className="text-xs text-slate-700">JPG, PNG ou WebP · máx. 2MB</span>
+                <span className="text-xs text-slate-700">JPG, PNG ou WebP Â· mÃ¡x. 2MB</span>
               </button>
             )}
             {!thumbnailPreview && (
-              <button onClick={() => fileInputRef.current?.click()} className="mt-2 text-xs text-[#9B6FD4] hover:underline">
+              <button onClick={() => fileInputRef.current?.click()} className="mt-2 text-xs text-[#FFB45F] hover:underline">
                 Selecionar arquivo
               </button>
             )}
           </div>
 
-          <Input label="Título do curso" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} placeholder="Ex: Onboarding Geral" />
-          <Textarea label="Descrição" value={form.description} onChange={v => setForm({ ...form, description: v })} placeholder="Descreva o objetivo do curso..." />
+          <Input label="TÃ­tulo do curso" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} placeholder="Ex: Onboarding Geral" />
+          <Textarea label="DescriÃ§Ã£o" value={form.description} onChange={v => setForm({ ...form, description: v })} placeholder="Descreva o objetivo do curso..." />
           <div className="grid grid-cols-2 gap-4">
             <Select
               label="Categoria"
@@ -373,32 +373,32 @@ export function CoursesPage() {
                 { value: 'Onboarding', label: 'Onboarding' },
                 { value: 'Cultura', label: 'Cultura' },
                 { value: 'Comercial', label: 'Comercial' },
-                { value: 'Gestão', label: 'Gestão' },
+                { value: 'GestÃ£o', label: 'GestÃ£o' },
                 { value: 'Marketing', label: 'Marketing' },
-                { value: 'Técnico', label: 'Técnico' },
+                { value: 'TÃ©cnico', label: 'TÃ©cnico' },
               ]}
               value={form.category}
               onChange={v => setForm({ ...form, category: v })}
             />
-            <Input label="Carga horária (h)" type="number" value={form.workload_hours} onChange={e => setForm({ ...form, workload_hours: e.target.value })} placeholder="8" />
+            <Input label="Carga horÃ¡ria (h)" type="number" value={form.workload_hours} onChange={e => setForm({ ...form, workload_hours: e.target.value })} placeholder="8" />
           </div>
           <div className="flex items-center gap-6">
             <label className="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked={form.has_certificate} onChange={e => setForm({ ...form, has_certificate: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#6B35B0] cursor-pointer" />
+              <input type="checkbox" checked={form.has_certificate} onChange={e => setForm({ ...form, has_certificate: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
               <span className="text-sm text-slate-300">Emite certificado</span>
             </label>
             <label className="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked={form.requires_exam} onChange={e => setForm({ ...form, requires_exam: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#6B35B0] cursor-pointer" />
-              <span className="text-sm text-slate-300">Requer avaliação</span>
+              <input type="checkbox" checked={form.requires_exam} onChange={e => setForm({ ...form, requires_exam: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
+              <span className="text-sm text-slate-300">Requer avaliaÃ§Ã£o</span>
             </label>
           </div>
           {form.requires_exam && (
-            <Input label="Nota mínima (%)" type="number" value={form.minimum_grade} onChange={e => setForm({ ...form, minimum_grade: e.target.value })} placeholder="70" />
+            <Input label="Nota mÃ­nima (%)" type="number" value={form.minimum_grade} onChange={e => setForm({ ...form, minimum_grade: e.target.value })} placeholder="70" />
           )}
         </div>
       </Modal>
 
-      {/* Modal — Confirmar exclusão */}
+      {/* Modal â€” Confirmar exclusÃ£o */}
       <Modal
         isOpen={!!courseToDelete}
         onClose={() => setCourseToDelete(null)}
@@ -417,11 +417,11 @@ export function CoursesPage() {
             Tem certeza que deseja excluir o curso <span className="font-semibold text-white">"{courseToDelete?.title}"</span>?
           </p>
           <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-xs text-red-400 space-y-1">
-            <p className="font-medium">Esta ação é irreversível e removerá:</p>
-            <p>• Todos os módulos e aulas do curso</p>
-            <p>• Todo o progresso dos colaboradores</p>
-            <p>• Todos os certificados emitidos</p>
-            <p>• As perguntas da prova</p>
+            <p className="font-medium">Esta aÃ§Ã£o Ã© irreversÃ­vel e removerÃ¡:</p>
+            <p>â€¢ Todos os mÃ³dulos e aulas do curso</p>
+            <p>â€¢ Todo o progresso dos colaboradores</p>
+            <p>â€¢ Todos os certificados emitidos</p>
+            <p>â€¢ As perguntas da prova</p>
           </div>
         </div>
       </Modal>

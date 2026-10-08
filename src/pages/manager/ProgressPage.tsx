@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { ProgressBar } from '../../components/ui/ProgressBar';
 import { Avatar } from '../../components/ui/Avatar';
@@ -29,13 +29,13 @@ export function ProgressPage() {
 
       {/* Bar chart */}
       <div className="glass-card rounded-2xl p-6">
-        <h3 className="font-semibold text-white mb-4">Progresso médio por colaborador</h3>
+        <h3 className="font-semibold text-white mb-4">Progresso mÃ©dio por colaborador</h3>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={teamProgressData} barSize={36}>
             <XAxis dataKey="name" tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} domain={[0, 100]} />
             <Tooltip
-              contentStyle={{ background: '#12122b', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', color: '#e2e8f0', fontSize: '12px' }}
+              contentStyle={{ background: '#141414', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', color: '#e2e8f0', fontSize: '12px' }}
               formatter={(v) => [`${v}%`, 'Progresso']}
             />
             <Bar dataKey="progress" radius={[8, 8, 0, 0]}>
@@ -56,7 +56,7 @@ export function ProgressPage() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-white/5">
-                {['Colaborador', 'Curso', 'Progresso', 'Nota', 'Status', 'Último acesso'].map(h => (
+                {['Colaborador', 'Curso', 'Progresso', 'Nota', 'Status', 'Ãšltimo acesso'].map(h => (
                   <th key={h} className="px-5 py-3.5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
               </tr>
@@ -89,12 +89,12 @@ export function ProgressPage() {
                       {cp.grade != null ? (
                         <span className={cp.grade >= 70 ? 'text-emerald-400' : 'text-red-400'}>{cp.grade}%</span>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-slate-600">â€”</span>
                       )}
                     </td>
                     <td className="px-5 py-4"><StatusBadge status={cp.status} /></td>
                     <td className="px-5 py-4 text-xs text-slate-500">
-                      {cp.last_access_at ? new Date(cp.last_access_at).toLocaleDateString('pt-BR') : '—'}
+                      {cp.last_access_at ? new Date(cp.last_access_at).toLocaleDateString('pt-BR') : 'â€”'}
                     </td>
                   </motion.tr>
                 );

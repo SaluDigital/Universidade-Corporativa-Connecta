@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Search, MoreVertical, UserCheck, UserX, Edit2, Award, Mail, Building2, Loader2 } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
@@ -49,7 +49,7 @@ export function UsersPage() {
       setPositions((positionsRes.data as Position[]) ?? []);
     } catch (error) {
       console.error('[UsersPage] Erro ao carregar dados:', error);
-      toast.error('Não foi possível carregar os dados. Tente novamente.');
+      toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
       setUsers([]);
       setDepartments([]);
       setPositions([]);
@@ -67,8 +67,8 @@ export function UsersPage() {
     return matchSearch && matchRole && matchDept;
   });
 
-  const getDept = (id: string) => departments.find(d => d.id === id)?.name ?? '—';
-  const getPos = (id: string) => positions.find(p => p.id === id)?.name ?? '—';
+  const getDept = (id: string) => departments.find(d => d.id === id)?.name ?? 'â€”';
+  const getPos = (id: string) => positions.find(p => p.id === id)?.name ?? 'â€”';
 
   const openCreate = () => {
     setEditUser(null);
@@ -96,16 +96,16 @@ export function UsersPage() {
           hire_date: form.hire_date || null,
         });
         if (error) throw error;
-        toast.success('Usuário atualizado!');
+        toast.success('UsuÃ¡rio atualizado!');
       } else {
-        if (!form.password) return toast.error('Informe uma senha provisória');
+        if (!form.password) return toast.error('Informe uma senha provisÃ³ria');
         await createUser(form);
-        toast.success('Usuário criado! Um e-mail de confirmação foi enviado.');
+        toast.success('UsuÃ¡rio criado! Um e-mail de confirmaÃ§Ã£o foi enviado.');
       }
       setIsModalOpen(false);
       await load();
     } catch (e: any) {
-      toast.error(e.message || 'Erro ao salvar usuário');
+      toast.error(e.message || 'Erro ao salvar usuÃ¡rio');
     } finally {
       setSaving(false);
     }
@@ -116,13 +116,13 @@ export function UsersPage() {
     const newStatus = user.status === 'active' ? 'inactive' : 'active';
     const { error } = await updateUserStatus(user.id, newStatus);
     if (error) return toast.error('Erro ao alterar status');
-    toast.success(`Usuário ${newStatus === 'active' ? 'reativado' : 'inativado'}!`);
+    toast.success(`UsuÃ¡rio ${newStatus === 'active' ? 'reativado' : 'inativado'}!`);
     setUsers(prev => prev.map(u => u.id === user.id ? { ...u, status: newStatus } : u));
   };
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
@@ -130,7 +130,7 @@ export function UsersPage() {
     <div className="max-w-screen-xl space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-white">Gestão de Usuários</h2>
+          <h2 className="text-2xl font-bold text-white">GestÃ£o de UsuÃ¡rios</h2>
           <p className="text-slate-500 text-sm mt-1">{filtered.length} colaboradores encontrados</p>
         </div>
         <Button onClick={openCreate} icon={<Plus size={16} />}>Novo Colaborador</Button>
@@ -150,7 +150,7 @@ export function UsersPage() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-white/5">
-                {['Colaborador', 'Departamento', 'Cargo', 'Perfil', 'Status', 'Admissão', ''].map(h => (
+                {['Colaborador', 'Departamento', 'Cargo', 'Perfil', 'Status', 'AdmissÃ£o', ''].map(h => (
                   <th key={h} className="px-4 py-3.5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
               </tr>
@@ -207,7 +207,7 @@ export function UsersPage() {
             </motion.tbody>
           </table>
           {filtered.length === 0 && (
-            <div className="py-16 text-center text-slate-600">Nenhum usuário encontrado.</div>
+            <div className="py-16 text-center text-slate-600">Nenhum usuÃ¡rio encontrado.</div>
           )}
         </div>
       </div>
@@ -218,25 +218,25 @@ export function UsersPage() {
             <Button variant="secondary" onClick={() => setIsModalOpen(false)}>Cancelar</Button>
             <Button onClick={handleSave} disabled={saving}>
               {saving ? <Loader2 size={14} className="animate-spin mr-2" /> : null}
-              {editUser ? 'Salvar alterações' : 'Criar colaborador'}
+              {editUser ? 'Salvar alteraÃ§Ãµes' : 'Criar colaborador'}
             </Button>
           </>
         }
       >
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-2">
-            <Input label="Nome completo" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="João da Silva" />
+            <Input label="Nome completo" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="JoÃ£o da Silva" />
           </div>
           <div className="col-span-2">
-            <Input label="E-mail" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="joao@saludigital.com.br" icon={<Mail size={14} />} disabled={!!editUser} />
+            <Input label="E-mail" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="joao@coneccta.com.br" icon={<Mail size={14} />} disabled={!!editUser} />
           </div>
           {!editUser && (
             <div className="col-span-2">
-              <Input label="Senha provisória" type="password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} placeholder="Mínimo 6 caracteres" />
+              <Input label="Senha provisÃ³ria" type="password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} placeholder="MÃ­nimo 6 caracteres" />
             </div>
           )}
           <Select label="Perfil de acesso" options={[{ value: 'employee', label: 'Colaborador' }, { value: 'manager', label: 'Gestor' }, { value: 'admin', label: 'Administrador' }]} value={form.role} onChange={v => setForm({ ...form, role: v })} />
-          <Input label="Data de admissão" type="date" value={form.hire_date} onChange={e => setForm({ ...form, hire_date: e.target.value })} />
+          <Input label="Data de admissÃ£o" type="date" value={form.hire_date} onChange={e => setForm({ ...form, hire_date: e.target.value })} />
           <Select label="Departamento" options={[{ value: '', label: 'Selecione...' }, ...departments.map(d => ({ value: d.id, label: d.name }))]} value={form.department_id} onChange={v => setForm({ ...form, department_id: v, position_id: '' })} />
           <Select label="Cargo" options={[{ value: '', label: 'Selecione...' }, ...positions.filter(p => !form.department_id || p.department_id === form.department_id).map(p => ({ value: p.id, label: p.name }))]} value={form.position_id} onChange={v => setForm({ ...form, position_id: v })} />
         </div>

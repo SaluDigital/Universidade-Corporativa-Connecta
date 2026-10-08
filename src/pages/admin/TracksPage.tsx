@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, GitBranch, Clock, Users, BookOpen, ChevronRight, Edit2, AlertTriangle, Loader2, Trash2, ListPlus } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
@@ -11,8 +11,8 @@ import type { Track, Course } from '../../types';
 import toast from 'react-hot-toast';
 
 const trackColors = [
-  { bg: 'from-[#6B35B0]/20 to-purple-900/10', icon: 'text-[#9B6FD4]', border: 'border-[#6B35B0]/20', bar: '#6B35B0' },
-  { bg: 'from-[#4BC8C8]/20 to-teal-900/10', icon: 'text-[#4BC8C8]', border: 'border-[#4BC8C8]/20', bar: '#4BC8C8' },
+  { bg: 'from-[#FF9C3A]/20 to-[#141414]/10', icon: 'text-[#FFB45F]', border: 'border-[#FF9C3A]/20', bar: '#FF9C3A' },
+  { bg: 'from-[#FEFEFE]/20 to-teal-900/10', icon: 'text-[#FEFEFE]', border: 'border-[#FEFEFE]/20', bar: '#FEFEFE' },
   { bg: 'from-emerald-600/20 to-teal-900/10', icon: 'text-emerald-400', border: 'border-emerald-500/20', bar: '#10b981' },
   { bg: 'from-amber-600/20 to-orange-900/10', icon: 'text-amber-400', border: 'border-amber-500/20', bar: '#f59e0b' },
 ];
@@ -64,7 +64,7 @@ export function TracksPage() {
       setCompletionRates(rates);
     } catch (error) {
       console.error('[TracksPage] Erro ao carregar dados:', error);
-      toast.error('Não foi possível carregar os dados. Tente novamente.');
+      toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
       setTracks([]);
       setEnrollments({});
       setCompletionRates({});
@@ -127,7 +127,7 @@ export function TracksPage() {
     if (!coursesModalTrack) return;
     const existing = ((coursesModalTrack as any).courses ?? []);
     if (existing.find((tc: any) => tc.course_id === courseId || tc.course?.id === courseId)) {
-      return toast.error('Curso já está nesta trilha');
+      return toast.error('Curso jÃ¡ estÃ¡ nesta trilha');
     }
     setAddingCourse(courseId);
     try {
@@ -163,7 +163,7 @@ export function TracksPage() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 size={28} className="animate-spin text-[#6B35B0]" />
+      <Loader2 size={28} className="animate-spin text-[#FF9C3A]" />
     </div>
   );
 
@@ -196,7 +196,7 @@ export function TracksPage() {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="text-lg font-bold text-white">{track.title}</h3>
-                        {track.is_mandatory && <Badge variant="red">Obrigatória</Badge>}
+                        {track.is_mandatory && <Badge variant="red">ObrigatÃ³ria</Badge>}
                         {track.is_blocking && <Badge variant="amber"><AlertTriangle size={10} className="mr-1" />Bloqueante</Badge>}
                         {!track.is_active && <Badge variant="slate">Inativa</Badge>}
                       </div>
@@ -204,7 +204,7 @@ export function TracksPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => openCoursesModal(track)} title="Gerenciar cursos" className="p-2 rounded-lg text-slate-500 hover:text-[#9B6FD4] hover:bg-white/10 transition-all"><ListPlus size={14} /></button>
+                    <button onClick={() => openCoursesModal(track)} title="Gerenciar cursos" className="p-2 rounded-lg text-slate-500 hover:text-[#FFB45F] hover:bg-white/10 transition-all"><ListPlus size={14} /></button>
                     <button onClick={() => openEdit(track)} className="p-2 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all"><Edit2 size={14} /></button>
                     <button onClick={() => setExpandedTrack(isExpanded ? null : track.id)} className={`p-2 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all ${isExpanded ? 'bg-white/10 text-white' : ''}`}>
                       <ChevronRight size={14} className={`transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
@@ -218,7 +218,7 @@ export function TracksPage() {
                   {track.deadline_days && <div className="flex items-center gap-1.5 text-sm text-slate-400"><Clock size={13} className="text-slate-500" /> {track.deadline_days} dias</div>}
                   <div className="flex items-center gap-1.5 text-sm ml-auto">
                     <span className={`${color.icon} font-bold text-lg`}>{completionRate}%</span>
-                    <span className="text-slate-500 text-xs">concluído</span>
+                    <span className="text-slate-500 text-xs">concluÃ­do</span>
                   </div>
                 </div>
 
@@ -239,9 +239,9 @@ export function TracksPage() {
                           <span className="text-xs font-bold text-slate-600 w-5">{j + 1}</span>
                           <div className="flex-1">
                             <p className="text-sm font-medium text-white">{tc.course?.title}</p>
-                            <p className="text-xs text-slate-500">{tc.course?.workload_hours}h · {tc.course?.category}</p>
+                            <p className="text-xs text-slate-500">{tc.course?.workload_hours}h Â· {tc.course?.category}</p>
                           </div>
-                          {tc.course?.has_certificate && <span className="text-xs text-amber-400">🏆 Certifica</span>}
+                          {tc.course?.has_certificate && <span className="text-xs text-amber-400">ðŸ† Certifica</span>}
                         </div>
                       ))}
                     </div>
@@ -258,9 +258,9 @@ export function TracksPage() {
       </div>
 
       {/* Modal gerenciar cursos da trilha */}
-      <Modal isOpen={!!coursesModalTrack} onClose={() => setCoursesModalTrack(null)} title={`Cursos — ${coursesModalTrack?.title}`}>
+      <Modal isOpen={!!coursesModalTrack} onClose={() => setCoursesModalTrack(null)} title={`Cursos â€” ${coursesModalTrack?.title}`}>
         <div className="space-y-5">
-          {/* Cursos já na trilha */}
+          {/* Cursos jÃ¡ na trilha */}
           <div>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Na trilha</p>
             {((coursesModalTrack as any)?.courses ?? []).length === 0 ? (
@@ -272,7 +272,7 @@ export function TracksPage() {
                     <span className="text-xs font-bold text-slate-600 w-5">{idx + 1}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white truncate">{tc.course?.title}</p>
-                      <p className="text-xs text-slate-500">{tc.course?.workload_hours}h · {tc.course?.category}</p>
+                      <p className="text-xs text-slate-500">{tc.course?.workload_hours}h Â· {tc.course?.category}</p>
                     </div>
                     <button
                       onClick={() => handleRemoveCourse(tc.course?.id)}
@@ -287,22 +287,22 @@ export function TracksPage() {
             )}
           </div>
 
-          {/* Todos os cursos disponíveis */}
+          {/* Todos os cursos disponÃ­veis */}
           <div>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Adicionar curso</p>
             <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
               {allCourses
                 .filter(c => !((coursesModalTrack as any)?.courses ?? []).find((tc: any) => tc.course?.id === c.id))
                 .map(course => (
-                  <div key={course.id} className="flex items-center gap-3 p-3 rounded-xl border border-white/5 hover:border-[#6B35B0]/30 transition-all">
+                  <div key={course.id} className="flex items-center gap-3 p-3 rounded-xl border border-white/5 hover:border-[#FF9C3A]/30 transition-all">
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white truncate">{course.title}</p>
-                      <p className="text-xs text-slate-500">{course.workload_hours}h · {course.category}</p>
+                      <p className="text-xs text-slate-500">{course.workload_hours}h Â· {course.category}</p>
                     </div>
                     <button
                       onClick={() => handleAddCourse(course.id)}
                       disabled={addingCourse === course.id}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#6B35B0]/20 text-[#C4A8E8] hover:bg-[#6B35B0]/40 text-xs font-medium transition-all"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FF9C3A]/20 text-[#FFD3A3] hover:bg-[#FF9C3A]/40 text-xs font-medium transition-all"
                     >
                       {addingCourse === course.id ? <Loader2 size={11} className="animate-spin" /> : <Plus size={11} />}
                       Adicionar
@@ -310,7 +310,7 @@ export function TracksPage() {
                   </div>
                 ))}
               {allCourses.filter(c => !((coursesModalTrack as any)?.courses ?? []).find((tc: any) => tc.course?.id === c.id)).length === 0 && (
-                <p className="text-sm text-slate-600">Todos os cursos já estão nesta trilha.</p>
+                <p className="text-sm text-slate-600">Todos os cursos jÃ¡ estÃ£o nesta trilha.</p>
               )}
             </div>
           </div>
@@ -322,15 +322,15 @@ export function TracksPage() {
       >
         <div className="space-y-4">
           <Input label="Nome da trilha" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} placeholder="Ex: Trilha Comercial" />
-          <Textarea label="Descrição" value={form.description} onChange={v => setForm({ ...form, description: v })} />
+          <Textarea label="DescriÃ§Ã£o" value={form.description} onChange={v => setForm({ ...form, description: v })} />
           <Input label="Prazo (dias)" type="number" value={form.deadline_days} onChange={e => setForm({ ...form, deadline_days: e.target.value })} placeholder="30" />
           <div className="flex items-center gap-6">
             <label className="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked={form.is_mandatory} onChange={e => setForm({ ...form, is_mandatory: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#6B35B0] cursor-pointer" />
-              <span className="text-sm text-slate-300">Trilha obrigatória</span>
+              <input type="checkbox" checked={form.is_mandatory} onChange={e => setForm({ ...form, is_mandatory: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
+              <span className="text-sm text-slate-300">Trilha obrigatÃ³ria</span>
             </label>
             <label className="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked={form.is_blocking} onChange={e => setForm({ ...form, is_blocking: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#6B35B0] cursor-pointer" />
+              <input type="checkbox" checked={form.is_blocking} onChange={e => setForm({ ...form, is_blocking: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
               <span className="text-sm text-slate-300">Bloqueante</span>
             </label>
           </div>

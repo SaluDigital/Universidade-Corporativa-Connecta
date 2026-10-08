@@ -14,7 +14,7 @@ const deptColors = [
   'from-emerald-500/20 to-teal-900/10 border-emerald-500/20',
   'from-amber-500/20 to-orange-900/10 border-amber-500/20',
   'from-pink-500/20 to-rose-900/10 border-pink-500/20',
-  'from-[#FFB45F]/20 to-[#141414]/10 border-[#FFB45F]/20',
+  'from-[#FF9C3A]/20 to-[#141414]/10 border-[#FF9C3A]/20',
 ];
 
 export function DepartmentsPage() {
@@ -47,7 +47,7 @@ export function DepartmentsPage() {
       setUsers((usersRes.data as User[]) ?? []);
     } catch (error) {
       console.error('[DepartmentsPage] Erro ao carregar dados:', error);
-      toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
+      toast.error('Não foi possível carregar os dados. Tente novamente.');
       setDepartments([]);
       setPositions([]);
       setUsers([]);
@@ -181,7 +181,7 @@ export function DepartmentsPage() {
       >
         <div className="space-y-4">
           <Input label="Nome do departamento" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Ex: Comercial" />
-          <Textarea label="DescriÃ§Ã£o" value={form.description} onChange={v => setForm({ ...form, description: v })} rows={3} />
+          <Textarea label="Descrição" value={form.description} onChange={v => setForm({ ...form, description: v })} rows={3} />
         </div>
       </Modal>
 
@@ -190,7 +190,7 @@ export function DepartmentsPage() {
       >
         <div className="space-y-4">
           <Input label="Nome do cargo" value={posForm.name} onChange={e => setPosForm({ ...posForm, name: e.target.value })} placeholder="Ex: Consultor de Vendas" />
-          <Textarea label="DescriÃ§Ã£o" value={posForm.description} onChange={v => setPosForm({ ...posForm, description: v })} rows={3} />
+          <Textarea label="Descrição" value={posForm.description} onChange={v => setPosForm({ ...posForm, description: v })} rows={3} />
         </div>
       </Modal>
     </div>

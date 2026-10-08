@@ -12,11 +12,11 @@ interface ProgressBarProps {
 }
 
 const colorMap = {
-  default: 'from-[#FF9C3A] to-[#FEFEFE]',
+  default: 'from-[#FF9C3A] to-[#FF9C3A]',
   emerald: 'from-emerald-500 to-teal-500',
   amber: 'from-amber-500 to-orange-500',
   red: 'from-red-500 to-rose-500',
-  blue: 'from-[#FFB45F] to-[#FEFEFE]',
+  blue: 'from-[#FF9C3A] to-[#FF9C3A]',
 };
 
 const sizeMap = {

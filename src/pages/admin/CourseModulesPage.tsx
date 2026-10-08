@@ -36,7 +36,7 @@ export function CourseModulesPage() {
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  // Modal de mÃ³dulo
+  // Modal de módulo
   const [moduleModal, setModuleModal] = useState(false);
   const [editingModule, setEditingModule] = useState<ModuleWithLessons | null>(null);
   const [moduleForm, setModuleForm] = useState<ModuleForm>(emptyModuleForm());
@@ -63,7 +63,7 @@ export function CourseModulesPage() {
       lessons: [...(m.lessons ?? [])].sort((a, b) => a.sort_order - b.sort_order),
     }));
     setModules(sorted);
-    // Expandir todos os mÃ³dulos por padrÃ£o
+    // Expandir todos os módulos por padrão
     setExpandedModules(new Set(sorted.map(m => m.id)));
     setLoading(false);
   };
@@ -76,7 +76,7 @@ export function CourseModulesPage() {
     });
   };
 
-  // â”€â”€ MÃ³dulo â”€â”€
+  // ── Módulo ──
   const openCreateModule = () => {
     setEditingModule(null);
     setModuleForm(emptyModuleForm());
@@ -90,13 +90,13 @@ export function CourseModulesPage() {
   };
 
   const handleSaveModule = async () => {
-    if (!moduleForm.title.trim()) return toast.error('Informe o tÃ­tulo do mÃ³dulo');
+    if (!moduleForm.title.trim()) return toast.error('Informe o título do módulo');
     setSaving(true);
     try {
       if (editingModule) {
         const { error } = await updateModule(editingModule.id, { title: moduleForm.title, description: moduleForm.description });
         if (error) throw error;
-        toast.success('MÃ³dulo atualizado!');
+        toast.success('Módulo atualizado!');
       } else {
         const { error } = await createModule({
           course_id: courseId,
@@ -105,12 +105,12 @@ export function CourseModulesPage() {
           sort_order: modules.length,
         });
         if (error) throw error;
-        toast.success('MÃ³dulo criado!');
+        toast.success('Módulo criado!');
       }
       setModuleModal(false);
       await loadData();
     } catch (e: any) {
-      toast.error(e.message ?? 'Erro ao salvar mÃ³dulo');
+      toast.error(e.message ?? 'Erro ao salvar módulo');
     } finally {
       setSaving(false);
     }
@@ -119,15 +119,15 @@ export function CourseModulesPage() {
   const handleDeleteModule = async (id: string) => {
     setDeletingId(id);
     const { error } = await deleteModule(id);
-    if (error) toast.error('Erro ao excluir mÃ³dulo');
+    if (error) toast.error('Erro ao excluir módulo');
     else {
-      toast.success('MÃ³dulo removido');
+      toast.success('Módulo removido');
       setModules(prev => prev.filter(m => m.id !== id));
     }
     setDeletingId(null);
   };
 
-  // â”€â”€ Aula â”€â”€
+  // ── Aula ──
   const openCreateLesson = (moduleId: string) => {
     setEditingLesson(null);
     setLessonTargetModuleId(moduleId);
@@ -148,8 +148,8 @@ export function CourseModulesPage() {
   };
 
   const handleSaveLesson = async () => {
-    if (!lessonForm.title.trim()) return toast.error('Informe o tÃ­tulo da aula');
-    if (!lessonForm.content_url.trim()) return toast.error('Informe o link do vÃ­deo no YouTube');
+    if (!lessonForm.title.trim()) return toast.error('Informe o título da aula');
+    if (!lessonForm.content_url.trim()) return toast.error('Informe o link do vídeo no YouTube');
     setSaving(true);
     try {
       const mod = modules.find(m => m.id === lessonTargetModuleId);
@@ -217,21 +217,21 @@ export function CourseModulesPage() {
           <ChevronLeft size={16} />
         </button>
         <div className="flex-1">
-          <h2 className="text-2xl font-bold text-white">MÃ³dulos e Aulas</h2>
+          <h2 className="text-2xl font-bold text-white">Módulos e Aulas</h2>
           <p className="text-slate-500 text-sm mt-0.5">{course?.title}</p>
         </div>
-        <Button onClick={openCreateModule} icon={<Plus size={15} />}>Novo MÃ³dulo</Button>
+        <Button onClick={openCreateModule} icon={<Plus size={15} />}>Novo Módulo</Button>
       </div>
 
       {/* Resumo */}
       <div className="grid grid-cols-2 gap-3">
         <div className="glass-card rounded-xl p-4 flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-[#FF9C3A]/20 flex items-center justify-center">
-            <Layers size={16} className="text-[#FFB45F]" />
+            <Layers size={16} className="text-[#FF9C3A]" />
           </div>
           <div>
             <p className="text-xl font-bold text-white">{modules.length}</p>
-            <p className="text-xs text-slate-500">mÃ³dulos</p>
+            <p className="text-xs text-slate-500">módulos</p>
           </div>
         </div>
         <div className="glass-card rounded-xl p-4 flex items-center gap-3">
@@ -245,7 +245,7 @@ export function CourseModulesPage() {
         </div>
       </div>
 
-      {/* Lista de mÃ³dulos */}
+      {/* Lista de módulos */}
       <div className="space-y-3">
         <AnimatePresence>
           {modules.map((mod, modIdx) => (
@@ -257,14 +257,14 @@ export function CourseModulesPage() {
               transition={{ delay: modIdx * 0.04 }}
               className="glass-card rounded-2xl overflow-hidden"
             >
-              {/* CabeÃ§alho do mÃ³dulo */}
+              {/* Cabeçalho do módulo */}
               <div className="flex items-center gap-3 p-4">
                 <GripVertical size={15} className="text-slate-700 flex-shrink-0" />
                 <button
                   onClick={() => toggleExpanded(mod.id)}
                   className="flex items-center gap-2 flex-1 min-w-0 text-left"
                 >
-                  <span className="w-6 h-6 rounded-lg bg-[#FF9C3A]/20 flex items-center justify-center text-xs font-bold text-[#FFD3A3] flex-shrink-0">
+                  <span className="w-6 h-6 rounded-lg bg-[#FF9C3A]/20 flex items-center justify-center text-xs font-bold text-[#FF9C3A] flex-shrink-0">
                     {modIdx + 1}
                   </span>
                   <div className="flex-1 min-w-0">
@@ -277,21 +277,21 @@ export function CourseModulesPage() {
                   }
                 </button>
                 <div className="flex items-center gap-1 flex-shrink-0">
-                  <button onClick={() => openEditModule(mod)} className="p-1.5 rounded-lg text-slate-600 hover:text-white hover:bg-white/10 transition-all" title="Editar mÃ³dulo">
+                  <button onClick={() => openEditModule(mod)} className="p-1.5 rounded-lg text-slate-600 hover:text-white hover:bg-white/10 transition-all" title="Editar módulo">
                     <Edit2 size={13} />
                   </button>
                   <button
                     onClick={() => handleDeleteModule(mod.id)}
                     disabled={deletingId === mod.id}
                     className="p-1.5 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-all disabled:opacity-40"
-                    title="Excluir mÃ³dulo"
+                    title="Excluir módulo"
                   >
                     {deletingId === mod.id ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />}
                   </button>
                 </div>
               </div>
 
-              {/* Aulas do mÃ³dulo */}
+              {/* Aulas do módulo */}
               <AnimatePresence>
                 {expandedModules.has(mod.id) && (
                   <motion.div
@@ -335,13 +335,13 @@ export function CourseModulesPage() {
                         </div>
                       ))}
 
-                      {/* BotÃ£o nova aula */}
+                      {/* Botão nova aula */}
                       <div className="px-4 py-3">
                         <button
                           onClick={() => openCreateLesson(mod.id)}
                           className="flex items-center gap-2 text-xs text-slate-600 hover:text-[#FEFEFE] transition-colors"
                         >
-                          <Plus size={13} /> Nova aula neste mÃ³dulo
+                          <Plus size={13} /> Nova aula neste módulo
                         </button>
                       </div>
                     </div>
@@ -355,33 +355,33 @@ export function CourseModulesPage() {
         {modules.length === 0 && (
           <div className="glass-card rounded-2xl p-12 text-center">
             <AlertCircle size={36} className="text-slate-700 mx-auto mb-3" />
-            <p className="text-slate-500 font-medium">Nenhum mÃ³dulo cadastrado</p>
-            <p className="text-slate-600 text-sm mt-1">Clique em "Novo MÃ³dulo" para comeÃ§ar.</p>
+            <p className="text-slate-500 font-medium">Nenhum módulo cadastrado</p>
+            <p className="text-slate-600 text-sm mt-1">Clique em "Novo Módulo" para começar.</p>
           </div>
         )}
       </div>
 
-      {/* Modal â€” MÃ³dulo */}
+      {/* Modal — Módulo */}
       <Modal
         isOpen={moduleModal}
         onClose={() => setModuleModal(false)}
-        title={editingModule ? 'Editar MÃ³dulo' : 'Novo MÃ³dulo'}
+        title={editingModule ? 'Editar Módulo' : 'Novo Módulo'}
         footer={
           <>
             <Button variant="secondary" onClick={() => setModuleModal(false)}>Cancelar</Button>
             <Button onClick={handleSaveModule} disabled={saving} icon={saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}>
-              {editingModule ? 'Salvar' : 'Criar mÃ³dulo'}
+              {editingModule ? 'Salvar' : 'Criar módulo'}
             </Button>
           </>
         }
       >
         <div className="space-y-4">
-          <Input label="TÃ­tulo do mÃ³dulo" value={moduleForm.title} onChange={e => setModuleForm(p => ({ ...p, title: e.target.value }))} placeholder="Ex: IntroduÃ§Ã£o" />
-          <Textarea label="DescriÃ§Ã£o (opcional)" value={moduleForm.description} onChange={v => setModuleForm(p => ({ ...p, description: v }))} placeholder="Descreva o conteÃºdo deste mÃ³dulo..." rows={2} />
+          <Input label="Título do módulo" value={moduleForm.title} onChange={e => setModuleForm(p => ({ ...p, title: e.target.value }))} placeholder="Ex: Introdução" />
+          <Textarea label="Descrição (opcional)" value={moduleForm.description} onChange={v => setModuleForm(p => ({ ...p, description: v }))} placeholder="Descreva o conteúdo deste módulo..." rows={2} />
         </div>
       </Modal>
 
-      {/* Modal â€” Aula */}
+      {/* Modal — Aula */}
       <Modal
         isOpen={lessonModal}
         onClose={() => setLessonModal(false)}
@@ -397,17 +397,17 @@ export function CourseModulesPage() {
         }
       >
         <div className="space-y-4">
-          <Input label="TÃ­tulo da aula" value={lessonForm.title} onChange={e => setLessonForm(p => ({ ...p, title: e.target.value }))} placeholder="Ex: Bem-vindo Ã  Coneccta" />
+          <Input label="Título da aula" value={lessonForm.title} onChange={e => setLessonForm(p => ({ ...p, title: e.target.value }))} placeholder="Ex: Bem-vindo à Coneccta" />
           <Input
-            label="Link do vÃ­deo (YouTube)"
+            label="Link do vídeo (YouTube)"
             value={lessonForm.content_url}
             onChange={e => setLessonForm(p => ({ ...p, content_url: e.target.value }))}
             placeholder="https://www.youtube.com/watch?v=..."
           />
           <div className="grid grid-cols-2 gap-4">
-            <Input label="DuraÃ§Ã£o (minutos)" type="number" value={lessonForm.duration_minutes} onChange={e => setLessonForm(p => ({ ...p, duration_minutes: e.target.value }))} placeholder="15" />
+            <Input label="Duração (minutos)" type="number" value={lessonForm.duration_minutes} onChange={e => setLessonForm(p => ({ ...p, duration_minutes: e.target.value }))} placeholder="15" />
           </div>
-          <Textarea label="DescriÃ§Ã£o (opcional)" value={lessonForm.description} onChange={v => setLessonForm(p => ({ ...p, description: v }))} placeholder="Descreva o conteÃºdo desta aula..." rows={2} />
+          <Textarea label="Descrição (opcional)" value={lessonForm.description} onChange={v => setLessonForm(p => ({ ...p, description: v }))} placeholder="Descreva o conteúdo desta aula..." rows={2} />
         </div>
       </Modal>
     </div>

@@ -24,14 +24,14 @@ export function TeamPage() {
     return Math.round(tracks.reduce((a, t) => a + t.progress_percent, 0) / tracks.length);
   };
 
-  const getDept = (id: string) => mockDepartments.find(d => d.id === id)?.name ?? 'â€”';
-  const getPos = (id: string) => mockPositions.find(p => p.id === id)?.name ?? 'â€”';
+  const getDept = (id: string) => mockDepartments.find(d => d.id === id)?.name ?? '—';
+  const getPos = (id: string) => mockPositions.find(p => p.id === id)?.name ?? '—';
 
   return (
     <div className="max-w-screen-xl space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-white">Minha Equipe</h2>
-        <p className="text-slate-500 text-sm mt-1">{team.length} colaboradores sob sua gestÃ£o</p>
+        <p className="text-slate-500 text-sm mt-1">{team.length} colaboradores sob sua gestão</p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -59,13 +59,13 @@ export function TeamPage() {
                     <p className="text-xs text-slate-500">{getPos(member.position_id)}</p>
                   </div>
                 </div>
-                <ChevronRight size={16} className="text-slate-600 group-hover:text-[#FFB45F] transition-colors mt-1" />
+                <ChevronRight size={16} className="text-slate-600 group-hover:text-[#FF9C3A] transition-colors mt-1" />
               </div>
 
               {hasOverdue && (
                 <div className="flex items-center gap-1.5 text-xs text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-2.5 py-1.5 mb-3">
                   <AlertTriangle size={11} />
-                  Trilha vencida â€” requer atenÃ§Ã£o
+                  Trilha vencida — requer atenção
                 </div>
               )}
 
@@ -102,10 +102,10 @@ export function TeamPage() {
           size="lg"
           footer={
             <button
-              onClick={() => { toast.success('CobranÃ§a enviada por e-mail!'); setSelectedMember(null); }}
+              onClick={() => { toast.success('Cobrança enviada por e-mail!'); setSelectedMember(null); }}
               className="btn-primary px-5 py-2.5 text-sm font-semibold rounded-xl text-white relative z-10"
             >
-              Enviar cobranÃ§a
+              Enviar cobrança
             </button>
           }
         >
@@ -132,7 +132,7 @@ export function TeamPage() {
               <div className="space-y-2">
                 {getMemberTracks(selectedMember.id).map(track => (
                   <div key={track.id} className="flex items-center gap-3 p-3 rounded-xl bg-white/3 border border-white/5">
-                    <GitBranch size={14} className="text-[#FFB45F] flex-shrink-0" />
+                    <GitBranch size={14} className="text-[#FF9C3A] flex-shrink-0" />
                     <div className="flex-1">
                       <div className="flex justify-between mb-1">
                         <span className="text-sm text-white">Trilha {track.track_id}</span>

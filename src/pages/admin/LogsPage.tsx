@@ -7,11 +7,11 @@ import { formatDateTime } from '../../lib/utils';
 import toast from 'react-hot-toast';
 
 const actionConfig: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
-  CREATE_USER:      { label: 'Criou usuÃ¡rio',     icon: <User size={13} />,      color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
+  CREATE_USER:      { label: 'Criou usuário',     icon: <User size={13} />,      color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
   ASSIGN_TRACK:     { label: 'Atribuiu trilha',   icon: <GitBranch size={13} />, color: 'text-[#FEFEFE] bg-[#FEFEFE]/10 border-[#FEFEFE]/20' },
-  COMPLETE_LESSON:  { label: 'Concluiu aula',     icon: <BookOpen size={13} />,  color: 'text-[#FFB45F] bg-[#FF9C3A]/10 border-[#FF9C3A]/20' },
-  CREATE_COURSE:    { label: 'Criou curso',       icon: <BookOpen size={13} />,  color: 'text-[#FFB45F] bg-[#FFB45F]/10 border-[#FFB45F]/20' },
-  SUBMIT_QUIZ:      { label: 'Enviou avaliaÃ§Ã£o',  icon: <Shield size={13} />,    color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
+  COMPLETE_LESSON:  { label: 'Concluiu aula',     icon: <BookOpen size={13} />,  color: 'text-[#FF9C3A] bg-[#FF9C3A]/10 border-[#FF9C3A]/20' },
+  CREATE_COURSE:    { label: 'Criou curso',       icon: <BookOpen size={13} />,  color: 'text-[#FF9C3A] bg-[#FF9C3A]/10 border-[#FF9C3A]/20' },
+  SUBMIT_QUIZ:      { label: 'Enviou avaliação',  icon: <Shield size={13} />,    color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
   ISSUE_CERTIFICATE:{ label: 'Emitiu certificado',icon: <Award size={13} />,     color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
 };
 
@@ -30,7 +30,7 @@ export function LogsPage() {
         setLogs(data ?? []);
       } catch (error) {
         console.error('[LogsPage] Erro ao carregar dados:', error);
-        toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
+        toast.error('Não foi possível carregar os dados. Tente novamente.');
         setLogs([]);
       } finally {
         setLoading(false);
@@ -57,9 +57,9 @@ export function LogsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Logs de Auditoria</h2>
-          <p className="text-slate-500 text-sm mt-1">HistÃ³rico completo de aÃ§Ãµes no sistema</p>
+          <p className="text-slate-500 text-sm mt-1">Histórico completo de ações no sistema</p>
         </div>
-        <div className="flex items-center gap-2 text-xs text-[#FFB45F] bg-[#FF9C3A]/10 border border-[#FF9C3A]/20 px-3 py-2 rounded-xl">
+        <div className="flex items-center gap-2 text-xs text-[#FF9C3A] bg-[#FF9C3A]/10 border border-[#FF9C3A]/20 px-3 py-2 rounded-xl">
           <Shield size={13} />
           {filtered.length} registros
         </div>
@@ -68,10 +68,10 @@ export function LogsPage() {
       <div className="flex gap-3">
         <div className="relative flex-1 max-w-sm">
           <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar usuÃ¡rio ou aÃ§Ã£o..." className="input-base pl-10" />
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar usuário ou ação..." className="input-base pl-10" />
         </div>
         <select value={actionFilter} onChange={e => setActionFilter(e.target.value)} className="input-base w-48 appearance-none">
-          <option value="">Todas as aÃ§Ãµes</option>
+          <option value="">Todas as ações</option>
           {Object.keys(actionConfig).map(a => (
             <option key={a} value={a} style={{ background: '#0D0D0D' }}>{actionConfig[a].label}</option>
           ))}
@@ -83,7 +83,7 @@ export function LogsPage() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-white/5">
-                {['UsuÃ¡rio', 'AÃ§Ã£o', 'Entidade', 'IP', 'Data/Hora'].map(h => (
+                {['Usuário', 'Ação', 'Entidade', 'IP', 'Data/Hora'].map(h => (
                   <th key={h} className="px-5 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{h}</th>
                 ))}
               </tr>
@@ -112,7 +112,7 @@ export function LogsPage() {
                       )}
                     </td>
                     <td className="px-5 py-4 text-xs text-slate-500 max-w-xs"><span className="truncate block">{log.meta ?? `${log.entity_type}:${log.entity_id}`}</span></td>
-                    <td className="px-5 py-4 text-xs text-slate-600 font-mono">{log.ip_address ?? 'â€”'}</td>
+                    <td className="px-5 py-4 text-xs text-slate-600 font-mono">{log.ip_address ?? '—'}</td>
                     <td className="px-5 py-4 text-xs text-slate-500 whitespace-nowrap">{formatDateTime(log.created_at)}</td>
                   </motion.tr>
                 );

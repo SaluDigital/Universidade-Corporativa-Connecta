@@ -21,7 +21,7 @@ export function CertificatesPage() {
         setCertificates(data ?? []);
       } catch (error) {
         console.error('[CertificatesPage] Erro ao carregar dados:', error);
-        toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
+        toast.error('Não foi possível carregar os dados. Tente novamente.');
         setCertificates([]);
       } finally {
         setLoading(false);
@@ -56,7 +56,7 @@ export function CertificatesPage() {
 
       <div className="relative max-w-sm">
         <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
-        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por colaborador, curso ou cÃ³digo..." className="input-base pl-10" />
+        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por colaborador, curso ou código..." className="input-base pl-10" />
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -71,7 +71,7 @@ export function CertificatesPage() {
                   <Award size={24} className="text-amber-400" />
                 </div>
                 <div className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1.5 rounded-lg">
-                  <Shield size={11} /> VÃ¡lido
+                  <Shield size={11} /> Válido
                 </div>
               </div>
               <h4 className="font-bold text-white mt-4 line-clamp-2">{cert.course?.title}</h4>

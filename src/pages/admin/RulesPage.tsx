@@ -48,7 +48,7 @@ export function RulesPage() {
       setPositions((positionsRes.data as Position[]) ?? []);
     } catch (error) {
       console.error('[RulesPage] Erro ao carregar dados:', error);
-      toast.error('NÃ£o foi possÃ­vel carregar os dados. Tente novamente.');
+      toast.error('Não foi possível carregar os dados. Tente novamente.');
       setRules([]);
       setTracks([]);
       setDepartments([]);
@@ -99,17 +99,17 @@ export function RulesPage() {
     <div className="max-w-screen-xl space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">Regras de AtribuiÃ§Ã£o</h2>
+          <h2 className="text-2xl font-bold text-white">Regras de Atribuição</h2>
           <p className="text-slate-500 text-sm mt-1">Defina quem recebe qual trilha automaticamente</p>
         </div>
         <Button onClick={() => setIsModalOpen(true)} icon={<Plus size={16} />}>Nova Regra</Button>
       </div>
 
       <div className="flex items-start gap-3 p-4 rounded-2xl bg-[#FF9C3A]/10 border border-[#FF9C3A]/20">
-        <Zap size={18} className="text-[#FFB45F] mt-0.5 flex-shrink-0" />
+        <Zap size={18} className="text-[#FF9C3A] mt-0.5 flex-shrink-0" />
         <div>
-          <p className="text-sm font-medium text-[#FFD3A3]">AtribuiÃ§Ã£o automÃ¡tica inteligente</p>
-          <p className="text-xs text-slate-500 mt-1">Quando um colaborador Ã© cadastrado ou tem seu cargo/Ã¡rea alterado, o sistema atribui automaticamente as trilhas baseadas nas regras abaixo.</p>
+          <p className="text-sm font-medium text-[#FF9C3A]">Atribuição automática inteligente</p>
+          <p className="text-xs text-slate-500 mt-1">Quando um colaborador é cadastrado ou tem seu cargo/área alterado, o sistema atribui automaticamente as trilhas baseadas nas regras abaixo.</p>
         </div>
       </div>
 
@@ -122,7 +122,7 @@ export function RulesPage() {
             <motion.div key={rule.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }} className="glass-card rounded-2xl p-5 flex items-center gap-4 group">
               <div className="flex items-center gap-2 min-w-0 flex-1">
                 <div className="w-10 h-10 rounded-xl bg-[#FF9C3A]/15 flex items-center justify-center flex-shrink-0">
-                  {!dept && !pos ? <Target size={18} className="text-[#FFB45F]" /> : dept ? <Building2 size={18} className="text-[#FEFEFE]" /> : <Briefcase size={18} className="text-emerald-400" />}
+                  {!dept && !pos ? <Target size={18} className="text-[#FF9C3A]" /> : dept ? <Building2 size={18} className="text-[#FEFEFE]" /> : <Briefcase size={18} className="text-emerald-400" />}
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-0.5">
@@ -145,7 +145,7 @@ export function RulesPage() {
                 <div>
                   <p className="text-sm font-semibold text-white">{rule.track?.title}</p>
                   <div className="flex items-center gap-2 mt-0.5">
-                    {rule.track?.is_mandatory && <Badge variant="red">ObrigatÃ³ria</Badge>}
+                    {rule.track?.is_mandatory && <Badge variant="red">Obrigatória</Badge>}
                     {rule.track?.is_blocking && <Badge variant="amber">Bloqueante</Badge>}
                     {rule.track?.deadline_days && <span className="text-xs text-slate-500">{rule.track.deadline_days} dias</span>}
                   </div>
@@ -173,17 +173,17 @@ export function RulesPage() {
         )}
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Nova Regra de AtribuiÃ§Ã£o"
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Nova Regra de Atribuição"
         footer={<><Button variant="secondary" onClick={() => setIsModalOpen(false)}>Cancelar</Button><Button onClick={handleAdd} disabled={saving}>{saving ? <Loader2 size={14} className="animate-spin mr-1" /> : null}Criar regra</Button></>}
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-500">Configure qual trilha serÃ¡ atribuÃ­da com base em departamento e/ou cargo.</p>
+          <p className="text-sm text-slate-500">Configure qual trilha será atribuída com base em departamento e/ou cargo.</p>
           <Select label="Trilha" options={[{ value: '', label: 'Selecione a trilha...' }, ...tracks.map(t => ({ value: t.id, label: t.title }))]} value={form.track_id} onChange={v => setForm({ ...form, track_id: v })} />
           <Select label="Departamento (opcional)" options={[{ value: '', label: 'Todos os departamentos' }, ...departments.map(d => ({ value: d.id, label: d.name }))]} value={form.department_id} onChange={v => setForm({ ...form, department_id: v })} />
           <Select label="Cargo (opcional)" options={[{ value: '', label: 'Todos os cargos' }, ...positions.map(p => ({ value: p.id, label: p.name }))]} value={form.position_id} onChange={v => setForm({ ...form, position_id: v })} />
           <label className="flex items-center gap-2.5 cursor-pointer">
             <input type="checkbox" checked={form.auto_assign} onChange={e => setForm({ ...form, auto_assign: e.target.checked })} className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#FF9C3A] cursor-pointer" />
-            <span className="text-sm text-slate-300">AtribuiÃ§Ã£o automÃ¡tica ao cadastrar colaborador</span>
+            <span className="text-sm text-slate-300">Atribuição automática ao cadastrar colaborador</span>
           </label>
         </div>
       </Modal>

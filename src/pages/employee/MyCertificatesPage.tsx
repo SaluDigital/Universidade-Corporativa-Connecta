@@ -26,7 +26,7 @@ export function MyCertificatesPage() {
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
-<title>Certificado â€” ${cert.course?.title}</title>
+<title>Certificado — ${cert.course?.title}</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +38,7 @@ export function MyCertificatesPage() {
   .logo-icon svg { width: 28px; height: 28px; fill: none; stroke: #fff; stroke-width: 2; }
   .logo-text { font-size: 18px; font-weight: 700; color: #FF9C3A; }
   .logo-sub { font-size: 12px; color: #888; }
-  .label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: #FFB45F; text-transform: uppercase; margin-bottom: 8px; }
+  .label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: #FF9C3A; text-transform: uppercase; margin-bottom: 8px; }
   .title { font-size: 36px; font-weight: 900; color: #1a1a2e; margin-bottom: 24px; line-height: 1.2; }
   .certifies { font-size: 14px; color: #666; margin-bottom: 6px; }
   .name { font-size: 32px; font-weight: 700; color: #FF9C3A; margin-bottom: 6px; }
@@ -51,7 +51,7 @@ export function MyCertificatesPage() {
   .seal { text-align: center; }
   .seal-circle { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg,#FF9C3A,#FEFEFE); display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; }
   .seal-circle svg { width: 40px; height: 40px; fill: none; stroke: #fff; stroke-width: 2; }
-  .seal-text { font-size: 10px; color: #FFB45F; font-weight: 600; letter-spacing: 1px; }
+  .seal-text { font-size: 10px; color: #FF9C3A; font-weight: 600; letter-spacing: 1px; }
   .badge { display: inline-flex; align-items: center; gap: 4px; background: #f0fdf4; border: 1px solid #bbf7d0; color: #16a34a; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
   @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
@@ -66,22 +66,22 @@ export function MyCertificatesPage() {
       <div class="logo-text">Universidade Corporativa Coneccta</div>
       <div class="logo-sub">Universidade Corporativa</div>
     </div>
-    <div style="margin-left:auto"><span class="badge">âœ“ VÃ¡lido</span></div>
+    <div style="margin-left:auto"><span class="badge">✓ Válido</span></div>
   </div>
 
-  <div class="label">Certificado de ConclusÃ£o</div>
+  <div class="label">Certificado de Conclusão</div>
   <div class="certifies">Certificamos que</div>
   <div class="name">${cert.user?.name ?? user?.name}</div>
-  <div class="completed">concluiu com Ãªxito o curso</div>
+  <div class="completed">concluiu com êxito o curso</div>
   <div class="course">${cert.course?.title}</div>
 
   <div class="divider"></div>
 
   <div class="footer">
     <div class="meta">
-      <div><strong>Data de emissÃ£o:</strong> ${new Date(cert.issued_at).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}</div>
-      ${cert.course?.workload_hours ? `<div><strong>Carga horÃ¡ria:</strong> ${cert.course.workload_hours} horas</div>` : ''}
-      <div><strong>CÃ³digo:</strong> ${cert.certificate_code}</div>
+      <div><strong>Data de emissão:</strong> ${new Date(cert.issued_at).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}</div>
+      ${cert.course?.workload_hours ? `<div><strong>Carga horária:</strong> ${cert.course.workload_hours} horas</div>` : ''}
+      <div><strong>Código:</strong> ${cert.certificate_code}</div>
     </div>
     <div class="seal">
       <div class="seal-circle">
@@ -150,16 +150,16 @@ export function MyCertificatesPage() {
                       </div>
                       <div>
                         <p className="text-xs text-amber-400/70 font-semibold uppercase tracking-wide">Certificado</p>
-                        <p className="text-xs text-slate-500">de ConclusÃ£o</p>
+                        <p className="text-xs text-slate-500">de Conclusão</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1.5 rounded-lg">
-                      <Shield size={11} /> VÃ¡lido
+                      <Shield size={11} /> Válido
                     </div>
                   </div>
                   <p className="text-slate-400 text-xs mb-1">Certificamos que</p>
                   <p className="text-white font-bold text-lg">{user?.name}</p>
-                  <p className="text-slate-400 text-xs mt-1">concluiu com Ãªxito o curso</p>
+                  <p className="text-slate-400 text-xs mt-1">concluiu com êxito o curso</p>
                   <h3 className="text-white font-semibold text-base mt-1 leading-snug">{cert.course?.title}</h3>
                 </div>
               </div>
@@ -172,7 +172,7 @@ export function MyCertificatesPage() {
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Clock size={11} className="text-slate-600" />
-                    {cert.course?.workload_hours}h de conteÃºdo
+                    {cert.course?.workload_hours}h de conteúdo
                   </div>
                   <div className="flex items-center gap-1.5 col-span-2">
                     <Hash size={11} className="text-slate-600" />

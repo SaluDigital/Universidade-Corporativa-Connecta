@@ -43,9 +43,9 @@ interface StatCardProps {
 }
 
 const colorMap = {
-  purple: { bg: 'bg-[#FF9C3A]/15', text: 'text-[#FFB45F]', glow: 'shadow-[#FF9C3A]/20', badge: 'text-[#FFD3A3] bg-[#FF9C3A]/10' },
+  purple: { bg: 'bg-[#FF9C3A]/15', text: 'text-[#FF9C3A]', glow: 'shadow-[#FF9C3A]/20', badge: 'text-[#FF9C3A] bg-[#FF9C3A]/10' },
   blue: { bg: 'bg-white/10', text: 'text-white', glow: 'shadow-white/10', badge: 'text-white bg-white/10' },
-  cyan: { bg: 'bg-[#FFB45F]/12', text: 'text-[#FFB45F]', glow: 'shadow-[#FFB45F]/15', badge: 'text-[#FFB45F] bg-[#FFB45F]/10' },
+  cyan: { bg: 'bg-[#FF9C3A]/12', text: 'text-[#FF9C3A]', glow: 'shadow-[#FF9C3A]/15', badge: 'text-[#FF9C3A] bg-[#FF9C3A]/10' },
   emerald: { bg: 'bg-emerald-500/15', text: 'text-emerald-400', glow: 'shadow-emerald-500/20', badge: 'text-emerald-300 bg-emerald-500/10' },
   amber: { bg: 'bg-amber-500/15', text: 'text-amber-400', glow: 'shadow-amber-500/20', badge: 'text-amber-300 bg-amber-500/10' },
   red: { bg: 'bg-red-500/15', text: 'text-red-400', glow: 'shadow-red-500/20', badge: 'text-red-300 bg-red-500/10' },

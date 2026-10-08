@@ -1,4 +1,4 @@
-import { cn } from '../../lib/utils';
+﻿import { cn } from '../../lib/utils';
 import type { ReactNode } from 'react';
 
 interface BadgeProps {
@@ -9,13 +9,13 @@ interface BadgeProps {
 }
 
 const variants = {
-  purple: 'bg-[#FF9C3A]/15 text-[#FFD3A3] border-[#FF9C3A]/25',
+  purple: 'bg-[#FF9C3A]/15 text-[#FF9C3A] border-[#FF9C3A]/25',
   blue: 'bg-white/10 text-white border-white/20',
   emerald: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/25',
   amber: 'bg-amber-500/15 text-amber-300 border-amber-500/25',
   red: 'bg-red-500/15 text-red-300 border-red-500/25',
   slate: 'bg-slate-500/15 text-slate-400 border-slate-500/25',
-  cyan: 'bg-[#FFB45F]/12 text-[#FFB45F] border-[#FFB45F]/25',
+  cyan: 'bg-[#FF9C3A]/12 text-[#FF9C3A] border-[#FF9C3A]/25',
   pink: 'bg-pink-500/15 text-pink-300 border-pink-500/25',
 };
 
@@ -26,7 +26,7 @@ const dotColors = {
   amber: 'bg-amber-400',
   red: 'bg-red-400',
   slate: 'bg-slate-400',
-  cyan: 'bg-[#FFB45F]',
+  cyan: 'bg-[#FF9C3A]',
   pink: 'bg-pink-400',
 };
 

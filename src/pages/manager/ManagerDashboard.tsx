@@ -29,7 +29,7 @@ export function ManagerDashboard() {
     : 0;
 
   const statusData = [
-    { name: 'ConcluÃ­do', value: completedTracks.length },
+    { name: 'Concluído', value: completedTracks.length },
     { name: 'Em andamento', value: teamTracks.filter(t => t.status === 'in_progress').length },
     { name: 'Pendente', value: teamTracks.filter(t => t.status === 'not_started').length },
     { name: 'Vencido', value: overdueTracks.length },
@@ -41,12 +41,12 @@ export function ManagerDashboard() {
       <motion.div variants={item} className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-r from-[#FF9C3A]/20 via-[#FEFEFE]/10 to-teal-600/10 border border-[#FF9C3A]/20">
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF9C3A]/10 rounded-full blur-3xl" />
         <div className="relative z-10">
-          <p className="text-[#FFB45F] text-sm font-medium mb-1">Painel do Gestor</p>
-          <h2 className="text-2xl font-bold text-white mb-1">OlÃ¡, {user?.name.split(' ')[0]}!</h2>
+          <p className="text-[#FF9C3A] text-sm font-medium mb-1">Painel do Gestor</p>
+          <h2 className="text-2xl font-bold text-white mb-1">Olá, {user?.name.split(' ')[0]}!</h2>
           <p className="text-slate-400 text-sm">
-            VocÃª tem <span className="text-white font-semibold">{team.length} colaboradores</span> na sua equipe.
+            Você tem <span className="text-white font-semibold">{team.length} colaboradores</span> na sua equipe.
             {overdueTracks.length > 0 && (
-              <span className="text-red-400"> {overdueTracks.length} trilha(s) vencidas requerem atenÃ§Ã£o.</span>
+              <span className="text-red-400"> {overdueTracks.length} trilha(s) vencidas requerem atenção.</span>
             )}
           </p>
         </div>
@@ -55,8 +55,8 @@ export function ManagerDashboard() {
       {/* Stats */}
       <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard title="Equipe" value={team.length} subtitle="colaboradores" icon={<Users />} color="blue" />
-        <StatCard title="MÃ©dia de progresso" value={`${avgProgress}%`} subtitle="nas trilhas" icon={<TrendingUp />} color="cyan" />
-        <StatCard title="Trilhas vencidas" value={overdueTracks.length} subtitle="precisam de atenÃ§Ã£o" icon={<AlertTriangle />} color="red" />
+        <StatCard title="Média de progresso" value={`${avgProgress}%`} subtitle="nas trilhas" icon={<TrendingUp />} color="cyan" />
+        <StatCard title="Trilhas vencidas" value={overdueTracks.length} subtitle="precisam de atenção" icon={<AlertTriangle />} color="red" />
         <StatCard title="Certificados" value={completedTracks.length} subtitle="emitidos" icon={<Award />} color="emerald" />
       </motion.div>
 
@@ -95,7 +95,7 @@ export function ManagerDashboard() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1.5">
                       <p className="text-sm font-medium text-white">{member.name}</p>
-                      {hasOverdue && <span className="text-xs text-red-400">âš  Atrasado</span>}
+                      {hasOverdue && <span className="text-xs text-red-400">⚠ Atrasado</span>}
                     </div>
                     <ProgressBar value={progress} size="sm" showLabel />
                   </div>
@@ -109,7 +109,7 @@ export function ManagerDashboard() {
         {/* Status chart */}
         <motion.div variants={item} className="glass-card rounded-2xl p-6">
           <h3 className="font-semibold text-white mb-1">Status das Trilhas</h3>
-          <p className="text-slate-500 text-sm mb-4">DistribuiÃ§Ã£o da equipe</p>
+          <p className="text-slate-500 text-sm mb-4">Distribuição da equipe</p>
           <div className="flex justify-center mb-6">
             <CircularProgress value={avgProgress} size={120} label="progresso" />
           </div>
@@ -141,7 +141,7 @@ export function ManagerDashboard() {
                   <Avatar name={member?.name ?? 'U'} size="sm" />
                   <div className="flex-1">
                     <p className="text-sm font-medium text-white">{member?.name}</p>
-                    <p className="text-xs text-red-400">{track.progress_percent}% concluÃ­do Â· Vencida</p>
+                    <p className="text-xs text-red-400">{track.progress_percent}% concluído · Vencida</p>
                   </div>
                   <button className="text-xs text-white bg-[#FF9C3A]/20 border border-[#FF9C3A]/30 hover:bg-[#FF9C3A]/35 px-2 py-1 rounded-lg transition-all">
                     Cobrar

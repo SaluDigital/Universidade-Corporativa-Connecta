@@ -69,10 +69,10 @@ export function Login() {
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center">
-              <span className="text-emerald-400 text-lg">âœ“</span>
+              <span className="text-emerald-400 text-lg">✓</span>
             </div>
             <div>
-              <p className="text-xs text-slate-400">Trilha concluÃ­da</p>
+              <p className="text-xs text-slate-400">Trilha concluída</p>
               <p className="text-sm font-semibold text-white">Onboarding Geral</p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export function Login() {
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-[#FF9C3A]/20 rounded-lg flex items-center justify-center">
-              <span className="text-lg">ðŸ†</span>
+              <span className="text-lg">🏆</span>
             </div>
             <div>
               <p className="text-xs text-slate-400">Certificado emitido</p>
@@ -101,7 +101,7 @@ export function Login() {
         >
           <div className="text-center">
             <p className="text-2xl font-bold gradient-text">94%</p>
-            <p className="text-xs text-slate-500">Taxa de conclusÃ£o</p>
+            <p className="text-xs text-slate-500">Taxa de conclusão</p>
           </div>
         </motion.div>
 
@@ -111,7 +111,7 @@ export function Login() {
             initial={{ scale: 0, rotate: -10 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: 'spring', damping: 15, delay: 0.2 }}
-            className="w-24 h-24 bg-gradient-to-br from-[#FF9C3A] to-[#FEFEFE] rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-[#FF9C3A]/40"
+            className="w-24 h-24 bg-[#FF9C3A] rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-[#FF9C3A]/40"
           >
             <GraduationCap size={44} className="text-white" />
           </motion.div>
@@ -165,7 +165,7 @@ export function Login() {
         />
       </div>
 
-      {/* Right panel â€” Login form */}
+      {/* Right panel — Login form */}
       <div className="flex-1 flex items-center justify-center p-8 relative">
         <div className="absolute inset-0 bg-[#000000]" />
 
@@ -177,7 +177,7 @@ export function Login() {
         >
           {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#FF9C3A] to-[#FEFEFE] rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#FF9C3A] rounded-xl flex items-center justify-center">
               <GraduationCap size={20} className="text-white" />
             </div>
             <div>
@@ -196,13 +196,13 @@ export function Login() {
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-1.5">E-mail corporativo</label>
               <div className="relative">
-                <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+                <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
                 <input
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="seu@coneccta.com.br"
-                  className="input-base pl-10"
+                  className="input-base pl-12"
                   required
                 />
               </div>
@@ -211,19 +211,19 @@ export function Login() {
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-1.5">Senha</label>
               <div className="relative">
-                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+                <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
                 <input
                   type={showPass ? 'text' : 'password'}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
-                  className="input-base pl-10 pr-10"
+                  placeholder="••••••••"
+                  className="input-base pl-12 pr-12"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300"
                 >
                   {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -241,7 +241,7 @@ export function Login() {
               type="submit"
               disabled={loading}
               whileTap={{ scale: 0.98 }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#FF9C3A] to-[#FFB45F] hover:from-[#FFAE55] hover:to-[#FFD3A3] text-black font-semibold transition-all shadow-lg shadow-[#FF9C3A]/25 hover:shadow-[#FF9C3A]/40 disabled:opacity-60 mt-2"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#FF9C3A] hover:bg-[#E68122] text-black font-semibold transition-all shadow-lg shadow-[#FF9C3A]/25 hover:shadow-[#FF9C3A]/40 disabled:opacity-60 mt-2"
             >
               {loading ? (
                 <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -254,7 +254,7 @@ export function Login() {
           </form>
 
           <p className="text-center text-slate-600 text-xs mt-6">
-            Universidade Corporativa Coneccta Â© 2026
+            Universidade Corporativa Coneccta © 2026
           </p>
         </motion.div>
       </div>

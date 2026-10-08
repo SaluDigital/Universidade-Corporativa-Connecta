@@ -2,9 +2,9 @@
 
 export const mockDepartments: Department[] = [
   { id: 'd1', name: 'Comercial', description: 'Equipe de vendas e atendimento', created_at: '2024-01-01' },
-  { id: 'd2', name: 'Customer Success', description: 'Sucesso e retenÃ§Ã£o de clientes', created_at: '2024-01-01' },
-  { id: 'd3', name: 'OperaÃ§Ãµes', description: 'Processos operacionais', created_at: '2024-01-01' },
-  { id: 'd4', name: 'Marketing', description: 'Marketing e comunicaÃ§Ã£o', created_at: '2024-01-01' },
+  { id: 'd2', name: 'Customer Success', description: 'Sucesso e retenção de clientes', created_at: '2024-01-01' },
+  { id: 'd3', name: 'Operações', description: 'Processos operacionais', created_at: '2024-01-01' },
+  { id: 'd4', name: 'Marketing', description: 'Marketing e comunicação', created_at: '2024-01-01' },
   { id: 'd5', name: 'Tecnologia', description: 'Desenvolvimento e infraestrutura', created_at: '2024-01-01' },
   { id: 'd6', name: 'RH', description: 'Recursos Humanos', created_at: '2024-01-01' },
 ];
@@ -73,13 +73,13 @@ export const mockUsers: User[] = [
 
 export const mockCourses: Course[] = [
   {
-    id: 'c1', title: 'Onboarding Geral Coneccta', description: 'IntroduÃ§Ã£o Ã  cultura, valores e processos da Coneccta.',
+    id: 'c1', title: 'Onboarding Geral Coneccta', description: 'Introdução à cultura, valores e processos da Coneccta.',
     category: 'Onboarding', thumbnail_url: '', workload_hours: 8, is_active: true,
     has_certificate: true, requires_exam: true, minimum_grade: 70, version: 2,
     created_by: 'u1', created_at: '2024-01-01',
   },
   {
-    id: 'c2', title: 'CÃ³digo de Cultura e Valores', description: 'Entenda os pilares que guiam nossa empresa.',
+    id: 'c2', title: 'Código de Cultura e Valores', description: 'Entenda os pilares que guiam nossa empresa.',
     category: 'Cultura', thumbnail_url: '', workload_hours: 4, is_active: true,
     has_certificate: true, requires_exam: false, version: 1,
     created_by: 'u1', created_at: '2024-01-01',
@@ -91,31 +91,31 @@ export const mockCourses: Course[] = [
     created_by: 'u1', created_at: '2024-01-15',
   },
   {
-    id: 'c4', title: 'Atendimento e ConversÃ£o', description: 'TÃ©cnicas de atendimento de alta conversÃ£o.',
+    id: 'c4', title: 'Atendimento e Conversão', description: 'Técnicas de atendimento de alta conversão.',
     category: 'Comercial', thumbnail_url: '', workload_hours: 10, is_active: true,
     has_certificate: true, requires_exam: true, minimum_grade: 80, version: 1,
     created_by: 'u1', created_at: '2024-02-01',
   },
   {
-    id: 'c5', title: 'LideranÃ§a e GestÃ£o de Pessoas', description: 'Desenvolvendo habilidades de lideranÃ§a.',
-    category: 'GestÃ£o', thumbnail_url: '', workload_hours: 12, is_active: true,
+    id: 'c5', title: 'Liderança e Gestão de Pessoas', description: 'Desenvolvendo habilidades de liderança.',
+    category: 'Gestão', thumbnail_url: '', workload_hours: 12, is_active: true,
     has_certificate: true, requires_exam: true, minimum_grade: 70, version: 1,
     created_by: 'u1', created_at: '2024-02-15',
   },
   {
-    id: 'c6', title: 'Feedback e ComunicaÃ§Ã£o', description: 'Como dar e receber feedback de forma eficaz.',
-    category: 'GestÃ£o', thumbnail_url: '', workload_hours: 6, is_active: true,
+    id: 'c6', title: 'Feedback e Comunicação', description: 'Como dar e receber feedback de forma eficaz.',
+    category: 'Gestão', thumbnail_url: '', workload_hours: 6, is_active: true,
     has_certificate: false, requires_exam: false, version: 1,
     created_by: 'u1', created_at: '2024-03-01',
   },
   {
-    id: 'c7', title: 'GestÃ£o por Indicadores', description: 'OKRs, KPIs e gestÃ£o baseada em dados.',
-    category: 'GestÃ£o', thumbnail_url: '', workload_hours: 8, is_active: true,
+    id: 'c7', title: 'Gestão por Indicadores', description: 'OKRs, KPIs e gestão baseada em dados.',
+    category: 'Gestão', thumbnail_url: '', workload_hours: 8, is_active: true,
     has_certificate: true, requires_exam: true, minimum_grade: 75, version: 2,
     created_by: 'u1', created_at: '2024-03-15',
   },
   {
-    id: 'c8', title: 'TrÃ¡fego Pago AvanÃ§ado', description: 'Google Ads, Meta Ads e estratÃ©gias de conversÃ£o.',
+    id: 'c8', title: 'Tráfego Pago Avançado', description: 'Google Ads, Meta Ads e estratégias de conversão.',
     category: 'Marketing', thumbnail_url: '', workload_hours: 16, is_active: true,
     has_certificate: true, requires_exam: true, minimum_grade: 80, version: 1,
     created_by: 'u1', created_at: '2024-04-01',
@@ -124,22 +124,22 @@ export const mockCourses: Course[] = [
 
 export const mockTracks: Track[] = [
   {
-    id: 't1', title: 'Trilha Onboarding Geral', description: 'Trilha obrigatÃ³ria para todos os novos colaboradores.',
+    id: 't1', title: 'Trilha Onboarding Geral', description: 'Trilha obrigatória para todos os novos colaboradores.',
     target_type: 'department', deadline_days: 30, is_mandatory: true, is_blocking: true,
     is_active: true, created_by: 'u1', created_at: '2024-01-01',
   },
   {
-    id: 't2', title: 'Trilha Comercial', description: 'FormaÃ§Ã£o completa para a Ã¡rea comercial.',
+    id: 't2', title: 'Trilha Comercial', description: 'Formação completa para a área comercial.',
     target_type: 'department', deadline_days: 60, is_mandatory: true, is_blocking: false,
     is_active: true, created_by: 'u1', created_at: '2024-01-01',
   },
   {
-    id: 't3', title: 'Trilha Gestores', description: 'Desenvolvimento de lideranÃ§as da Coneccta.',
+    id: 't3', title: 'Trilha Gestores', description: 'Desenvolvimento de lideranças da Coneccta.',
     target_type: 'position', deadline_days: 90, is_mandatory: true, is_blocking: false,
     is_active: true, created_by: 'u1', created_at: '2024-02-01',
   },
   {
-    id: 't4', title: 'Trilha TrÃ¡fego Pago', description: 'EspecializaÃ§Ã£o em mÃ­dia paga para o time de marketing.',
+    id: 't4', title: 'Trilha Tráfego Pago', description: 'Especialização em mídia paga para o time de marketing.',
     target_type: 'department', deadline_days: 45, is_mandatory: false, is_blocking: false,
     is_active: true, created_by: 'u1', created_at: '2024-04-01',
   },
@@ -180,7 +180,7 @@ export const mockAuditLogs: AuditLog[] = [
 export const completionByDepartment = [
   { name: 'Comercial', rate: 68, total: 45, completed: 31 },
   { name: 'CS', rate: 82, total: 20, completed: 16 },
-  { name: 'OperaÃ§Ãµes', rate: 55, total: 30, completed: 17 },
+  { name: 'Operações', rate: 55, total: 30, completed: 17 },
   { name: 'Marketing', rate: 91, total: 15, completed: 14 },
   { name: 'Tecnologia', rate: 75, total: 25, completed: 19 },
   { name: 'RH', rate: 100, total: 8, completed: 8 },
@@ -198,8 +198,8 @@ export const monthlyProgress = [
 
 export const topCourses = [
   { name: 'Onboarding Geral', completions: 68, rate: 94 },
-  { name: 'CÃ³digo de Cultura', completions: 61, rate: 88 },
+  { name: 'Código de Cultura', completions: 61, rate: 88 },
   { name: 'CRM e Funil', completions: 43, rate: 72 },
   { name: 'Atendimento', completions: 38, rate: 65 },
-  { name: 'TrÃ¡fego Pago', completions: 12, rate: 48 },
+  { name: 'Tráfego Pago', completions: 12, rate: 48 },
 ];

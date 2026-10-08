@@ -76,7 +76,7 @@ export function CourseExamPage() {
       // Auto-criar quiz para o curso
       const { data: newQuiz, error } = await createCourseQuiz({
         course_id: courseId,
-        title: `Prova â€” ${(courseData as Course)?.title ?? 'Curso'}`,
+        title: `Prova — ${(courseData as Course)?.title ?? 'Curso'}`,
         minimum_grade: (courseData as Course)?.minimum_grade ?? 70,
         attempt_limit: 99,
       });
@@ -219,7 +219,7 @@ export function CourseExamPage() {
       <div className="glass-card rounded-2xl p-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <HelpCircle size={16} className="text-[#FFB45F]" />
+            <HelpCircle size={16} className="text-[#FF9C3A]" />
             <span className="text-sm font-medium text-white">
               {questions.length} / {MAX_QUESTIONS} perguntas cadastradas
             </span>
@@ -235,13 +235,13 @@ export function CourseExamPage() {
             initial={{ width: 0 }}
             animate={{ width: `${progressPct}%` }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="h-full rounded-full bg-gradient-to-r from-[#FF9C3A] to-[#FEFEFE]"
+            className="h-full rounded-full bg-[#FF9C3A]"
           />
         </div>
         {questions.length < 20 && (
           <p className="text-xs text-slate-600 mt-2">
             Adicione pelo menos {MAX_QUESTIONS - questions.length} pergunta(s) para completar o banco da prova.
-            A prova usa 10 perguntas aleatÃ³rias das {MAX_QUESTIONS} cadastradas.
+            A prova usa 10 perguntas aleatórias das {MAX_QUESTIONS} cadastradas.
           </p>
         )}
       </div>
@@ -259,7 +259,7 @@ export function CourseExamPage() {
               className="glass-card rounded-2xl p-5"
             >
               <div className="flex items-start gap-3">
-                <span className="w-7 h-7 rounded-lg bg-[#FF9C3A]/20 border border-[#FF9C3A]/20 flex items-center justify-center text-xs font-bold text-[#FFD3A3] flex-shrink-0 mt-0.5">
+                <span className="w-7 h-7 rounded-lg bg-[#FF9C3A]/20 border border-[#FF9C3A]/20 flex items-center justify-center text-xs font-bold text-[#FF9C3A] flex-shrink-0 mt-0.5">
                   {idx + 1}
                 </span>
                 <div className="flex-1 min-w-0">
@@ -309,7 +309,7 @@ export function CourseExamPage() {
           <div className="glass-card rounded-2xl p-12 text-center">
             <AlertCircle size={36} className="text-slate-700 mx-auto mb-3" />
             <p className="text-slate-500 font-medium">Nenhuma pergunta cadastrada</p>
-            <p className="text-slate-600 text-sm mt-1">Clique em "Nova Pergunta" para comeÃ§ar.</p>
+            <p className="text-slate-600 text-sm mt-1">Clique em "Nova Pergunta" para começar.</p>
           </div>
         )}
       </div>
@@ -324,7 +324,7 @@ export function CourseExamPage() {
           <>
             <Button variant="secondary" onClick={() => setModalOpen(false)}>Cancelar</Button>
             <Button onClick={handleSave} disabled={saving} icon={saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}>
-              {editingQuestion ? 'Salvar alteraÃ§Ãµes' : 'Adicionar pergunta'}
+              {editingQuestion ? 'Salvar alterações' : 'Adicionar pergunta'}
             </Button>
           </>
         }
@@ -340,7 +340,7 @@ export function CourseExamPage() {
 
           <div>
             <p className="text-xs font-medium text-slate-400 mb-3 uppercase tracking-wide">
-              Alternativas â€” marque a correta
+              Alternativas — marque a correta
             </p>
             <div className="space-y-2.5">
               {form.alternatives.map((alt, i) => (
@@ -368,7 +368,7 @@ export function CourseExamPage() {
               ))}
             </div>
             <p className="text-xs text-slate-600 mt-2">
-              Selecione o botÃ£o ao lado da alternativa correta.
+              Selecione o botão ao lado da alternativa correta.
             </p>
           </div>
         </div>

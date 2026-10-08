@@ -19,21 +19,21 @@ export function AlertsPage() {
 
   const sendNotification = (userId: string, name: string) => {
     setNotified(prev => [...prev, userId]);
-    toast.success(`NotificaÃ§Ã£o enviada para ${name}!`);
+    toast.success(`Notificação enviada para ${name}!`);
   };
 
   return (
     <div className="max-w-screen-xl space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-white">Alertas de Atraso</h2>
-        <p className="text-slate-500 text-sm mt-1">{overdueItems.length} itens requerem sua atenÃ§Ã£o</p>
+        <p className="text-slate-500 text-sm mt-1">{overdueItems.length} itens requerem sua atenção</p>
       </div>
 
       {overdueItems.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
           <CheckCircle size={40} className="text-emerald-400 mx-auto mb-3" />
           <p className="text-emerald-400 font-medium">Tudo em dia!</p>
-          <p className="text-slate-500 text-sm mt-1">Sua equipe estÃ¡ no prazo com todas as trilhas.</p>
+          <p className="text-slate-500 text-sm mt-1">Sua equipe está no prazo com todas as trilhas.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -60,7 +60,7 @@ export function AlertsPage() {
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-white">{item.user?.name}</p>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    {isOverdue ? 'Trilha vencida' : 'Trilha nÃ£o iniciada'} Â· {item.progress_percent}% concluÃ­do
+                    {isOverdue ? 'Trilha vencida' : 'Trilha não iniciada'} · {item.progress_percent}% concluído
                   </p>
                   <ProgressBar value={item.progress_percent} size="xs" className="mt-2 max-w-xs" color={isOverdue ? 'red' : 'amber'} />
                 </div>

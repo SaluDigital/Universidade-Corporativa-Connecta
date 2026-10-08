@@ -17,8 +17,8 @@ const sizes = {
 };
 
 const colors = [
-  'from-[#FF9C3A] to-[#FFB45F]',
-  'from-[#FFB45F] to-[#FEFEFE]',
+  'from-[#FF9C3A] to-[#FF9C3A]',
+  'from-[#FF9C3A] to-[#FF9C3A]',
   'from-emerald-500 to-teal-600',
   'from-amber-500 to-orange-600',
   'from-pink-500 to-rose-600',

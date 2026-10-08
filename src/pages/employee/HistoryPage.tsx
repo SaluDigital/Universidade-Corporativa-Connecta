@@ -41,16 +41,16 @@ export function HistoryPage() {
     ...completedCourses.map(cp => ({
       date: cp.completed_at ?? cp.last_access_at ?? '',
       title: `Concluiu "${cp.course?.title}"`,
-      subtitle: cp.grade != null ? `Nota: ${cp.grade}%` : 'Sem avaliaÃ§Ã£o',
+      subtitle: cp.grade != null ? `Nota: ${cp.grade}%` : 'Sem avaliação',
       icon: <CheckCircle size={14} />,
       color: 'emerald',
     })),
     ...courseProgress.filter(cp => cp.status === 'in_progress').map(cp => ({
       date: cp.last_access_at ?? cp.started_at ?? '',
       title: (cp.progress_percent ?? 0) >= 100
-        ? `Aguardando aprovaÃ§Ã£o â€” "${cp.course?.title}"`
-        : `Em andamento â€” "${cp.course?.title}"`,
-      subtitle: `${cp.progress_percent ?? 0}% das aulas concluÃ­das${cp.grade != null ? ` Â· Ãšltima nota: ${cp.grade}%` : ''}`,
+        ? `Aguardando aprovação — "${cp.course?.title}"`
+        : `Em andamento — "${cp.course?.title}"`,
+      subtitle: `${cp.progress_percent ?? 0}% das aulas concluídas${cp.grade != null ? ` · Última nota: ${cp.grade}%` : ''}`,
       icon: <PlayCircle size={14} />,
       color: 'blue',
     })),
@@ -74,21 +74,21 @@ export function HistoryPage() {
   return (
     <div className="max-w-3xl space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-white">Meu HistÃ³rico</h2>
+        <h2 className="text-2xl font-bold text-white">Meu Histórico</h2>
         <p className="text-slate-500 text-sm mt-1">Todo o seu progresso de aprendizado</p>
       </div>
 
       <div className="grid grid-cols-3 gap-4">
         <div className="glass-card rounded-xl p-4 text-center border border-emerald-500/15">
           <p className="text-2xl font-bold text-emerald-400">{completedCourses.length}</p>
-          <p className="text-xs text-slate-500 mt-1">Cursos concluÃ­dos</p>
+          <p className="text-xs text-slate-500 mt-1">Cursos concluídos</p>
         </div>
         <div className="glass-card rounded-xl p-4 text-center border border-amber-500/15">
           <p className="text-2xl font-bold text-amber-400">{certificates.length}</p>
           <p className="text-xs text-slate-500 mt-1">Certificados</p>
         </div>
         <div className="glass-card rounded-xl p-4 text-center border border-[#FF9C3A]/15">
-          <p className="text-2xl font-bold text-[#FFB45F]">{completedTracks.length}</p>
+          <p className="text-2xl font-bold text-[#FF9C3A]">{completedTracks.length}</p>
           <p className="text-xs text-slate-500 mt-1">Trilhas completas</p>
         </div>
       </div>
@@ -141,7 +141,7 @@ export function HistoryPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-white/5">
-                  {['Curso', 'Status', 'Progresso', 'Nota', 'Ãšltimo acesso'].map(h => (
+                  {['Curso', 'Status', 'Progresso', 'Nota', 'Último acesso'].map(h => (
                     <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap">{h}</th>
                   ))}
                 </tr>
@@ -161,17 +161,17 @@ export function HistoryPage() {
                         cp.status === 'completed' ? 'bg-emerald-500/15 text-emerald-400' :
                         cp.status === 'in_progress' ? 'bg-[#FEFEFE]/15 text-[#FEFEFE]' :
                         'bg-slate-500/15 text-slate-400'}`}>
-                        {cp.status === 'completed' ? 'ConcluÃ­do' : cp.status === 'in_progress' ? 'Em andamento' : 'NÃ£o iniciado'}
+                        {cp.status === 'completed' ? 'Concluído' : cp.status === 'in_progress' ? 'Em andamento' : 'Não iniciado'}
                       </span>
                     </td>
                     <td className="px-4 py-3 w-32"><ProgressBar value={cp.progress_percent ?? 0} size="xs" showLabel /></td>
                     <td className="px-4 py-3 text-sm font-semibold">
                       {cp.grade != null
                         ? <span className={cp.grade >= 70 ? 'text-emerald-400' : 'text-red-400'}>{cp.grade}%</span>
-                        : <span className="text-slate-600">â€”</span>}
+                        : <span className="text-slate-600">—</span>}
                     </td>
                     <td className="px-4 py-3 text-xs text-slate-500">
-                      {cp.last_access_at ? formatDate(cp.last_access_at) : 'â€”'}
+                      {cp.last_access_at ? formatDate(cp.last_access_at) : '—'}
                     </td>
                   </motion.tr>
                 ))}

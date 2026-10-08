@@ -29,7 +29,7 @@ export function ProgressPage() {
 
       {/* Bar chart */}
       <div className="glass-card rounded-2xl p-6">
-        <h3 className="font-semibold text-white mb-4">Progresso mÃ©dio por colaborador</h3>
+        <h3 className="font-semibold text-white mb-4">Progresso médio por colaborador</h3>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={teamProgressData} barSize={36}>
             <XAxis dataKey="name" tick={{ fill: '#475569', fontSize: 12 }} axisLine={false} tickLine={false} />
@@ -56,7 +56,7 @@ export function ProgressPage() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-white/5">
-                {['Colaborador', 'Curso', 'Progresso', 'Nota', 'Status', 'Ãšltimo acesso'].map(h => (
+                {['Colaborador', 'Curso', 'Progresso', 'Nota', 'Status', 'Último acesso'].map(h => (
                   <th key={h} className="px-5 py-3.5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
               </tr>
@@ -89,12 +89,12 @@ export function ProgressPage() {
                       {cp.grade != null ? (
                         <span className={cp.grade >= 70 ? 'text-emerald-400' : 'text-red-400'}>{cp.grade}%</span>
                       ) : (
-                        <span className="text-slate-600">â€”</span>
+                        <span className="text-slate-600">—</span>
                       )}
                     </td>
                     <td className="px-5 py-4"><StatusBadge status={cp.status} /></td>
                     <td className="px-5 py-4 text-xs text-slate-500">
-                      {cp.last_access_at ? new Date(cp.last_access_at).toLocaleDateString('pt-BR') : 'â€”'}
+                      {cp.last_access_at ? new Date(cp.last_access_at).toLocaleDateString('pt-BR') : '—'}
                     </td>
                   </motion.tr>
                 );

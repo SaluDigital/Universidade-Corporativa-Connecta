@@ -22,7 +22,7 @@ export function Button({
   const base = 'inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden';
 
   const variants = {
-    primary: 'bg-gradient-to-r from-[#FF9C3A] to-[#FFB45F] hover:from-[#FFAE55] hover:to-[#FFD3A3] text-black shadow-lg hover:shadow-[#FF9C3A]/30 hover:-translate-y-0.5',
+    primary: 'bg-[#FF9C3A] hover:bg-[#E68122] text-black shadow-lg hover:shadow-[#FF9C3A]/30 hover:-translate-y-0.5',
     secondary: 'glass border border-white/10 text-slate-300 hover:text-white hover:border-[#FF9C3A]/40 hover:bg-[#FF9C3A]/10',
     ghost: 'text-slate-400 hover:text-white hover:bg-white/5',
     danger: 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-red-500/30 hover:-translate-y-0.5',

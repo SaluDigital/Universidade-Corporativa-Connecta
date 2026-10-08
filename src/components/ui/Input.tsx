@@ -16,14 +16,14 @@ export function Input({ label, error, icon, hint, className, ...props }: InputPr
       )}
       <div className="relative">
         {icon && (
-          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none">
             {icon}
           </span>
         )}
         <input
           className={cn(
             'input-base',
-            icon && 'pl-10',
+            icon && 'pl-12',
             error && 'border-red-500/50 focus:border-red-500/70',
             className
           )}

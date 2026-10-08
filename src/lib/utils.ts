@@ -12,7 +12,7 @@ export function formatDate(date: string | Date): string {
 }
 
 export function formatDateTime(date: string | Date): string {
-  return format(new Date(date), "dd/MM/yyyy 'Ã s' HH:mm", { locale: ptBR });
+  return format(new Date(date), "dd/MM/yyyy 'às' HH:mm", { locale: ptBR });
 }
 
 export function timeAgo(date: string | Date): string {
@@ -39,9 +39,9 @@ export function generateCertCode(userId: string, courseId: string): string {
 
 export function getStatusLabel(status: string): string {
   const labels: Record<string, string> = {
-    not_started: 'NÃ£o iniciado',
+    not_started: 'Não iniciado',
     in_progress: 'Em andamento',
-    completed: 'ConcluÃ­do',
+    completed: 'Concluído',
     overdue: 'Vencido',
     failed: 'Reprovado',
     active: 'Ativo',

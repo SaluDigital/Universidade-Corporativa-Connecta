@@ -43,7 +43,7 @@ export function MyTrackPage() {
       {userTracks.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
           <GitBranch size={40} className="text-slate-700 mx-auto mb-3" />
-          <p className="text-slate-500 font-medium">Nenhuma trilha atribuÃ­da ainda</p>
+          <p className="text-slate-500 font-medium">Nenhuma trilha atribuída ainda</p>
           <p className="text-slate-600 text-sm mt-1">Fale com seu gestor para ser matriculado em uma trilha.</p>
         </div>
       ) : (
@@ -64,12 +64,12 @@ export function MyTrackPage() {
                       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 ${isCompleted ? 'bg-emerald-500/20' : isOverdue ? 'bg-red-500/20' : 'bg-[#FF9C3A]/20'}`}>
                         {isCompleted ? <CheckCircle size={24} className="text-emerald-400" /> :
                           isOverdue ? <AlertTriangle size={24} className="text-red-400" /> :
-                          <GitBranch size={24} className="text-[#FFB45F]" />}
+                          <GitBranch size={24} className="text-[#FF9C3A]" />}
                       </div>
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="text-lg font-bold text-white">{track?.title}</h3>
-                          {track?.is_mandatory && <Badge variant="red">ObrigatÃ³ria</Badge>}
+                          {track?.is_mandatory && <Badge variant="red">Obrigatória</Badge>}
                           {track?.is_blocking && <Badge variant="amber">Bloqueante</Badge>}
                         </div>
                         <p className="text-slate-400 text-sm">{track?.description}</p>
@@ -77,7 +77,7 @@ export function MyTrackPage() {
                           <p className={`text-xs mt-1 flex items-center gap-1.5 ${isOverdue ? 'text-red-400' : 'text-slate-500'}`}>
                             <Clock size={11} />
                             Prazo: {new Date(ut.deadline_at).toLocaleDateString('pt-BR')}
-                            {isOverdue && ' â€” Vencido!'}
+                            {isOverdue && ' — Vencido!'}
                           </p>
                         )}
                       </div>
@@ -115,9 +115,9 @@ export function MyTrackPage() {
                           >
                             <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0
                               ${courseStatus === 'completed' ? 'bg-emerald-500/20 text-emerald-400' :
-                                courseStatus === 'in_progress' ? 'bg-[#FF9C3A]/20 text-[#FFB45F]' :
+                                courseStatus === 'in_progress' ? 'bg-[#FF9C3A]/20 text-[#FF9C3A]' :
                                 'bg-white/5 text-slate-600'}`}>
-                              {courseStatus === 'completed' ? 'âœ“' : j + 1}
+                              {courseStatus === 'completed' ? '✓' : j + 1}
                             </span>
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center justify-between mb-1">
@@ -129,7 +129,7 @@ export function MyTrackPage() {
                             <div className="flex items-center gap-3 text-xs text-slate-500 flex-shrink-0">
                               <span className="flex items-center gap-1"><Clock size={10} />{course?.workload_hours}h</span>
                               {course?.has_certificate && <Award size={12} className="text-amber-400" />}
-                              <ChevronRight size={13} className="text-slate-600 group-hover:text-[#FFB45F] transition-colors" />
+                              <ChevronRight size={13} className="text-slate-600 group-hover:text-[#FF9C3A] transition-colors" />
                             </div>
                           </motion.div>
                         );

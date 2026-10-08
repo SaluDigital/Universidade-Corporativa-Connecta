@@ -4,7 +4,7 @@
 :root {
   --brand-black: #000000;
   --brand-orange: #FF9C3A;
-  --brand-orange-soft: #FFB45F;
+  --brand-orange-soft: #E68122;
   --brand-white: #FEFEFE;
   --surface: #0D0D0D;
   --surface-elevated: #141414;
@@ -76,7 +76,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, var(--brand-orange), var(--brand-white));
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -90,7 +90,7 @@
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-soft));
+    background: var(--brand-orange);
   }
 
   .gradient-bg-soft {
@@ -152,7 +152,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #FFD3A3, var(--brand-orange));
+    background: var(--brand-orange-soft);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -198,7 +198,7 @@
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-soft), var(--brand-white));
+    background: var(--brand-orange);
     border-radius: 99px;
     transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -244,7 +244,7 @@
 
   .badge-purple {
     background: rgba(255, 156, 58, 0.15);
-    color: #FFD3A3;
+    color: #FF9C3A;
     border: 1px solid rgba(255, 156, 58, 0.25);
   }
 

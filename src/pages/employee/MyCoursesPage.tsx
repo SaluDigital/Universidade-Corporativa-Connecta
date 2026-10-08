@@ -48,14 +48,14 @@ export function MyCoursesPage() {
     <div className="max-w-4xl space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-white">Meus Cursos</h2>
-        <p className="text-slate-500 text-sm mt-1">{courses.length} cursos disponÃ­veis</p>
+        <p className="text-slate-500 text-sm mt-1">{courses.length} cursos disponíveis</p>
       </div>
 
       <div className="grid grid-cols-3 gap-4">
         {[
           { label: 'Em andamento', count: inProgress.length, color: 'text-[#FEFEFE] bg-[#FEFEFE]/10 border-[#FEFEFE]/20' },
-          { label: 'ConcluÃ­dos', count: completed.length, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
-          { label: 'DisponÃ­veis', count: notStarted.length, color: 'text-slate-400 bg-slate-500/10 border-slate-500/20' },
+          { label: 'Concluídos', count: completed.length, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
+          { label: 'Disponíveis', count: notStarted.length, color: 'text-slate-400 bg-slate-500/10 border-slate-500/20' },
         ].map(s => (
           <div key={s.label} className={`glass-card rounded-xl p-4 border text-center ${s.color.split(' ').slice(1).join(' ')}`}>
             <p className={`text-2xl font-bold ${s.color.split(' ')[0]}`}>{s.count}</p>
@@ -102,7 +102,7 @@ export function MyCoursesPage() {
 
       {completed.length > 0 && (
         <div>
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">ConcluÃ­dos</h3>
+          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">Concluídos</h3>
           <div className="grid sm:grid-cols-2 gap-3">
             {completed.map((course, i) => (
               <motion.div key={course.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
@@ -122,7 +122,7 @@ export function MyCoursesPage() {
 
       {notStarted.length > 0 && (
         <div>
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">DisponÃ­veis</h3>
+          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">Disponíveis</h3>
           <div className="grid sm:grid-cols-2 gap-3">
             {notStarted.map((course, i) => (
               <motion.div key={course.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
@@ -134,9 +134,9 @@ export function MyCoursesPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-white truncate">{course.title}</p>
-                  <p className="text-xs text-slate-500">{course.workload_hours}h Â· {course.category}</p>
+                  <p className="text-xs text-slate-500">{course.workload_hours}h · {course.category}</p>
                 </div>
-                <ChevronRight size={14} className="text-slate-600 group-hover:text-[#FFB45F] transition-colors" />
+                <ChevronRight size={14} className="text-slate-600 group-hover:text-[#FF9C3A] transition-colors" />
               </motion.div>
             ))}
           </div>
@@ -146,7 +146,7 @@ export function MyCoursesPage() {
       {courses.length === 0 && (
         <div className="glass-card rounded-2xl p-16 text-center">
           <BookOpen size={40} className="text-slate-700 mx-auto mb-3" />
-          <p className="text-slate-500">Nenhum curso disponÃ­vel.</p>
+          <p className="text-slate-500">Nenhum curso disponível.</p>
         </div>
       )}
     </div>

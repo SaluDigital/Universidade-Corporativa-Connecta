@@ -21,12 +21,12 @@ interface NavItem {
 
 const adminNav: NavItem[] = [
   { label: 'Dashboard', path: '/admin', icon: <LayoutDashboard size={18} /> },
-  { label: 'UsuÃ¡rios', path: '/admin/users', icon: <Users size={18} /> },
+  { label: 'Usuários', path: '/admin/users', icon: <Users size={18} /> },
   { label: 'Departamentos', path: '/admin/departments', icon: <Layers size={18} /> },
   { label: 'Cursos', path: '/admin/courses', icon: <BookOpen size={18} /> },
   { label: 'Trilhas', path: '/admin/tracks', icon: <GitBranch size={18} /> },
   { label: 'Regras', path: '/admin/rules', icon: <Target size={18} /> },
-  { label: 'RelatÃ³rios', path: '/admin/reports', icon: <BarChart3 size={18} /> },
+  { label: 'Relatórios', path: '/admin/reports', icon: <BarChart3 size={18} /> },
   { label: 'Certificados', path: '/admin/certificates', icon: <Award size={18} /> },
   { label: 'Logs', path: '/admin/logs', icon: <FileText size={18} /> },
 ];
@@ -44,7 +44,7 @@ const employeeNav: NavItem[] = [
   { label: 'Meus Cursos', path: '/employee/courses', icon: <BookOpen size={18} /> },
   { label: 'Aula Atual', path: '/employee/lesson', icon: <PlayCircle size={18} /> },
   { label: 'Certificados', path: '/employee/certificates', icon: <Trophy size={18} /> },
-  { label: 'HistÃ³rico', path: '/employee/history', icon: <History size={18} /> },
+  { label: 'Histórico', path: '/employee/history', icon: <History size={18} /> },
 ];
 
 const navByRole: Record<UserRole, NavItem[]> = {
@@ -60,7 +60,7 @@ const roleLabels: Record<UserRole, string> = {
 };
 
 const roleColors: Record<UserRole, string> = {
-  admin: 'text-[#FFB45F]',
+  admin: 'text-[#FF9C3A]',
   manager: 'text-[#FEFEFE]',
   employee: 'text-emerald-400',
 };
@@ -91,7 +91,7 @@ export function Sidebar() {
       <div className="flex items-center gap-3 px-4 py-5 border-b border-white/5">
         <motion.div
           animate={{ rotate: collapsed ? 0 : 0 }}
-          className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FF9C3A] to-[#FEFEFE] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FF9C3A]/30"
+          className="w-10 h-10 rounded-xl bg-[#FF9C3A] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FF9C3A]/30"
         >
           <GraduationCap size={20} className="text-white" />
         </motion.div>
@@ -124,7 +124,7 @@ export function Sidebar() {
               className={({ isActive: linkActive }) => cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group relative',
                 (isActive || linkActive)
-                  ? 'bg-[#FF9C3A]/15 text-[#FFD3A3] border border-[#FF9C3A]/20'
+                  ? 'bg-[#FF9C3A]/15 text-[#FF9C3A] border border-[#FF9C3A]/20'
                   : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
               )}
             >
@@ -134,11 +134,11 @@ export function Sidebar() {
                   {(isActive || linkActive) && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-gradient-to-b from-[#FF9C3A] to-[#FEFEFE] rounded-r-full"
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-[#FF9C3A] rounded-r-full"
                     />
                   )}
 
-                  <span className={cn('flex-shrink-0', (isActive || linkActive) ? 'text-[#FFB45F]' : 'text-slate-500 group-hover:text-slate-400')}>
+                  <span className={cn('flex-shrink-0', (isActive || linkActive) ? 'text-[#FF9C3A]' : 'text-slate-500 group-hover:text-slate-400')}>
                     {item.icon}
                   </span>
 

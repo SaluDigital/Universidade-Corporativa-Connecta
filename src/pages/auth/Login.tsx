@@ -55,17 +55,21 @@ export function Login() {
       {/* Left panel */}
       <div className="hidden lg:flex w-[55%] relative flex-col items-center justify-center p-16">
         {/* Animated background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#0D0D0D] to-[#050505]">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FF9C3A]/20 rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#FEFEFE]/15 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-3/4 left-1/3 w-48 h-48 bg-[#FEFEFE]/10 rounded-full blur-[60px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute inset-0 bg-[#050505]">
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(255,156,58,0.06) 0%, rgba(255,156,58,0.02) 35%, transparent 65%)',
+            }}
+          />
+          <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-[#FF9C3A]/8 rounded-full blur-[90px]" />
         </div>
 
         {/* Floating cards decoration */}
         <motion.div
           animate={{ y: [-10, 10, -10], rotate: [-2, 2, -2] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-20 right-16 glass p-4 rounded-2xl border border-white/10 shadow-xl"
+          className="absolute top-20 right-16 p-4 rounded-2xl bg-[rgba(15,15,15,0.85)] backdrop-blur-md border border-white/8 shadow-xl shadow-black/30"
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center">
@@ -81,7 +85,7 @@ export function Login() {
         <motion.div
           animate={{ y: [10, -10, 10], rotate: [1, -1, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute bottom-32 left-16 glass p-4 rounded-2xl border border-white/10 shadow-xl"
+          className="absolute bottom-32 left-16 p-4 rounded-2xl bg-[rgba(15,15,15,0.85)] backdrop-blur-md border border-white/8 shadow-xl shadow-black/30"
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-[#FF9C3A]/20 rounded-lg flex items-center justify-center">
@@ -97,7 +101,7 @@ export function Login() {
         <motion.div
           animate={{ y: [-5, 15, -5] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute top-1/2 left-8 glass p-4 rounded-2xl border border-white/10 shadow-xl"
+          className="absolute top-1/2 left-8 p-4 rounded-2xl bg-[rgba(15,15,15,0.85)] backdrop-blur-md border border-white/8 shadow-xl shadow-black/30"
         >
           <div className="text-center">
             <p className="text-2xl font-bold gradient-text">94%</p>
@@ -198,14 +202,14 @@ export function Login() {
               <div className="relative">
                 <Mail
                   size={16}
-                  className={`absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none transition-opacity duration-150 ${email ? 'opacity-0 invisible' : 'opacity-100 visible'}`}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none"
                 />
                 <input
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="seu@coneccta.com.br"
-                  className={`input-base ${email ? 'pl-4' : 'pl-12'}`}
+                  className="input-base pl-12"
                   required
                 />
               </div>
@@ -216,14 +220,14 @@ export function Login() {
               <div className="relative">
                 <Lock
                   size={16}
-                  className={`absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none transition-opacity duration-150 ${password ? 'opacity-0 invisible' : 'opacity-100 visible'}`}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#737373] pointer-events-none"
                 />
                 <input
                   type={showPass ? 'text' : 'password'}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className={`input-base pr-12 ${password ? 'pl-4' : 'pl-12'}`}
+                  className="input-base pl-12 pr-12"
                   required
                 />
                 <button

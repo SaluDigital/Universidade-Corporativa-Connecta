@@ -1,4 +1,4 @@
-import { supabase, supabaseAdmin } from './supabase';
+import { supabase } from './supabase';
 
 // ─── USERS ────────────────────────────────────────────────
 export const getUsers = () =>
@@ -20,7 +20,7 @@ export const updateUser = (id: string, data: Record<string, unknown>) =>
 export const updateUserStatus = (id: string, status: 'active' | 'inactive') =>
   supabase.from('users').update({ status }).eq('id', id);
 
-/** Cria auth user + perfil na tabela users via Admin API (não afeta a sessão do admin) */
+/** Temporariamente desabilitado: criação administrativa será movida para backend/Edge Function. */
 export const createUser = async (params: {
   name: string;
   email: string;
@@ -30,30 +30,8 @@ export const createUser = async (params: {
   position_id: string;
   hire_date: string;
 }) => {
-  if (!supabaseAdmin) throw new Error('VITE_SUPABASE_SERVICE_KEY não configurada no .env');
-
-  // Usa Admin API — não faz login automático, não afeta a sessão atual
-  const { data, error } = await supabaseAdmin.auth.admin.createUser({
-    email: params.email,
-    password: params.password,
-    email_confirm: true, // confirma o e-mail automaticamente, sem enviar e-mail
-  });
-  if (error) throw error;
-  if (!data.user) throw new Error('Usuário não criado');
-
-  // Usa supabaseAdmin no insert também — bypassa RLS completamente
-  const { error: profileError } = await supabaseAdmin.from('users').insert({
-    id: data.user.id,
-    name: params.name,
-    email: params.email,
-    role: params.role,
-    department_id: params.department_id || null,
-    position_id: params.position_id || null,
-    hire_date: params.hire_date || null,
-    status: 'active',
-  });
-  if (profileError) throw profileError;
-  return data.user;
+  void params;
+  throw new Error('Criação administrativa de usuários temporariamente desabilitada. Esta ação será movida para um backend seguro/Edge Function.');
 };
 
 // ─── DEPARTMENTS ──────────────────────────────────────────

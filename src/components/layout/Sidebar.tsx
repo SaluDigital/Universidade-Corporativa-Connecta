@@ -91,9 +91,9 @@ export function Sidebar() {
       <div className="flex items-center gap-3 px-4 py-5 border-b border-white/5">
         <motion.div
           animate={{ rotate: collapsed ? 0 : 0 }}
-          className="w-10 h-10 rounded-xl bg-[#FF9C3A] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FF9C3A]/30"
+          className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 shadow-lg shadow-[#FF9C3A]/30"
         >
-          <GraduationCap size={20} className="text-white" />
+          <img src="/favicon.png" alt="Coneccta" className="w-full h-full object-cover" />
         </motion.div>
         <AnimatePresence>
           {!collapsed && (

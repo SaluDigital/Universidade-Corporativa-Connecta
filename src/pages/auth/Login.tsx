@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
-import { GraduationCap, Mail, Lock, ArrowRight, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { Mail, Lock, ArrowRight, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import { supabase } from '../../lib/supabase';
 
@@ -115,9 +115,9 @@ export function Login() {
             initial={{ scale: 0, rotate: -10 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: 'spring', damping: 15, delay: 0.2 }}
-            className="w-24 h-24 bg-[#FF9C3A] rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-[#FF9C3A]/40"
+            className="flex items-center justify-center mx-auto mb-8"
           >
-            <GraduationCap size={44} className="text-white" />
+            <img src="/logo-coneccta-branco.png" alt="Coneccta" className="h-24 w-auto object-contain" />
           </motion.div>
 
           <motion.h1
@@ -181,13 +181,8 @@ export function Login() {
         >
           {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 bg-[#FF9C3A] rounded-xl flex items-center justify-center">
-              <GraduationCap size={20} className="text-white" />
-            </div>
-            <div>
-              <p className="font-bold text-white">Coneccta</p>
-              <p className="text-[#FF9C3A] text-xs">Universidade Corporativa Coneccta</p>
-            </div>
+            <img src="/logo-coneccta-branco.png" alt="Coneccta" className="h-10 w-auto object-contain" />
+            <p className="text-[#FF9C3A] text-xs">Universidade Corporativa Coneccta</p>
           </div>
 
           <div className="mb-8">
